@@ -1,5 +1,7 @@
 @startuml style
 
+!startsub BASIC
+
 skinparam arrowcolor green
 skinparam ArrowThickness 3
 skinparam ArrowColor grey
@@ -42,13 +44,18 @@ skinparam ArrowColor grey
     endnote
 !endprocedure
 
-[a] --> [b]
-$black_tag(dd)
 
 legend
 <back:#black><color:#white>Text Tag</color></back> | <color:#blue>=</color><back:$new()>New</back> |<back:$existing()>Existing</back> | <back:$remove()>Remove</back> | <back:$temporary()>Interim Component</back> | <back:$remove_future()>remove in another work stream</back> | <back:#white|#pink>remove in another work stream</back>
 
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
 end legend
+
+!endsub BASIC
+
+!startsub EXAMPLE
+[a] --> [b]
+$black_tag(dd)
+!endsub BASIC
 
 @enduml
