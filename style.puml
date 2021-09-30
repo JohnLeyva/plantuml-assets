@@ -35,9 +35,9 @@ skinparam ArrowColor grey
     !return "#lightgreen|pink"  
 !endfunction
 
-!unquoted procedure $black_tag($text)
+!unquoted procedure $black_tag($text='',$desc='')
     note on link #black
-        <back:#white><color:#black>$text</color></back>
+        $text<back:#white><color:#black>$desc</color></back>
     endnote
 !endprocedure
 
