@@ -1,7 +1,11 @@
 skinparam arrowcolor green
 skinparam ArrowThickness 3
+skinparam ArrowColor grey
 
 !function $exiting($type = "any")
+    !return "#lightgreen"  
+!endfunction
+!function $existing($type = "any")
     !return "#lightgreen"  
 !endfunction
 
@@ -29,3 +33,9 @@ skinparam ArrowThickness 3
 !function $remove_future($type = "any")
     !return "#lightgreen|pink"  
 !endfunction
+
+legend
+<back:$new()>New</back> |<back:$existing()>Existing</back> | <back:$remove()>Remove</back> | <back:$temporary()>Interim Component</back> | <back:#white|#pink>To be removed in another work stream</back>
+
+<size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
+end legend
