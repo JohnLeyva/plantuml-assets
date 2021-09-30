@@ -1,3 +1,5 @@
+@startuml style
+
 skinparam arrowcolor green
 skinparam ArrowThickness 3
 skinparam ArrowColor grey
@@ -25,7 +27,6 @@ skinparam ArrowColor grey
     !return "#red"  
 !endfunction
 
-
 !function $temporary($type = "any")
     !return "#cyan|pink"  
 !endfunction
@@ -34,8 +35,17 @@ skinparam ArrowColor grey
     !return "#lightgreen|pink"  
 !endfunction
 
+!unquoted procedure $black_tag($text)
+    note on link #black
+        <back:#white><color:#black>$text</color></back>
+    endnote
+!endprocedure
+
+
 legend
 <back:$new()>New</back> |<back:$existing()>Existing</back> | <back:$remove()>Remove</back> | <back:$temporary()>Interim Component</back> | <back:#white|#pink>To be removed in another work stream</back>
 
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
 end legend
+
+@enduml
