@@ -1,0 +1,31 @@
+skinparam arrowcolor green
+skinparam ArrowThickness 3
+
+!function $exiting($type = "any")
+    !return "#lightgreen"  
+!endfunction
+
+!function $new($type = "any")
+    !return "#cyan"  
+!endfunction
+
+!function $new_link($type = "any")
+    !return "#blue"  
+!endfunction
+
+!function $remove($type = "any")
+    !return "#pink"  
+!endfunction
+
+!function $remove_link($type = "any")
+    !return "#red"  
+!endfunction
+
+
+!function $temporary($type = "any")
+    !return "#cyan|pink"  
+!endfunction
+
+!function $remove_future($type = "any")
+    !return "#lightgreen|pink"  
+!endfunction
