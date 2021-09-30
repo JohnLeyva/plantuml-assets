@@ -37,11 +37,13 @@ skinparam ArrowColor grey
 
 
 !unquoted procedure $black_tag($text='',$desc='')
-    note on link #black
+    note on link #black|lightgray
         <color:#white>$text</color><back:#white><color:#black>$desc</color></back>
     endnote
 !endprocedure
 
+[a] --> [b]
+$black_tag(dd)
 
 legend
 <back:#black><color:#white>Text Tag</color></back> | <color:#blue>=</color><back:$new()>New</back> |<back:$existing()>Existing</back> | <back:$remove()>Remove</back> | <back:$temporary()>Interim Component</back> | <back:$remove_future()>remove in another work stream</back> | <back:#white|#pink>remove in another work stream</back>
