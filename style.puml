@@ -6,6 +6,10 @@ skinparam arrowcolor green
 skinparam ArrowThickness 3
 skinparam ArrowColor grey
 
+!function $done($type = "any")
+    !return "#lightblue|lightgreen"  
+!endfunction
+
 !function $notouch($type = "any")
     !return "#lightgreen|lightgray"  
 !endfunction
@@ -13,6 +17,7 @@ skinparam ArrowColor grey
 !function $exiting($type = "any")
     !return "#lightgreen"  
 !endfunction
+
 !function $existing($type = "any")
     !return "#lightgreen"  
 !endfunction
@@ -50,7 +55,8 @@ skinparam ArrowColor grey
 
 
 legend
-<back:#black><color:#white>Text Tag</color></back> | <color:#blue>=</color><back:$new()>New</back> |<back:$existing()>Existing</back> | <back:$remove()>Remove</back> | <back:$temporary()>Interim Component</back> | <back:$remove_future()>remove in another work stream</back> | <back:$notouch()>Existing no touch</back>
+<back:#black><color:#white>Text Tag</color></back> | <color:#blue>=</color><back:$new()>New</back> |<back:$existing()>Existing</back> | <back:$remove()>Remove</back> | <back:$temporary()>Interim Component</back> | <back:$remove_future()>remove in another work stream</back> | <back:$notouch()>Existing no touch</back> | <back:$done()>Done</back>
+
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
 end legend
 
@@ -61,6 +67,6 @@ end legend
     $black_tag(dd)
 !endprocedure
 
-'$example_style()
+$example_style()
 
 @enduml
