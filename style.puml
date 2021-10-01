@@ -7,7 +7,7 @@ skinparam ArrowThickness 3
 skinparam ArrowColor grey
 
 !function $notouch($type = "any")
-    !return "#lightgray"  
+    !return "#lightgreen|lightgray"  
 !endfunction
 
 !function $exiting($type = "any")
@@ -50,7 +50,7 @@ skinparam ArrowColor grey
 
 
 legend
-<back:#black><color:#white>Text Tag</color></back> | <color:#blue>=</color><back:$new()>New</back> |<back:$existing()>Existing</back> | <back:$remove()>Remove</back> | <back:$temporary()>Interim Component</back> | <back:$remove_future()>remove in another work stream</back> | 
+<back:#black><color:#white>Text Tag</color></back> | <color:#blue>=</color><back:$new()>New</back> |<back:$existing()>Existing</back> | <back:$remove()>Remove</back> | <back:$temporary()>Interim Component</back> | <back:$remove_future()>remove in another work stream</back> | <back:$notouch()>Existing no touch</back>
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
 end legend
 
