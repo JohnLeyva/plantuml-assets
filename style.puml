@@ -14,12 +14,20 @@ skinparam ArrowColor grey
     !return "#lightgreen|lightgray"  
 !endfunction
 
+!function $notouch_link($type = "any")
+    !return "#gray"  
+!endfunction
+
 !function $exiting($type = "any")
     !return "#lightgreen"  
 !endfunction
 
 !function $existing($type = "any")
     !return "#lightgreen"  
+!endfunction
+
+!function $existing_link($type = "any")
+    !return "#green"  
 !endfunction
 
 !function $new($type = "any")
@@ -63,10 +71,27 @@ end legend
 !endsub
 
 !unquoted procedure $example_style($text='')
-    [a] --> [b]
-    $black_tag(dd)
+    component new $new() 
+    component existing $existing() 
+    component remove $remove()
+    component temporary $temporary()
+    component remove_future $remove_future() 
+    component notouch $notouch() 
+    component done $done() 
+    new -[$new_link()]-> existing
+        $black_tag(new_link)
+
+    existing -[$remove_link()]-> remove
+        $black_tag(remove_link)
+
+    notouch --> existing
+        $black_tag(default)
+
+    existing -[$existing_link()]-> remove_future
+        $black_tag(existing_link)
+    
 !endprocedure
 
-$example_style()
+'$example_style()
 
 @enduml
