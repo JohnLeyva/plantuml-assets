@@ -6,6 +6,10 @@ skinparam arrowcolor green
 skinparam ArrowThickness 3
 skinparam ArrowColor grey
 
+!function $notouch($type = "any")
+    !return "#lightgray"  
+!endfunction
+
 !function $exiting($type = "any")
     !return "#lightgreen"  
 !endfunction
