@@ -5,13 +5,14 @@
 skinparam arrowcolor green
 skinparam ArrowThickness 3
 skinparam ArrowColor grey
+skinparam legendBackgroundColor #white
 
 !function $done($type = "any")
     !return "#lightblue|lightgreen"  
 !endfunction
 
 !function $notouch($type = "any")
-    !return "#lightgreen|lightgray"  
+    !return "#lightgray"  
 !endfunction
 
 !function $notouch_link($type = "any")
@@ -38,6 +39,10 @@ skinparam ArrowColor grey
     !return "#blue"  
 !endfunction
 
+!function $change($type = "any")
+    !return "#yellow"  
+!endfunction
+
 !function $remove($type = "any")
     !return "#pink"  
 !endfunction
@@ -54,6 +59,10 @@ skinparam ArrowColor grey
     !return "#lightgreen|pink"  
 !endfunction
 
+!function $change_future($type = "any")
+    !return "#lightgreen|yellow"  
+!endfunction
+
 
 !unquoted procedure $black_tag($text='',$desc='')
     note on link #black|lightgray
@@ -63,9 +72,10 @@ skinparam ArrowColor grey
 
 
 legend
-<back:#black><color:#white>Text Tag</color></back> | <color:#blue>=</color><back:$new()>New</back> |<back:$existing()>Existing</back> | <back:$remove()>Remove</back> | <back:$temporary()>Interim Component</back> | <back:$remove_future()>remove in another work stream</back> | <back:$notouch()>Existing no touch</back> | <back:$done()>Done</back>
+<back:#black><color:#white>Text Tag</color></back> | <color:#blue>=</color><back:$new()>New</back> |<back:$existing()>Existing</back> |<back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$done()>Done</back>
 
-<size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
+<back:$temporary()>Interim Component</back> | <back:$remove_future()>remove in another work stream</back> | <back:$change_future()>change in another work stream</back>
+' <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
 end legend
 
 !endsub
@@ -75,21 +85,36 @@ end legend
     component existing $existing() 
     component remove $remove()
     component temporary $temporary()
-    component remove_future $remove_future() 
     component notouch $notouch() 
-    component done $done() 
-    new -[$new_link()]-> existing
-        $black_tag(new_link)
+    component done $done()
+    component change $change()
+
 
     existing -[$remove_link()]-> remove
         $black_tag(remove_link)
 
-    notouch --> existing
-        $black_tag(default)
+    notouch -[$notouch_link()]-> existing
+        $black_tag(no_change_link)
+
+    existing --> change
+    change --> done
+    new -[$new_link()]-> done
+    done --> existing 
+
+rectangle "In the scope of another workstream" {
+    component remove_future $remove_future() 
+    component change_future $change_future()
 
     existing -[$existing_link()]-> remove_future
         $black_tag(existing_link)
     
+    existing --> change_future
+
+    new --> temporary
+    temporary --> remove_future
+}
+
+
 !endprocedure
 
 '$example_style()
