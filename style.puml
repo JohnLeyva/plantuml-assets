@@ -1,11 +1,34 @@
 @startuml style
-
+'https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html
+'allow_mixing
+left to right direction
+'skinparam monochrome true
+'skinparam linetype polyline
+'skinparam linetype ortho
 !startsub BASIC
 
-skinparam arrowcolor green
+
+'<< (S,#FF7700) Singleton >>
+skinparam ActorBackgroundColor #white
+skinparam ComponentBackgroundColor #white
+skinparam UseCaseBackgroundColor #white
 skinparam ArrowThickness 3
+skinparam ArrowLollipopColor #blue
 skinparam ArrowColor grey
 skinparam legendBackgroundColor #white
+skinparam NoteBorderThickness 1.5
+skinparam QueueBackgroundColor #white
+skinparam BoundaryBackgroundColor #white
+skinparam ControlBackgroundColor #white
+skinparam EntityBackgroundColor #white
+skinparam InterfaceBackgroundColor #white
+skinparam DatabaseBackgroundColor #white 
+skinparam Nodesep 30
+skinparam Ranksep 10
+
+skinparam rectangle {
+    RoundCorner 25
+}
 
 !function $done($type = "any")
     !return "#lightblue|lightgreen"  
@@ -40,8 +63,13 @@ skinparam legendBackgroundColor #white
 !endfunction
 
 !function $change($type = "any")
-    !return "#yellow"  
+    !return "#lightyellow"  
 !endfunction
+
+!function $change_link($type = "any")
+    !return "#burlywood"  
+!endfunction
+
 
 !function $remove($type = "any")
     !return "#pink"  
@@ -66,7 +94,7 @@ skinparam legendBackgroundColor #white
 
 !unquoted procedure $black_tag($text='',$desc='')
     note on link #black|lightgray
-        <color:#white>$text</color><back:#white><color:#black>$desc</color></back>
+        <&cog><color:#white>$text</color><back:#white><color:#black>$desc</color></back>
     endnote
 !endprocedure
 
@@ -75,12 +103,14 @@ legend
 <back:#black><color:#white>Text Tag</color></back> | <color:#blue>=</color><back:$new()>New</back> |<back:$existing()>Existing</back> |<back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$done()>Done</back>
 
 <back:$temporary()>Interim Component</back> | <back:$remove_future()>remove in another work stream</back> | <back:$change_future()>change in another work stream</back>
-' <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
+<size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
 end legend
 
 !endsub
 
 !unquoted procedure $example_style($text='')
+    component anyComponent as "Component"
+    
     component new $new() 
     component existing $existing() 
     component remove $remove()
@@ -89,6 +119,16 @@ end legend
     component done $done()
     component change $change()
 
+    new ..|> anyComponent : Realization 
+
+    usecase anyUseCase as "use case"
+    
+    'together {
+    actor anyActor as "user/system" 
+    actor stakeholder 
+    stakeholder --|> anyActor : is as
+    stakeholder -- anyUseCase
+    '}
 
     existing -[$remove_link()]-> remove
         $black_tag(remove_link)
@@ -97,11 +137,15 @@ end legend
         $black_tag(no_change_link)
 
     existing --> change
-    change --> done
+    change -[$change_link()]-> done
+        $black_tag(change_link)
     new -[$new_link()]-> done
+        $black_tag(new_link)
     done --> existing 
 
-rectangle "In the scope of another workstream" {
+    new -u-|> anyUseCase : Implements
+
+rectangle "In the scope of another workstream" #line.dashed {
     component remove_future $remove_future() 
     component change_future $change_future()
 
@@ -114,6 +158,28 @@ rectangle "In the scope of another workstream" {
     temporary --> remove_future
 }
 
+
+    rectangle Service as "Service Boundary" {
+        node process {
+            boundary anyBoundary as "Boundary"
+            control anyControl as "Control / Controller"
+            entity anyEntity as "Aggregate / Entity"
+        }
+        database anyStorage as "Durable storage"
+
+        anyBoundary -r-> anyControl
+        anyControl -r-> anyEntity 
+        anyActor --> anyBoundary
+        anyControl --> anyStorage : POST/PUT/GET/PATCH\nentity
+
+
+        queue Topic_outbound <<outbound>> as "topic"
+
+        queue Topic_inbound <<inbound>> as "topic"
+
+        anyControl --\\ Topic_outbound : PUSH
+        Topic_inbound --\\ anyControl : PULL
+    }
 
 !endprocedure
 

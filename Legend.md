@@ -5,5 +5,7 @@ skinparam linetype ortho
 
 !include https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master/style.puml
 
+$example_style()
+
 @enduml
 ```
