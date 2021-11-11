@@ -1,7 +1,6 @@
 @startuml style
 'https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html
 'allow_mixing
-left to right direction
 'skinparam monochrome true
 'skinparam linetype polyline
 'skinparam linetype ortho
@@ -109,6 +108,8 @@ end legend
 !endsub
 
 !unquoted procedure $example_style($text='')
+    left to right direction
+
     component anyComponent as "Component"
     
     component new $new() 
