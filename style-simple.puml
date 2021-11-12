@@ -21,13 +21,20 @@ skinparam ControlBackgroundColor #white
 skinparam EntityBackgroundColor #white
 skinparam InterfaceBackgroundColor #white
 skinparam DatabaseBackgroundColor #white
-skinparam ComponentBorderColor<<next-phase>> #blue
+
+skinparam Component<<next-phase>> {
+    BorderColor #blue
+}
 
 skinparam Nodesep 30
 skinparam Ranksep 10
 
 skinparam rectangle {
     RoundCorner 25
+}
+
+skinparam frame<<environment>> {
+    RoundCorner 50
 }
 
 !function $done($type = "any")
@@ -91,6 +98,9 @@ skinparam rectangle {
     !return "#lightgreen|yellow"  
 !endfunction
 
+!function $Service($name = "anyService")
+    !return frame $name
+!endfunction
 
 !unquoted procedure $black_tag($text='',$desc='')
     note on link #black|lightgray
@@ -98,11 +108,12 @@ skinparam rectangle {
     endnote
 !endprocedure
 
-
+!unquoted procedure $legend($text='',$desc='')
 legend
 <back:#black><color:#white>Text Tag</color></back> | <back:$new()>New</back> |<back:$existing()>Existing</back> |<back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$done()>Done</back>
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
 end legend
+!endprocedure
 
 !endsub
 
@@ -160,8 +171,9 @@ rectangle "In the scope of another workstream" #line.dashed {
     temporary --> remove_future
 }
 
+frame Environment <<environment>> {
 
-    rectangle Service as "Service Boundary" {
+    $ServiceBoundary() Service as "Service Boundary" {
         node process {
             boundary anyBoundary as "Boundary"
             control anyControl as "Control / Controller"
@@ -174,7 +186,6 @@ rectangle "In the scope of another workstream" #line.dashed {
         anyActor --> anyBoundary
         anyControl --> anyStorage : POST/PUT/GET/PATCH\nentity
 
-
         queue Topic_outbound <<outbound>> as "topic"
 
         queue Topic_inbound <<inbound>> as "topic"
@@ -182,9 +193,10 @@ rectangle "In the scope of another workstream" #line.dashed {
         anyControl --\\ Topic_outbound : PUSH
         Topic_inbound --\\ anyControl : PULL
     }
+}
 
 !endprocedure
 
-'$example_style()
+$example_style()
 
 @enduml
