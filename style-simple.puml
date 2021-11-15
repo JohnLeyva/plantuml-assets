@@ -203,5 +203,5 @@ rectangle Environment <<environment>> {
 !endprocedure
 
 '$example_style()
-
+'$legend()
 @enduml
