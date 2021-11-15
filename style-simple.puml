@@ -5,6 +5,11 @@
 'skinparam linetype polyline
 'skinparam linetype ortho
 
+!include <azure/AzureCommon>
+!include <azure/Databases/AzureCosmosDb>
+!include <azure/Databases/AzureSqlDatabase>
+!include <cloudinsight/kafka>
+
 !startsub BASIC
 
 skinparam ActorBackgroundColor #white
@@ -98,8 +103,8 @@ skinparam frame<<environment>> {
     !return "#lightgreen|yellow"  
 !endfunction
 
-!function $Service($name = "anyService")
-    !return frame $name
+!function $service($name = 'anyService')
+    !return "frame " + $name
 !endfunction
 
 !unquoted procedure $black_tag($text='',$desc='')
@@ -171,9 +176,9 @@ rectangle "In the scope of another workstream" #line.dashed {
     temporary --> remove_future
 }
 
-frame Environment <<environment>> {
+rectangle Environment <<environment>> {
 
-    $ServiceBoundary() Service as "Service Boundary" {
+    $service(AnyService) as "Service Boundary" {
         node process {
             boundary anyBoundary as "Boundary"
             control anyControl as "Control / Controller"
