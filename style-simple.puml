@@ -202,6 +202,6 @@ rectangle Environment <<environment>> {
 
 !endprocedure
 
-$example_style()
+'$example_style()
 
 @enduml
