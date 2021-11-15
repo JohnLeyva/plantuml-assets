@@ -42,6 +42,10 @@ skinparam frame<<environment>> {
     RoundCorner 50
 }
 
+!function $out_of_scope()
+    !return "<color:red>out-of-scope</color>"  
+!endfunction
+
 !function $done($type = "any")
     !return "#CornflowerBlue"  
 !endfunction
@@ -173,7 +177,7 @@ rectangle "In the scope of another workstream" #line.dashed {
     existing --> change_future
 
     new --> temporary
-    temporary --> remove_future
+    temporary --> remove_future : $out_of_scope()
 }
 
 rectangle Environment <<environment>> {
@@ -202,6 +206,6 @@ rectangle Environment <<environment>> {
 
 !endprocedure
 
-'$example_style()
+$example_style()
 '$legend()
 @enduml
