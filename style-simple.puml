@@ -42,8 +42,12 @@ skinparam frame<<environment>> {
     RoundCorner 50
 }
 
+!function $remark($text,$color=red)
+    !return "<color:" + $color+ ">" + $text + "</color>"  
+!endfunction
+
 !function $out_of_scope()
-    !return "<color:red>out-of-scope</color>"  
+    !return $remark(out-of-scope)  
 !endfunction
 
 !function $done($type = "any")
@@ -206,7 +210,7 @@ rectangle Environment <<environment>> {
 
 !endprocedure
 
-'$example_style()
+$example_style()
 '$legend()
 
 @enduml
