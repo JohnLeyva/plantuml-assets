@@ -99,6 +99,15 @@ skinparam frame<<environment>> {
     !return "#red"  
 !endfunction
 
+!function $alt($type = "any")
+    !return "#orchid"  
+!endfunction
+
+!function $alt_link($type = "any")
+    !return "#purple"  
+!endfunction
+
+
 !function $temporary($type = "any")
     !return "#powderBlue|pink" 
 !endfunction
@@ -129,7 +138,7 @@ skinparam frame<<environment>> {
 
 !unquoted procedure $legend($text='',$desc='')
 legend
-<back:#black><color:#white>Text Tag</color></back> | <back:$new()>New</back> |<back:$existing()>Existing</back> |<back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$done()>Done</back>
+<back:#black><color:#white>Text Tag</color></back> | <back:$new()>New</back> |<back:$existing()>Existing</back> |<back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$alt()>Alternative</back> | <back:$done()>Done</back>
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
 end legend
 !endprocedure
@@ -148,6 +157,7 @@ end legend
     component notouch $notouch() 
     component done $done()
     component change $change()
+    component alternative $alt()
 
     new ..|> anyComponent : Realization 
 
@@ -188,6 +198,7 @@ rectangle "In the scope of another workstream" #line.dashed {
 
     new --> temporary
     temporary --> remove_future : $out_of_scope()
+    new -[$alt_link()]-> alternative
 }
 
 rectangle Environment <<environment>> {
@@ -216,8 +227,8 @@ rectangle Environment <<environment>> {
 
 !endprocedure
 
-'$example_style()
-'$legend()
+$example_style()
+$legend()
 
 @enduml
 
