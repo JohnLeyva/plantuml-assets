@@ -115,6 +115,12 @@ skinparam frame<<environment>> {
     !return "frame " + $name
 !endfunction
 
+!unquoted procedure $tag($text='',$desc='')
+    note on link #black|lightgray
+        <&cog><color:#white>$text</color><back:#white><color:#black>$desc</color></back>
+    endnote
+!endprocedure
+
 !unquoted procedure $black_tag($text='',$desc='')
     note on link #black|lightgray
         <&cog><color:#white>$text</color><back:#white><color:#black>$desc</color></back>
