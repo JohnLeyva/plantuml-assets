@@ -12,6 +12,7 @@
 
 !startsub BASIC
 
+skinparam fileBackgroundColor #white
 skinparam ActorBackgroundColor #white
 skinparam ComponentBackgroundColor #white
 skinparam UseCaseBackgroundColor #white
