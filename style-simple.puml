@@ -138,7 +138,7 @@ skinparam frame<<environment>> {
 
 !unquoted procedure $legend($text='',$desc='')
 legend
-<back:#black><color:#white>Text Tag</color></back> | <back:$new()>New</back> |<back:$existing()>Existing</back> |<back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$alt()>Alternative</back> | <back:$done()>Done</back>
+<back:#black><color:#white>Text Tag</color></back> | <back:$new()>New</back> |<back:$existing()>Existing</back> |<back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$alt()>Alternative</back>
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
 end legend
 !endprocedure
