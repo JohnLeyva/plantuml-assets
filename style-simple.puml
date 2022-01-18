@@ -9,6 +9,7 @@
 !include <azure/Databases/AzureCosmosDb>
 !include <azure/Databases/AzureSqlDatabase>
 !include <cloudinsight/kafka>
+!include <cloudinsight/java>
 
 !startsub BASIC
 
