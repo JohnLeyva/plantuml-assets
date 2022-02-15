@@ -1,6 +1,6 @@
 ```plantuml
 @startuml
-title Example Legend
+title Conventions
 'skinparam linetype ortho
 '!theme spacelab
 !include https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master/style-simple.puml
