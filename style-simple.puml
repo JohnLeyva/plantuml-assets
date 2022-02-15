@@ -102,7 +102,7 @@ skinparam frame<<environment>> {
 !endfunction
 
 !function $alt($type = "any")
-    !return "#orchid"  
+    !return "#plum"  
 !endfunction
 
 !function $alt_link($type = "any")
@@ -150,88 +150,111 @@ end legend
 !unquoted procedure $example_style($text='')
     left to right direction
 
-    component anyComponent
-    component new $new() 
-    component existing $existing() 
-    component remove $remove()
-    component temporary<<temporary>> $new() 
-        '$temporary() 
-    component notouch $notouch() 
-    component done $done()
-    component change $change()
-    component alternative $alt()
+    together {
 
-    new ..|> anyComponent : Realization 
+        component anyComponent
+        component new $new() 
+        component existing $existing() 
+        component remove $remove()
+        component temporary<<temporary>> $new() 
+            '$temporary() 
+        component notouch $notouch() 
+        component done $done()
+        component change $change()
+        component alternative $alt()
 
-    usecase anyUseCase as "use case"
-    
-    'together {
-    actor anyActor as "user/system" 
-    actor stakeholder 
-    stakeholder --|> anyActor : is as
-    stakeholder -- anyUseCase
-    '}
+        new ..|> anyComponent : Realization 
 
-    existing -[$remove_link()]-> remove
-        $black_tag(remove_link)
+        usecase anyUseCase as "use case"
+        
+        'together {
+        actor anyActor as "user/system" 
+        actor stakeholder 
+        stakeholder --|> anyActor : is as
+        stakeholder -- anyUseCase
+        '}
 
-    notouch -[$notouch_link()]-> existing
-        $black_tag(no_change_link)
+        existing -[$remove_link()]-> remove
+            $black_tag(remove_link)
 
-    existing --> change
-    change -[$change_link()]-> done
-        $black_tag(change_link)
-    new -[$new_link()]-> done
-        $black_tag(new_link)
-    done --> existing 
+        notouch -[$notouch_link()]-> existing
+            $black_tag(no_change_link)
 
-    new -u-|> anyUseCase : Implements
+        existing --> change
+        change -[$change_link()]-> done
+            $black_tag(change_link)
+        new -[$new_link()]-> done
+            $black_tag(new_link)
+        done --> existing 
 
-rectangle "In the scope of another workstream" #line.dashed {
-    component remove_future<<next-phase>> $remove()
-        ' $remove_future() 
-    component change_future<<next-phase>> $change()
-        ' $change_future()
+        new -u-|> anyUseCase : Implements
 
-    existing -[$existing_link()]-> remove_future
-        $black_tag(existing_link)
-    
-    existing --> change_future
+    rectangle "In the scope of another workstream" #line.dashed {
+        component remove_future<<next-phase>> $remove()
+            ' $remove_future() 
+        component change_future<<next-phase>> $change()
+            ' $change_future()
 
-    new --> temporary
-    temporary --> remove_future : $out_of_scope()
-    new -[$alt_link()]-> alternative
-        $tag(alt_link)
+        existing -[$existing_link()]-> remove_future
+            $black_tag(existing_link)
+        
+        existing --> change_future
+
+        new --> temporary
+        temporary --> remove_future : $out_of_scope()
+        new -[$alt_link()]-> alternative
+            $tag(alt_link)
+    }
+
+    rectangle Environment <<environment>> {
+
+        $service(AnyService) as "Service Boundary" {
+            node process {
+                boundary anyBoundary as "Boundary"
+                control anyControl as "Control / Controller"
+                entity anyEntity as "Aggregate / Entity"
+            }
+            database anyStorage as "Durable storage"
+
+            anyBoundary -r-> anyControl
+            anyControl -r-> anyEntity 
+            anyActor --> anyBoundary
+            anyControl --> anyStorage : POST/PUT/GET/PATCH\nentity
+
+            queue Topic_outbound <<outbound>> as "topic"
+
+            queue Topic_inbound <<inbound>> as "topic"
+
+            anyControl --\\ Topic_outbound : PUSH
+            Topic_inbound --\\ anyControl : PULL
+        }
+    }
 }
 
-rectangle Environment <<environment>> {
+frame Transaction_Diagram_convention {
 
-    $service(AnyService) as "Service Boundary" {
-        node process {
-            boundary anyBoundary as "Boundary"
-            control anyControl as "Control / Controller"
-            entity anyEntity as "Aggregate / Entity"
-        }
-        database anyStorage as "Durable storage"
+    database Transaction_resource_A 
 
-        anyBoundary -r-> anyControl
-        anyControl -r-> anyEntity 
-        anyActor --> anyBoundary
-        anyControl --> anyStorage : POST/PUT/GET/PATCH\nentity
-
-        queue Topic_outbound <<outbound>> as "topic"
-
-        queue Topic_inbound <<inbound>> as "topic"
-
-        anyControl --\\ Topic_outbound : PUSH
-        Topic_inbound --\\ anyControl : PULL
+    frame TransactionScope <<transaction>> {
+        control Control_With_TransactionScope
     }
+
+    database Transaction_resource_B
+
+    Transaction_resource_A --> Control_With_TransactionScope
+        note on link
+            solid line indicates that participates in the transaction 
+        endnote
+    Control_With_TransactionScope ..> Transaction_resource_B
+        note on link
+            dotted line indicates that participates in the transaction 
+        endnote
 }
 
 !endprocedure
 
-'$example_style()
-'$legend()
+$example_style()
+$legend()
 
 @enduml
 
