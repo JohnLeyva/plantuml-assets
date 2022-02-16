@@ -257,8 +257,8 @@ frame Transaction_Diagram_convention {
 
 !endprocedure
 
-$example_style()
-$legend()
+'$example_style()
+'$legend()
 
 @enduml
 
