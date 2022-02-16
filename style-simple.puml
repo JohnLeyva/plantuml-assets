@@ -44,6 +44,10 @@ skinparam frame<<environment>> {
     RoundCorner 50
 }
 
+skinparam Frame<<transaction>> {
+    BorderColor #orange
+}
+
 !function $remark($text,$color=red)
     !return "<color:" + $color+ ">" + $text + "</color>"  
 !endfunction
