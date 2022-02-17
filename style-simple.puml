@@ -130,8 +130,8 @@ skinparam Frame<<transaction>> {
     !return "frame " + $name
 !endfunction
 
-!unquoted procedure $tag($text='',$desc='')
-    note on link #black|lightgray
+!unquoted procedure $tag($text='',$desc='', $tagcolor='#black')
+    note on link $tagcolor|lightgray
         <&cog><color:#white>$text</color><back:#white><color:#black>$desc</color></back>
     endnote
 !endprocedure
