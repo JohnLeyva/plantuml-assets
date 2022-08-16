@@ -257,7 +257,29 @@ frame Transaction_Diagram_convention {
 
 !endprocedure
 
+!unquoted procedure $flow_vs_dependency()
+
+frame flow_vs_dependency as "flow vs dependency" {
+    
+    control publisher_topic 
+    queue topic
+    control consumer_topic
+
+    publisher_topic --> topic : Publish
+    topic --> consumer_topic : Consume
+
+    control persister_storage 
+    database storage
+    control querier_storage
+
+    persister_storage --> storage : Store
+    storage --> querier_storage : Query
+}
+
+!endprocedure
+
 '$example_style()
+'$flow_vs_dependency()
 '$legend()
 
 @enduml
