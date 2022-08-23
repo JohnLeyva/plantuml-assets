@@ -40,11 +40,19 @@ skinparam rectangle {
     RoundCorner 25
 }
 
-skinparam frame<<environment>> {
+skinparam rectangle<<environment>> {
+    RoundCorner 150
+}
+
+skinparam frame<<service>> {
     RoundCorner 50
+    Shadowing true
 }
 
 skinparam Frame<<transaction>> {
+    BorderColor #orange
+}
+skinparam Package<<transaction>> {
     BorderColor #orange
 }
 
@@ -126,8 +134,79 @@ skinparam Frame<<transaction>> {
     !return "#lightgreen|yellow"  
 !endfunction
 
+!function $strReplace($str,$find,$replace)
+    !$len = %strlen($str)
+    !$res = ""
+    !while $len >= 0
+        !$chr = %substr($str,$len,1)
+        !if $chr == $find
+            !$res = $replace + $res
+        !else
+            !$res = $chr + $res
+        !endif
+        !$len = $len - 1
+    !endwhile
+    !return $res
+!endfunction
+
+!function $LastPart($str,$separator)
+    !$res = $str
+    !$pos = 1
+    !while ($pos > 0)
+        !$pos = %strpos($res,$separator)
+        !if ($pos > 0)
+            !$res = %substr($res,$pos + %strlen($separator) )
+        !endif
+    !endwhile 
+    !return $res
+!endfunction
+!procedure $LastPart_Test() 
+    node LastPart_Test
+    note right
+        $LastPart(Part1__Part2__Part3,'__')
+    endnote
+!endprocedure
+'$LastPart_Test()
+
+!unquoted function $label($str,$type='',$size=0)
+    !$res = $str
+    !if ($type!='')
+        !$res = $res + ' <<' + $type + '>>'
+    !endif 
+    !if ($size > 0)
+        !$sizeStart = '<size:' + $size + '>'
+        !$sizeEnd = '</size>'
+    !else
+        !$sizeStart = ''
+        !$sizeEnd = ''
+    !endif
+
+    !$name = $LastPart($str,'__')
+    !$name = $strReplace($name,'_',' ')
+
+    !$res = $res + ' as "' + $sizeStart + $name + $sizeEnd + '"'
+    !return $res
+!endfunction
+
+!procedure $label_Test() 
+    node label_Test
+    note right
+        No Size
+        $label(Any_Service,service)
+    endnote
+    note right
+        Size = 10
+        $label(Any_Service,service,10)
+    endnote
+!endprocedure
+' $label_Test()
+
 !function $service($name = 'anyService')
-    !return "frame " + $name
+    !return "frame " + $label($name,service,50) + " " 
+!endfunction
+
+!function $environment($name = 'anyEnvironment')
+    !return "rectangle " + $label($name,environment,30) + " " 
 !endfunction
 
 !unquoted procedure $tag($text='',$desc='', $tagcolor='#black')
@@ -210,9 +289,10 @@ end legend
             $tag(alt_link)
     }
 
-    rectangle Environment <<environment>> {
+        'frame $label(Any_Service,service,50) {
+    $service(Any_Service) {
+        $environment(Any_Service__Any_Environment) {
 
-        $service(AnyService) as "Service Boundary" {
             node process {
                 boundary anyBoundary as "Boundary"
                 control anyControl as "Control / Controller"
@@ -239,7 +319,7 @@ frame Transaction_Diagram_convention {
 
     database Transaction_resource_A 
 
-    frame TransactionScope <<transaction>> {
+    Package TransactionScope <<transaction>> {
         control Control_With_TransactionScope
     }
 
@@ -272,14 +352,14 @@ frame flow_vs_dependency as "flow vs dependency" {
     database storage
     control querier_storage
 
-    persister_storage --> storage : Store
+    persister_storage --\\ storage : Store
     storage --> querier_storage : Query
 }
 
 !endprocedure
 
-'$example_style()
-'$flow_vs_dependency()
+$example_style()
+$flow_vs_dependency()
 '$legend()
 
 @enduml

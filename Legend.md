@@ -16,3 +16,9 @@ $legend()
 colors
 @enduml
 ```
+
+```plantuml
+@startuml
+help skinparams
+@enduml
+```
