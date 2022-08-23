@@ -13,6 +13,8 @@
 
 !startsub BASIC
 
+!$defaultColor = '#white'
+!$defaultPartSeparator = '__'
 skinparam fileBackgroundColor #white
 skinparam ActorBackgroundColor #white
 skinparam ComponentBackgroundColor #white
@@ -29,8 +31,13 @@ skinparam EntityBackgroundColor #white
 skinparam InterfaceBackgroundColor #white
 skinparam DatabaseBackgroundColor #white
 
-skinparam Component<<next-phase>> {
+skinparam Rectangle<<next-phase>> {
+    DiagonalCorner 20 
     BorderColor #blue
+    BorderThickness 0.5
+    BackgroundColor #white|#cyan
+    BorderStyle dashed
+    '#line.dashed 
 }
 
 skinparam Nodesep 30
@@ -55,6 +62,8 @@ skinparam Frame<<transaction>> {
 skinparam Package<<transaction>> {
     BorderColor #orange
 }
+
+
 
 !function $remark($text,$color=red)
     !return "<color:" + $color+ ">" + $text + "</color>"  
@@ -104,7 +113,6 @@ skinparam Package<<transaction>> {
     !return "#burlywood"  
 !endfunction
 
-
 !function $remove($type = "any")
     !return "#pink"  
 !endfunction
@@ -149,7 +157,38 @@ skinparam Package<<transaction>> {
     !return $res
 !endfunction
 
-!function $LastPart($str,$separator)
+!procedure $ShowJson($json,$text='=json')
+    label l [
+        $text
+        {{json
+        $json
+        }}
+    ]
+!endprocedure
+
+!function $CountPart($str,$separator=$defaultPartSeparator)
+    !$res = $str
+    !$pos = 1
+    !$count = 1
+    !while ($pos > 0)
+        !$pos = %strpos($res,$separator)
+        !if ($pos > 0)
+            !$count = $count + 1
+            !$res = %substr($res,$pos + %strlen($separator) )
+        !endif
+    !endwhile
+    !return $count
+!endfunction
+!procedure $CountPart_Test()
+    !$count = $CountPart(Part1__Part2__Part3,$defaultPartSeparator) 
+    node CountPart_Test  
+    note right
+        $count
+    endnote
+!endprocedure
+'$CountPart_Test()
+
+!function $LastPart($str,$separator=$defaultPartSeparator)
     !$res = $str
     !$pos = 1
     !while ($pos > 0)
@@ -158,6 +197,10 @@ skinparam Package<<transaction>> {
             !$res = %substr($res,$pos + %strlen($separator) )
         !endif
     !endwhile 
+'    !$parts = %splitstr($str,$separator) ' Splits by char not by string so is not whats required
+'    !foreach $item in $parts
+'        !$res = $item
+'    $endfor 
     !return $res
 !endfunction
 !procedure $LastPart_Test() 
@@ -168,11 +211,11 @@ skinparam Package<<transaction>> {
 !endprocedure
 '$LastPart_Test()
 
-!unquoted function $label($str,$type='',$size=0)
+!unquoted function $label($str,$type='',$size=0, $action='')
     !$res = $str
     !if ($type!='')
         !$res = $res + ' <<' + $type + '>>'
-    !endif 
+    !endif
     !if ($size > 0)
         !$sizeStart = '<size:' + $size + '>'
         !$sizeEnd = '</size>'
@@ -181,10 +224,17 @@ skinparam Package<<transaction>> {
         !$sizeEnd = ''
     !endif
 
-    !$name = $LastPart($str,'__')
+    !$name = $LastPart($str)
     !$name = $strReplace($name,'_',' ')
+    !$entityLevel = $CountPart($str)
 
     !$res = $res + ' as "' + $sizeStart + $name + $sizeEnd + '"'
+
+    !if (%strlen($action) > 0)
+        !$actionColor = %darken($action , ($entityLevel - 2) * 10)
+        !$res = $res + " " + $actionColor + " "
+    !endif
+
     !return $res
 !endfunction
 
@@ -201,23 +251,23 @@ skinparam Package<<transaction>> {
 !endprocedure
 ' $label_Test()
 
-!function $service($name = 'anyService')
-    !return "frame " + $label($name,service,50) + " " 
+!function $service($name = 'anyService', $action = '')
+    !return "frame " + $label($name,service,50, $action) 
 !endfunction
 
-!function $environment($name = 'anyEnvironment')
-    !return "rectangle " + $label($name,environment,30) + " " 
+!function $environment($name = 'anyEnvironment', $action = '')
+    !return "rectangle " + $label($name,environment,30, $action)
 !endfunction
 
 !unquoted procedure $tag($text='',$desc='', $tagcolor='#black')
     note on link $tagcolor|lightgray
-        <&cog><color:#white>$text</color><back:#white><color:#black>$desc</color></back>
+        <&cog><color:#black>$text</color><back:#white><color:#black>$desc</color></back>
     endnote
 !endprocedure
 
 !unquoted procedure $black_tag($text='',$desc='')
     note on link #black|lightgray
-        <&cog><color:#white>$text</color><back:#white><color:#black>$desc</color></back>
+        <&cog><color:#black>$text</color><back:#white><color:#black>$desc</color></back>
     endnote
 !endprocedure
 
@@ -260,7 +310,7 @@ end legend
         existing -[$remove_link()]-> remove
             $black_tag(remove_link)
 
-        notouch -[$notouch_link()]-> existing
+        existing -[$notouch_link()]-> notouch
             $black_tag(no_change_link)
 
         existing --> change
@@ -272,10 +322,10 @@ end legend
 
         new -u-|> anyUseCase : Implements
 
-    rectangle "In the scope of another workstream" #line.dashed {
-        component remove_future<<next-phase>> $remove()
+    rectangle "In the scope of another workstream" <<next-phase>> {
+        component remove_future $remove()
             ' $remove_future() 
-        component change_future<<next-phase>> $change()
+        component change_future $change()
             ' $change_future()
 
         existing -[$existing_link()]-> remove_future
@@ -290,8 +340,8 @@ end legend
     }
 
         'frame $label(Any_Service,service,50) {
-    $service(Any_Service) {
-        $environment(Any_Service__Any_Environment) {
+    $service(Any_Service, $new()) {
+        $environment(Any_Service__Any_Environment, $new()) {
 
             node process {
                 boundary anyBoundary as "Boundary"
@@ -360,7 +410,7 @@ frame flow_vs_dependency as "flow vs dependency" {
 
 $example_style()
 $flow_vs_dependency()
-'$legend()
+$legend()
 
 @enduml
 
