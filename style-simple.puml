@@ -409,9 +409,9 @@ frame flow_vs_dependency as "flow vs dependency" {
 
 !endprocedure
 
-$example_style()
-$flow_vs_dependency()
-$legend()
+'$example_style()
+'$flow_vs_dependency()
+'$legend()
 
 @enduml
 
