@@ -15,6 +15,7 @@
 
 !$defaultColor = '#white'
 !$defaultPartSeparator = '__'
+!$defaultWordSeparator = '_'
 skinparam fileBackgroundColor #white
 skinparam ActorBackgroundColor #white
 skinparam ComponentBackgroundColor #white
@@ -225,7 +226,7 @@ skinparam Package<<transaction>> {
     !endif
 
     !$name = $LastPart($str)
-    !$name = $strReplace($name,'_',' ')
+    !$name = $strReplace($name,$defaultWordSeparator,' ')
     !$entityLevel = $CountPart($str)
 
     !$res = $res + ' as "' + $sizeStart + $name + $sizeEnd + '"'
