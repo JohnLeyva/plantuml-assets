@@ -27,7 +27,7 @@
 !function $existing_link($type = "any") return "#green"  
 !function $new($type = "any") return "#powderBlue"
 !function $new_link($type = "any") return "#blue"  
-!function $change($type = "any") return "#lightyellow"  
+!function $change($type = "any") return %lighten(Yellow,70)  
 
 !function $change_link($type = "any") return "#burlywood"  
 !function $remove($type = "any") return "#pink"  
@@ -147,6 +147,7 @@ arrow {
 !procedure $ShowJson($json,$text='=json')
     label l [
         $text
+        $json
         {{json
         $json
         }}
@@ -187,7 +188,7 @@ arrow {
 '    !$parts = %splitstr($str,$separator) ' Splits by char not by string so is not whats required
 '    !foreach $item in $parts
 '        !$res = $item
-'    $endfor 
+'    !endfor 
     !return $res
 !endfunction
 !procedure $LastPart_Test() 
@@ -198,11 +199,24 @@ arrow {
 !endprocedure
 '$LastPart_Test()
 
-!unquoted function $label($str,$type='',$size=0, $action='')
+!unquoted function $label($str,$type='',$size=0)
     !$res = $str
+    !$stereotype = ''
+    !$actionColor = ''
     !if ($type!='')
-        !$res = $res + ' <<' + $type + '>>'
+        !$actionParts = %splitstr($type,";") 
+        !foreach $item in $actionParts
+            !if (%substr($item,0,1) != "#" )
+                !$stereotype = $stereotype + '<<' + $item + '>>'
+            !else
+                !$actionColor = $item 
+            !endif
+        !endfor 
+        !if ($stereotype!='')
+            !$res = $res + ' ' + $stereotype
+        !endif
     !endif
+
     !if ($size > 0)
         !$sizeStart = '<size:' + $size + '>'
         !$sizeEnd = '</size>'
@@ -217,41 +231,56 @@ arrow {
 
     !$res = $res + ' as "' + $sizeStart + $name + $sizeEnd + '"'
 
-    !if (%strlen($action) > 0)
-        !$actionColor = %darken($action , ($entityLevel - 2) * 10)
-        !$res = $res + " " + $actionColor + " "
-    !endif
+'    !if (%strlen($actionColor) > 0)
+'        !$actionColor = %darken($action , ($entityLevel - 2) * 10)
+'        !$res = $res + " " + $actionColor + " "
+'    !endif
 
     !return $res
 !endfunction
 
 !procedure $label_Test() 
-    node label_Test
-    note right
-        No Size
-        $label(Any_Service,service)
-    endnote
-    note right
-        Size = 10
-        $label(Any_Service,service,10)
-    endnote
+    rectangle label_Test [
+        == label_Test
+        ---
+            No Size
+            $label(Any_Service,service;new)
+        ---
+            Size = 30
+            $label(Any_Service,service;new, 30)
+        ---
+            $label(Any_Service,service;new;change)
+    ]
 !endprocedure
-' $label_Test()
+ $label_Test()
 
-!function $service($name = 'anyService', $action = '')
-    !return "frame " + $label($name,service,50, $action) 
+!unquoted procedure $scale($type, $name, $action = '', $scale = 5)
+    label $name [
+        {{
+            scale $scale
+            $type $label($name,$action,0)
+        }}
+    ]
+!endprocedure
+!procedure $scale_Test() 
+    $scale(actor/,ACTOR)
+!endprocedure
+$scale_Test()
+
+!unquoted function $service($name = 'anyService', $action = '')
+    !return "frame " + $label($name,"service;" + $action,50) 
 !endfunction
 
-!function $environment($name = 'anyEnvironment', $action = '')
-    !return "rectangle " + $label($name,environment,30, $action)
+!unquoted function $environment($name = 'anyEnvironment', $action = '')
+    !return "rectangle " + $label($name, "environment;" + $action ,30)
 !endfunction
 
-!function $external($name = 'anyEnvironment', $action = '')
-    !return "cloud " + $label($name,environment,30, $action)
+!unquoted function $external($name = 'anyEnvironment', $action = '')
+    !return "cloud " + $label($name,"environment;$action",30)
 !endfunction
 
-!function $transaction($name, $action = '') {
-    !return "package " + $label($name,transaction,15, $action)
+!unquoted function $transaction($name, $action = '') {
+    !return "package " + $label($name,'transaction;$action', 15)
 !endfunction
 
 !unquoted procedure $tag($text='',$desc='', $tagcolor='#black')
@@ -278,8 +307,7 @@ end legend
 !unquoted procedure $example_style($text='')
     left to right direction
 
-    together {
-
+    together example_style $example {
         together {
             component anyComponent
             component new <<new>>
@@ -292,12 +320,10 @@ end legend
             component alternative <<alt>>
 
             new ..|> anyComponent : Realization 
-
             usecase anyUseCase as "use case"
-            
             'together {
             actor anyActor as "user/system" 
-            actor stakeholder 
+            actor stakeholder  
             stakeholder --|> anyActor : is as
             stakeholder -- anyUseCase
             '}
@@ -331,8 +357,8 @@ end legend
             }
         }
 
-    $service(Any_Service, $new()) {
-        $environment(Any_Service__Any_Environment, $new()) {
+    $service(Any_Service, new) {
+        $environment(Any_Service__Any_Environment, new) {
 
             database anyDatabase as "Queryable\nstorage"
             file anyFile as "File\nstorage"
@@ -363,7 +389,7 @@ end legend
     }
 }
 
-frame Transaction_Diagram_convention {
+frame Transaction_Diagram_convention $example {
 
     database Transaction_resource_A 
 
@@ -394,9 +420,10 @@ frame Transaction_Diagram_convention {
 
 !unquoted procedure $flow_vs_dependency()
 
-frame flow_vs_dependency as "flow vs dependency" {
+frame flow_vs_dependency as "flow vs dependency" $example {
     
     control publisher_topic 
+
     queue topic
     control consumer_topic
 
@@ -416,10 +443,7 @@ frame flow_vs_dependency as "flow vs dependency" {
 $example_style()
 $flow_vs_dependency()
 $legend()
-
-
 'remove @unlinked
-
 @enduml
 
 
