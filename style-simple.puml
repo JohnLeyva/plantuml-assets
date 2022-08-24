@@ -169,7 +169,7 @@ arrow {
 !endfunction
 !procedure $CountPart_Test()
     !$count = $CountPart(Part1__Part2__Part3,$defaultPartSeparator) 
-    node CountPart_Test  
+    node CountPart_Test $example
     note right
         $count
     endnote
@@ -192,7 +192,7 @@ arrow {
     !return $res
 !endfunction
 !procedure $LastPart_Test() 
-    node LastPart_Test
+    node LastPart_Test $example
     note right
         $LastPart(Part1__Part2__Part3,'__')
     endnote
@@ -240,7 +240,7 @@ arrow {
 !endfunction
 
 !procedure $label_Test() 
-    rectangle label_Test [
+    rectangle label_Test $example [
         == label_Test
         ---
             No Size
@@ -252,7 +252,7 @@ arrow {
             $label(Any_Service,service;new;change)
     ]
 !endprocedure
- $label_Test()
+'$label_Test()
 
 !unquoted procedure $scale($type, $name, $action = '', $scale = 5)
     label $name [
