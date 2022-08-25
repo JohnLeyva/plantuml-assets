@@ -200,8 +200,8 @@ arrow {
 '$LastPart_Test()
 
 !function $highlight($str,$start='{',$end='}',$color='red')
-    !$res = $strReplace($str,$start,"<color:red><u>")
-    !$res = $strReplace($res,$end,"</u></color>")
+    !$res = $strReplace($str,$start,"<color:red>")
+    !$res = $strReplace($res,$end,"</color>")
     !return $res
 !endfunction
 'node aaa as "$highlight('dd{d}d')"
