@@ -74,7 +74,7 @@ skinparam Ranksep 10
     }
     .done {
         LineColor $existing_link()
-        LineThickness 3
+        LineThickness 6
         'LineStyle 6
     }
     .temporary {
@@ -199,6 +199,13 @@ arrow {
 !endprocedure
 '$LastPart_Test()
 
+!function $highlight($str,$start='{',$end='}',$color='red')
+    !$res = $strReplace($str,$start,"<color:red><u>")
+    !$res = $strReplace($res,$end,"</u></color>")
+    !return $res
+!endfunction
+'node aaa as "$highlight('dd{d}d')"
+
 !unquoted function $label($str,$type='',$size=0)
     !$res = $str
     !$stereotype = ''
@@ -315,7 +322,7 @@ end legend
             component remove <<remove>>
             component temporary<<new>><<temporary>> 
             component notouch <<notouch>> 
-            component done<<new>><<done>> 
+            component done<<done>> 
             component change <<change>>
             component alternative <<alt>>
 
