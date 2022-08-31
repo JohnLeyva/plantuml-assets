@@ -16,7 +16,10 @@
 !$defaultColor = '#white'
 !$defaultPartSeparator = '__'
 !$defaultWordSeparator = '_'
-!$scaleText = 1
+!$scaleTextUp = 8
+!$scaleTextDown = 4
+
+!$scaleText = $scaleTextUp / $scaleTextDown
 
 !function $remark($text,$color=red) return "<color:" + $color+ ">" + $text + "</color>"  
 !function $out_of_scope() return $remark(out-of-scope)
@@ -216,9 +219,9 @@ arrow {
 !endfunction
 'node aaa as "$highlight('dd{d}d')"
 
-!unquoted function $label($str,$type='',$sizeArg=0)
+!unquoted function $label($str,$type = '',$sizeArg = 0)
     !$sizeArg = %intval($sizeArg)
-    !$size = ( $sizeArg * $scaleText )
+    !$size = ( $sizeArg * $scaleTextUp / $scaleTextDown  )
     !$res = $str
     !$stereotype = ''
     !$actionColor = ''
@@ -259,7 +262,7 @@ arrow {
 !endfunction
 
 !procedure $label_Test() 
-    rectangle label_Test $example [
+    rectangle label_Test [
         == label_Test
         ---
             No Size
@@ -271,15 +274,16 @@ arrow {
             $label(Any_Service,service;new;change)
     ]
 !endprocedure
-'$label_Test()
+' $label_Test()
 
-!unquoted procedure $scale($type, $name, $action = '', $factor = 5)
+
+!unquoted procedure $scale($type, $name, $action = '', $factor = 4)
     !$scale2 = $factor * $scaleText
     label $name [
-        {{
-            scale $scale2
-            $type $label($name,$action,$scale2)
-        }}
+    {{
+        scale $scale2
+        $type $label($name,$action,10)
+    }}
     ]
 !endprocedure
 !procedure $scale_Test() 
