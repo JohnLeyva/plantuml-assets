@@ -289,7 +289,7 @@ arrow {
 !procedure $scale_Test() 
     $scale(actor/,ACTOR_T,'')
 !endprocedure
- $scale_Test()
+' $scale_Test()
 
 !unquoted function $service($name = 'anyService', $action = '')
     !return "frame " + $label($name,"service;" + $action,50) 
