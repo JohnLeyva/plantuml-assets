@@ -23,7 +23,7 @@
 
 !function $notouch($type = "any") return "#lightgray"
 !function $notouch_link($type = "any") return "#gray"
-!function $exiting($type = "any") return "#lightgreen"
+!function $exiting($type = "any") return $existing($type)
 !function $existing($type = "any") return "#lightgreen"  
 !function $existing_link($type = "any") return "#green"  
 !function $new($type = "any") return "#powderBlue"
@@ -73,7 +73,7 @@ skinparam Ranksep 10
     }
     .transaction {
         LineColor #orange
-        LineStyle 7
+        'LineStyle 7
         '#line.dashed 
     }
     .done {
@@ -216,8 +216,9 @@ arrow {
 !endfunction
 'node aaa as "$highlight('dd{d}d')"
 
-!unquoted function $label($str,$type='',$size=0)
-    !$size = $size * $scaleBase
+!unquoted function $label($str,$type='',$sizeArg=0)
+    !$sizeArg = %intval($sizeArg)
+    !$size = ( $sizeArg * $scaleBase )
     !$res = $str
     !$stereotype = ''
     !$actionColor = ''
@@ -272,19 +273,19 @@ arrow {
 !endprocedure
 '$label_Test()
 
-!unquoted procedure $scale($type, $name, $action = '', $scale = 5)
-    !$scale = $scale * $scaleBase
+!unquoted procedure $scale($type, $name, $action = '', $factor = 5)
+    !$scale2 = $factor
     label $name [
         {{
-            scale $scale
-            $type $label($name,$action,0)
+            scale $scale2
+            $type $label($name,$action,$scale2)
         }}
     ]
 !endprocedure
 !procedure $scale_Test() 
-    $scale(actor/,ACTOR)
+    $scale(actor/,ACTOR_T,'')
 !endprocedure
-' $scale_Test()
+ $scale_Test()
 
 !unquoted function $service($name = 'anyService', $action = '')
     !return "frame " + $label($name,"service;" + $action,50) 
@@ -356,7 +357,7 @@ end legend
                 $black_tag(new_link)
             done --> existing <<existing>>
 
-            new -u-|> anyUseCase : Implements
+            new --|> anyUseCase : Implements
 
             rectangle "In the scope of another workstream" <<next-phase>> {
                 component remove_future <<remove>>
@@ -415,7 +416,7 @@ frame Transaction_Diagram_convention $example {
     database Transaction_resource_A 
 
     $transaction(Any_TransactionScope) {
-        control Control_With_TransactionScope
+        control $label(Control_With_TransactionScope)
     }
 
     database Transaction_resource_B
