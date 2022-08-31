@@ -341,12 +341,10 @@ end legend
 
             new ..|> anyComponent : Realization 
             usecase anyUseCase as "use case"
-            'together {
             actor anyActor as "user/system" 
             actor stakeholder  
             stakeholder --|> anyActor : is as
             stakeholder -- anyUseCase
-            '}
 
             existing --> remove <<remove>> : "<<remove>>"
             existing --> notouch <<notouch>> : "<<notouch>>"
@@ -361,9 +359,7 @@ end legend
 
             rectangle "In the scope of another workstream" <<next-phase>> {
                 component remove_future <<remove>>
-                    ' $remove_future() 
                 component change_future <<change>>
-                    ' $change_future()
 
                 existing --> remove_future <<existing>>
                     $black_tag(existing_link)
