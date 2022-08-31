@@ -16,7 +16,7 @@
 !$defaultColor = '#white'
 !$defaultPartSeparator = '__'
 !$defaultWordSeparator = '_'
-!$scaleBase = 1
+!$scaleText = 1
 
 !function $remark($text,$color=red) return "<color:" + $color+ ">" + $text + "</color>"  
 !function $out_of_scope() return $remark(out-of-scope)
@@ -218,7 +218,7 @@ arrow {
 
 !unquoted function $label($str,$type='',$sizeArg=0)
     !$sizeArg = %intval($sizeArg)
-    !$size = ( $sizeArg * $scaleBase )
+    !$size = ( $sizeArg * $scaleText )
     !$res = $str
     !$stereotype = ''
     !$actionColor = ''
@@ -274,7 +274,7 @@ arrow {
 '$label_Test()
 
 !unquoted procedure $scale($type, $name, $action = '', $factor = 5)
-    !$scale2 = $factor
+    !$scale2 = $factor * $scaleText
     label $name [
         {{
             scale $scale2
@@ -300,7 +300,7 @@ arrow {
 !endfunction
 
 !unquoted function $transaction($name, $action = '') {
-    !return "hexagon " + $label($name,'transaction;$action', 15)
+    !return "hexagon " + $label($name,'transaction;' + $action)
 !endfunction
 
 !unquoted procedure $tag($text='',$desc='', $tagcolor='#black')
