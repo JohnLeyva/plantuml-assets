@@ -219,23 +219,33 @@ arrow {
 !endfunction
 'node aaa as "$highlight('dd{d}d')"
 
+!unquoted function $stereotype($str)
+    !if ($str=='')
+        return $str
+    !endif
+
+    !$result = ''
+    !$parts = %splitstr($str,";") 
+    !foreach $item in $parts
+        !if (%substr($item,0,1) != "#" )
+            !$result = $result + '<<' + $item + '>>'
+        '!else
+        '    !$actionColor = $item 
+        !endif
+    !endfor 
+    !return $result
+!endfunction
+' [ <<aa>> $stereotype(one;two) <<cc>>]
+
 !unquoted function $label($str,$type = '',$sizeArg = 0)
     !$sizeArg = %intval($sizeArg)
     !$size = ( $sizeArg * $scaleTextUp / $scaleTextDown  )
     !$res = $str
-    !$stereotype = ''
     !$actionColor = ''
     !if ($type!='')
-        !$actionParts = %splitstr($type,";") 
-        !foreach $item in $actionParts
-            !if (%substr($item,0,1) != "#" )
-                !$stereotype = $stereotype + '<<' + $item + '>>'
-            !else
-                !$actionColor = $item 
-            !endif
-        !endfor 
-        !if ($stereotype!='')
-            !$res = $res + ' ' + $stereotype
+        !$stereotypeStr = $stereotype($type)
+        !if ($stereotypeStr!='')
+            !$res = $res + ' ' + $stereotypeStr
         !endif
     !endif
 
@@ -306,6 +316,20 @@ arrow {
 !unquoted function $transaction($name, $action = '') {
     !return "hexagon " + $label($name,'transaction;' + $action)
 !endfunction
+
+!function $push() return "-->"
+
+!$kafkaControlCenterUrl = 'https://kafka/{topic}'
+
+!procedure $topic($name,$type='')
+    !$topicName = $strReplace($name,'_','-')
+    !$topicName = $strReplace($name,'--','_')
+    !$topicUrl = $strReplace($kafkaControlCenterUrl,'{topic}',$topicName)
+    !$stereotypeStr = $stereotype($type)
+    queue $name $stereotypeStr [
+        [[$topicUrl{$name} $topicName]]
+    ] 
+!endprocedure
 
 !unquoted procedure $tag($text='',$desc='', $tagcolor='#black')
     note on link $tagcolor|lightgray
@@ -397,8 +421,8 @@ end legend
                 anyControl --> anyFile : Save
                 anyFile --> anyControl : Retrieve
 
-                queue Topic_outbound <<outbound>> as "topic"
-                queue Topic_inbound <<inbound>> as "topic"
+                $topic(Topic_outbound,outbound)
+                $topic(Topic_inbound,inbound)
 
                 anyControl --\\ Topic_outbound : PUSH
                 Topic_inbound --\\ anyControl : PULL

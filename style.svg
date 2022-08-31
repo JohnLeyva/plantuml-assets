@@ -1,0 +1,1126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1926px" preserveAspectRatio="none" style="width:1615px;height:1926px;background:#FFFFFF;" version="1.1" viewBox="0 0 1615 1926" width="1615px" zoomAndPan="magnify"><defs><linearGradient id="gc07d8ygoz4520" x1="0%" x2="100%" y1="50%" y2="50%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#B0E0E6"/></linearGradient><filter height="300%" id="fc07d8ygoz452" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter><filter height="1" id="bc07d8ygoz4520" width="1" x="0" y="0"><feFlood flood-color="#000000" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter><filter height="1" id="bc07d8ygoz4521" width="1" x="0" y="0"><feFlood flood-color="#B0E0E6" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter><filter height="1" id="bc07d8ygoz4522" width="1" x="0" y="0"><feFlood flood-color="#90EE90" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter><filter height="1" id="bc07d8ygoz4523" width="1" x="0" y="0"><feFlood flood-color="#FFFFB3" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter><filter height="1" id="bc07d8ygoz4524" width="1" x="0" y="0"><feFlood flood-color="#FFC0CB" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter><filter height="1" id="bc07d8ygoz4525" width="1" x="0" y="0"><feFlood flood-color="#D3D3D3" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter><filter height="1" id="bc07d8ygoz4526" width="1" x="0" y="0"><feFlood flood-color="#DDA0DD" result="flood"/><feComposite in="SourceGraphic" in2="flood" operator="over"/></filter></defs><g><!--MD5=[14f63a590e014c6472fe10d00efcc5a5]
+cluster example_style--><!--MD5=[54cafa13e22d797eb6587dc7d1b9b8c0]
+cluster In the scope of another workstream--><g id="cluster_In the scope of another workstream"><path d="M1326.5,517 L1588.5,517 L1608.5,537 L1608.5,719 L1588.5,739 L1326.5,739 L1306.5,719 L1306.5,537 L1326.5,517 " fill="url(#gc07d8ygoz4520)" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:70.0,70.0;"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="84" x="1415.5" y="530.1387">«next-phase»</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="286" x="1314.5" y="545.9639">In the scope of another workstream</text></g><!--MD5=[7ee7b179d310470285873bdbff56f40e]
+cluster Any_Service_Group--><g id="cluster_Any_Service_Group"><rect fill="#90EE90" filter="url(#fc07d8ygoz452)" height="808" rx="25" ry="25" style="stroke:#181818;stroke-width:1.0;" width="1174" x="414" y="1045"/><path d="M1465,1045 L1465,1154.4063 L1455,1164.4063 L414,1164.4063 " fill="none" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="100" font-weight="bold" lengthAdjust="spacing" textLength="1041" x="417" y="1138.8223">Any Service Group</text><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="67" x="971.5" y="1179.4014">«service»</text><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="71" x="969.5" y="1195.6982">«existing»</text></g><!--MD5=[db1201d7fba54db0b40a1548b90d9ff2]
+cluster Any_Service--><g id="cluster_Any_Service"><rect fill="#B0E0E6" filter="url(#fc07d8ygoz452)" height="608" rx="25" ry="25" style="stroke:#181818;stroke-width:1.0;" width="1126" x="438" y="1221"/><path d="M1111,1221 L1111,1330.4063 L1101,1340.4063 L438,1340.4063 " fill="none" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="100" font-weight="bold" lengthAdjust="spacing" textLength="663" x="441" y="1314.8223">Any Service</text><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="67" x="971.5" y="1355.4014">«service»</text><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="47" x="981.5" y="1371.6982">«new»</text></g><!--MD5=[67bb39c50cadcdfd53c235276dbf726e]
+cluster Any_Service__Any_Environment--><g id="cluster_Any_Service__Any_Environment"><rect fill="#B0E0E6" filter="url(#fc07d8ygoz452)" height="408" rx="75" ry="75" style="stroke:#181818;stroke-width:1.0;" width="1078" x="462" y="1397"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="92" x="955" y="1410.1387">«environment»</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="39" x="981.5" y="1424.1074">«new»</text><text fill="#000000" font-family="sans-serif" font-size="60" font-weight="bold" lengthAdjust="spacing" textLength="583" x="709.5" y="1482.6309">Any Environment</text></g><!--MD5=[91c043391605f0bbc36c648123f05f04]
+cluster process--><g id="cluster_process"><polygon points="896,1531,906,1521,1058,1521,1058,1771,1048,1781,896,1781,896,1531" style="stroke:#181818;stroke-width:1.0;fill:none;"/><line style="stroke:#181818;stroke-width:1.0;fill:none;" x1="1048" x2="1058" y1="1531" y2="1521"/><line style="stroke:#181818;stroke-width:1.0;fill:none;" x1="896" x2="1048" y1="1531" y2="1531"/><line style="stroke:#181818;stroke-width:1.0;fill:none;" x1="1048" x2="1048" y1="1531" y2="1781"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="64" x="941" y="1546.9951">process</text></g><!--MD5=[a68a166ccb482d569cca9d489f2ca9e3]
+cluster Transaction_Diagram_convention--><g id="cluster_Transaction_Diagram_convention"><rect height="218" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:1.0;fill:none;" width="1092.5" x="7" y="208"/><path d="M276,208 L276,217.2969 L266,227.2969 L7,227.2969 " fill="none" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="259" x="10" y="221.9951">Transaction_Diagram_convention</text></g><!--MD5=[8c115ba60daf7338e479469327d4411a]
+cluster Any_TransactionScope--><g id="cluster_Any_TransactionScope"><path d="M449.5,326.5 L473.625,260 L618.375,260 L642.5,326.5 L618.375,393 L473.625,393 L449.5,326.5 " style="stroke:#FFA500;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="95" x="498.5" y="274.9951">«transaction»</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="177" x="457.5" y="291.292">Any TransactionScope</text></g><!--MD5=[ec1f656a0f0d285dc693ac5d5757405f]
+cluster flow_vs_dependency--><g id="cluster_flow_vs_dependency"><rect height="177" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:1.0;fill:none;" width="1009" x="39.5" y="7"/><path d="M209.5,7 L209.5,16.2969 L199.5,26.2969 L39.5,26.2969 " fill="none" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="160" x="42.5" y="20.9951">flow vs dependency</text></g><!--MD5=[1bf2f16ddde251ef0c885d4d300b0df6]
+entity anyComponent--><g id="elem_anyComponent"><rect fill="#FFFFFF" height="46.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="146" x="473" y="556"/><rect fill="#FFFFFF" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="599" y="561"/><rect fill="#FFFFFF" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="597" y="563"/><rect fill="#FFFFFF" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="597" y="567"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="106" x="488" y="588.9951">anyComponent</text></g><!--MD5=[a335f4004014549ee7f1205ebffbcb8b]
+entity new--><g id="elem_new"><rect fill="#B0E0E6" height="62.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="87" x="72.5" y="695.5"/><rect fill="#B0E0E6" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="139.5" y="700.5"/><rect fill="#B0E0E6" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="137.5" y="702.5"/><rect fill="#B0E0E6" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="137.5" y="706.5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="47" x="87.5" y="728.4951">«new»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="96.5" y="744.792">new</text></g><!--MD5=[ec14e8cae259e632e03b8f7e5f2fa627]
+entity existing--><g id="elem_existing"><rect fill="#90EE90" height="62.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="111" x="921.5" y="752.5"/><rect fill="#90EE90" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="1012.5" y="757.5"/><rect fill="#90EE90" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1010.5" y="759.5"/><rect fill="#90EE90" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1010.5" y="763.5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="71" x="936.5" y="785.4951">«existing»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="945.5" y="801.792">existing</text></g><!--MD5=[15db0242bbd70dc43f6dcd63cc7efe4b]
+entity remove--><g id="elem_remove"><rect fill="#FFC0CB" height="62.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="110" x="1402.5" y="755.5"/><rect fill="#FFC0CB" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="1492.5" y="760.5"/><rect fill="#FFC0CB" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1490.5" y="762.5"/><rect fill="#FFC0CB" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1490.5" y="766.5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="70" x="1417.5" y="788.4951">«remove»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="1426.5" y="804.792">remove</text></g><!--MD5=[75109637c86aaa1ae1f694231a3698cd]
+entity temporary--><g id="elem_temporary"><rect fill="#B0E0E6" height="62.5938" rx="2.5" ry="2.5" style="stroke:#FF0000;stroke-width:3.0;" width="175" x="889.5" y="642.5"/><rect fill="#B0E0E6" height="10" style="stroke:#FF0000;stroke-width:3.0;" width="15" x="1044.5" y="647.5"/><rect fill="#B0E0E6" height="2" style="stroke:#FF0000;stroke-width:3.0;" width="4" x="1042.5" y="649.5"/><rect fill="#B0E0E6" height="2" style="stroke:#FF0000;stroke-width:3.0;" width="4" x="1042.5" y="653.5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="135" x="904.5" y="675.4951">«new»«temporary»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="937" y="691.792">temporary</text></g><!--MD5=[c66e08022943bafb867da81ba0a8020e]
+entity notouch--><g id="elem_notouch"><rect fill="#D3D3D3" height="62.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="116" x="1399.5" y="941.5"/><rect fill="#D3D3D3" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="1495.5" y="946.5"/><rect fill="#D3D3D3" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1493.5" y="948.5"/><rect fill="#D3D3D3" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1493.5" y="952.5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="76" x="1414.5" y="974.4951">«notouch»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="1423.5" y="990.792">notouch</text></g><!--MD5=[0fd8f188bfbeb3fba7b6400eb538321e]
+entity done--><g id="elem_done"><rect fill="#FFFFFF" height="62.5938" rx="2.5" ry="2.5" style="stroke:#008000;stroke-width:6.0;" width="94" x="499" y="758.5"/><rect fill="#FFFFFF" height="10" style="stroke:#008000;stroke-width:6.0;" width="15" x="573" y="763.5"/><rect fill="#FFFFFF" height="2" style="stroke:#008000;stroke-width:6.0;" width="4" x="571" y="765.5"/><rect fill="#FFFFFF" height="2" style="stroke:#008000;stroke-width:6.0;" width="4" x="571" y="769.5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="54" x="514" y="791.4951">«done»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36" x="523" y="807.792">done</text></g><!--MD5=[17c770a22f032767f685d8d16b0c9bdd]
+entity change--><g id="elem_change"><rect fill="#FFFFB3" height="62.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="110" x="1402.5" y="848.5"/><rect fill="#FFFFB3" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="1492.5" y="853.5"/><rect fill="#FFFFB3" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1490.5" y="855.5"/><rect fill="#FFFFB3" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1490.5" y="859.5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="70" x="1417.5" y="881.4951">«change»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="1426.5" y="897.792">change</text></g><!--MD5=[df11b4a9cfb6a54926b7b3aa417ba365]
+entity alternative--><g id="elem_alternative"><rect fill="#DDA0DD" height="62.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="111" x="490.5" y="632.5"/><rect fill="#DDA0DD" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="581.5" y="637.5"/><rect fill="#DDA0DD" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="579.5" y="639.5"/><rect fill="#DDA0DD" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="579.5" y="643.5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="34" x="524" y="665.4951">«alt»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="505.5" y="681.792">alternative</text></g><g id="elem_anyUseCase"><ellipse cx="546.0799" cy="868.7511" fill="#FFFFFF" rx="57.0799" ry="14.7511" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="63" x="511.5799" y="872.4987">use case</text></g><!--MD5=[4202eb67bbf1f65a288d33cfc9b3340f]
+entity anyActor--><g id="elem_anyActor"><ellipse cx="546" cy="927.5" fill="#FFFFFF" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M546,935.5 L546,962.5 M533,943.5 L559,943.5 M546,962.5 L533,977.5 M546,962.5 L559,977.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="86" x="503" y="991.9951">user/system</text></g><!--MD5=[be04b96c0bc7fbce00161be3137c012f]
+entity stakeholder--><g id="elem_stakeholder"><ellipse cx="116" cy="885.5" fill="#FFFFFF" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M116,893.5 L116,920.5 M103,901.5 L129,901.5 M116,920.5 L103,935.5 M116,920.5 L129,935.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82" x="75" y="949.9951">stakeholder</text></g><!--MD5=[35f21f1e65410dac8cb7d0c7dd890d36]
+entity remove_future--><g id="elem_remove_future"><rect fill="#FFC0CB" height="62.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="140" x="1387.5" y="566.5"/><rect fill="#FFC0CB" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="1507.5" y="571.5"/><rect fill="#FFC0CB" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1505.5" y="573.5"/><rect fill="#FFC0CB" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1505.5" y="577.5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="70" x="1417.5" y="599.4951">«remove»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="1402.5" y="615.792">remove_future</text></g><!--MD5=[da40450966dfd8c3d73be929f5ab5ca2]
+entity change_future--><g id="elem_change_future"><rect fill="#FFFFB3" height="62.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="140" x="1387.5" y="659.5"/><rect fill="#FFFFB3" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="1507.5" y="664.5"/><rect fill="#FFFFB3" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1505.5" y="666.5"/><rect fill="#FFFFB3" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="1505.5" y="670.5"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="70" x="1417.5" y="692.4951">«change»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="1402.5" y="708.792">change_future</text></g><!--MD5=[08663a9be6e7004f24062f60ec0f18d8]
+entity anyDatabase--><g id="elem_anyDatabase"><path d="M1412.5,1547 C1412.5,1537 1457.5,1537 1457.5,1537 C1457.5,1537 1502.5,1537 1502.5,1547 L1502.5,1588.5938 C1502.5,1598.5938 1457.5,1598.5938 1457.5,1598.5938 C1457.5,1598.5938 1412.5,1598.5938 1412.5,1588.5938 L1412.5,1547 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"/><path d="M1412.5,1547 C1412.5,1557 1457.5,1557 1457.5,1557 C1457.5,1557 1502.5,1557 1502.5,1547 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="1422.5" y="1573.9951">Queryable</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="1431" y="1590.292">storage</text></g><!--MD5=[fc587f6adc7cf15cdbd2e26b05b71ed8]
+entity anyFile--><g id="elem_anyFile"><path d="M1421,1724 L1421,1771.5938 A2.5,2.5 0 0 0 1423.5,1774.0938 L1491.5,1774.0938 A2.5,2.5 0 0 0 1494,1771.5938 L1494,1731.5 L1484,1721.5 L1423.5,1721.5 A2.5,2.5 0 0 0 1421,1724 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"/><path d="M1484,1721.5 L1484,1729 A2.5,2.5 0 0 0 1486.5,1731.5 L1494,1731.5 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="23" x="1446" y="1744.4951">File</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="1431" y="1760.792">storage</text></g><!--MD5=[f6d35ff2281af36c9bb810c5e65a3980]
+entity Topic_outbound--><g id="elem_Topic_outbound"><path d="M1396,1637.5 L1519,1637.5 C1524,1637.5 1524,1658.7969 1524,1658.7969 C1524,1658.7969 1524,1680.0938 1519,1680.0938 L1396,1680.0938 C1391,1680.0938 1391,1658.7969 1391,1658.7969 C1391,1658.7969 1391,1637.5 1396,1637.5 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"/><path d="M1519,1637.5 C1514,1637.5 1514,1658.7969 1514,1658.7969 C1514,1680.0938 1519,1680.0938 1519,1680.0938 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="86" x="1409.5" y="1655.4951">«outbound»</text><a href="https://kafka/{topic}" target="_top" title="Topic_outbound" xlink:actuate="onRequest" xlink:href="https://kafka/{topic}" xlink:show="new" xlink:title="Topic_outbound" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="113" x="1396" y="1671.792">Topic_outbound</text></a></g><!--MD5=[62f83f6ebabebccfc94d394626a2a604]
+entity Topic_inbound--><g id="elem_Topic_inbound"><path d="M490,1643.5 L602,1643.5 C607,1643.5 607,1664.7969 607,1664.7969 C607,1664.7969 607,1686.0938 602,1686.0938 L490,1686.0938 C485,1686.0938 485,1664.7969 485,1664.7969 C485,1664.7969 485,1643.5 490,1643.5 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"/><path d="M602,1643.5 C597,1643.5 597,1664.7969 597,1664.7969 C597,1686.0938 602,1686.0938 602,1686.0938 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="75" x="503.5" y="1661.4951">«inbound»</text><a href="https://kafka/{topic}" target="_top" title="Topic_inbound" xlink:actuate="onRequest" xlink:href="https://kafka/{topic}" xlink:show="new" xlink:title="Topic_inbound" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="102" x="490" y="1677.792">Topic_inbound</text></a></g><!--MD5=[d000c8a01743072edd62871f3e341578]
+entity ApiGateway--><g id="elem_ApiGateway"><ellipse cx="546" cy="1584" fill="#FFFFFF" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="485.5" y="1613.9951">ApiGateway Proxy</text></g><!--MD5=[48f9d1cc483b5b5631e5037371a869e6]
+entity anyEntity--><g id="elem_anyEntity"><ellipse cx="977" cy="1733" fill="#FFFFFF" rx="12" ry="12" style="stroke:#181818;stroke-width:0.5;"/><line style="stroke:#181818;stroke-width:0.5;" x1="965" x2="989" y1="1747" y2="1747"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="915.5" y="1761.9951">Aggregate / Entity</text></g><!--MD5=[482208b8d0769c47fb406a0a484e7da3]
+entity anyControl--><g id="elem_anyControl"><ellipse cx="977" cy="1655" fill="#FFFFFF" rx="12" ry="12" style="stroke:#181818;stroke-width:0.5;"/><polygon fill="#181818" points="973,1643,979,1638,977,1643,979,1648,973,1643" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="912" y="1683.9951">Control / Controller</text></g><!--MD5=[3b3ee8c0ab348dbe13201dd251e55b2f]
+entity anyBoundary--><g id="elem_anyBoundary"><path d="M956.5,1565 L956.5,1589 M956.5,1577 L973.5,1577 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><ellipse cx="985.5" cy="1577" fill="#FFFFFF" rx="12" ry="12" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="944" y="1605.9951">Boundary</text></g><!--MD5=[5ff62e0bffa65012e1b196f96e2ec8bf]
+entity Transaction_resource_A--><g id="elem_Transaction_resource_A"><path d="M23,331.5 C23,321.5 116,321.5 116,321.5 C116,321.5 209,321.5 209,331.5 L209,356.7969 C209,366.7969 116,366.7969 116,366.7969 C116,366.7969 23,366.7969 23,356.7969 L23,331.5 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"/><path d="M23,331.5 C23,341.5 116,341.5 116,341.5 C116,341.5 209,341.5 209,331.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="33" y="358.4951">Transaction_resource_A</text></g><!--MD5=[772a80a30b5733644b01d93bf7eb4f4a]
+entity Transaction_resource_B--><g id="elem_Transaction_resource_B"><path d="M883.5,367.5 C883.5,357.5 977,357.5 977,357.5 C977,357.5 1070.5,357.5 1070.5,367.5 L1070.5,392.7969 C1070.5,402.7969 977,402.7969 977,402.7969 C977,402.7969 883.5,402.7969 883.5,392.7969 L883.5,367.5 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"/><path d="M883.5,367.5 C883.5,377.5 977,377.5 977,377.5 C977,377.5 1070.5,377.5 1070.5,367.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="167" x="893.5" y="394.4951">Transaction_resource_B</text></g><!--MD5=[494dd5917b2271a419e5a6f7acb190fb]
+entity No_Transaction_resource_C--><g id="elem_No_Transaction_resource_C"><path d="M870.5,278.5 L870.5,309.7969 A2.5,2.5 0 0 0 873,312.2969 L1081,312.2969 A2.5,2.5 0 0 0 1083.5,309.7969 L1083.5,286 L1073.5,276 L873,276 A2.5,2.5 0 0 0 870.5,278.5 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"/><path d="M1073.5,276 L1073.5,283.5 A2.5,2.5 0 0 0 1076,286 L1083.5,286 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="193" x="880.5" y="298.9951">No_Transaction_resource_C</text></g><!--MD5=[cacc0947de76a1b2c7e1c38b8e18bfba]
+entity Control_With_TransactionScope--><g id="elem_Control_With_TransactionScope"><ellipse cx="546" cy="327.5" fill="#FFFFFF" rx="12" ry="12" style="stroke:#181818;stroke-width:0.5;"/><polygon fill="#181818" points="542,315.5,548,310.5,546,315.5,548,320.5,542,315.5" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="502" y="356.4951">Control With</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="483.5" y="372.792">TransactionScope</text></g><!--MD5=[90a7d7c81499bc9f38e6020d9b047ab3]
+entity publisher_topic--><g id="elem_publisher_topic"><ellipse cx="116" cy="58" fill="#FFFFFF" rx="12" ry="12" style="stroke:#181818;stroke-width:0.5;"/><polygon fill="#181818" points="112,46,118,41,116,46,118,51,112,46" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="63.5" y="86.9951">publisher_topic</text></g><!--MD5=[80b7e1ea8dd4ef47dedfd6fb17a1163e]
+entity topic--><g id="elem_topic"><path d="M524,53 L568,53 C573,53 573,66.1484 573,66.1484 C573,66.1484 573,79.2969 568,79.2969 L524,79.2969 C519,79.2969 519,66.1484 519,66.1484 C519,66.1484 519,53 524,53 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"/><path d="M568,53 C563,53 563,66.1484 563,66.1484 C563,79.2969 568,79.2969 568,79.2969 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="34" x="524" y="70.9951">topic</text></g><!--MD5=[0525c557d66cebb626cb44f3371831b8]
+entity consumer_topic--><g id="elem_consumer_topic"><ellipse cx="977" cy="58" fill="#FFFFFF" rx="12" ry="12" style="stroke:#181818;stroke-width:0.5;"/><polygon fill="#181818" points="973,46,979,41,977,46,979,51,973,46" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="921.5" y="86.9951">consumer_topic</text></g><!--MD5=[129ea3d3d260280179e778526ba07b5d]
+entity persister_storage--><g id="elem_persister_storage"><ellipse cx="116" cy="136" fill="#FFFFFF" rx="12" ry="12" style="stroke:#181818;stroke-width:0.5;"/><polygon fill="#181818" points="112,124,118,119,116,124,118,129,112,124" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="55.5" y="164.9951">persister_storage</text></g><!--MD5=[a5a6ae0ba01c8a4589ab26bd33e87aad]
+entity storage--><g id="elem_storage"><path d="M509.5,125.5 C509.5,115.5 546,115.5 546,115.5 C546,115.5 582.5,115.5 582.5,125.5 L582.5,150.7969 C582.5,160.7969 546,160.7969 546,160.7969 C546,160.7969 509.5,160.7969 509.5,150.7969 L509.5,125.5 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"/><path d="M509.5,125.5 C509.5,135.5 546,135.5 546,135.5 C546,135.5 582.5,135.5 582.5,125.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="519.5" y="152.4951">storage</text></g><!--MD5=[b49b03e6565b616010f3809ba30738ca]
+entity querier_storage--><g id="elem_querier_storage"><ellipse cx="977" cy="136" fill="#FFFFFF" rx="12" ry="12" style="stroke:#181818;stroke-width:0.5;"/><polygon fill="#181818" points="973,124,979,119,977,124,979,129,973,124" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="922.5" y="164.9951">querier_storage</text></g><!--MD5=[0d784838c04a500ba6fede9543a6a4c6]
+link new to anyComponent--><g id="link_new_anyComponent"><path d="M147.52,695.23 C166.03,677.81 191.03,657.31 217,645 C291.68,609.6 384.66,593.16 452.54,585.54 " fill="none" id="new-to-anyComponent" style="stroke:#808080;stroke-width:3.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="452.14,578.55,472.75,583.45,453.58,592.47,452.14,578.55" style="stroke:#808080;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="67" x="280" y="590.1387">Realization</text></g><!--MD5=[000f5d1d48d8876252ebd0be484b7ce7]
+link stakeholder to anyActor--><g id="link_stakeholder_anyActor"><path d="M157.27,918.95 C232.3,926.31 393.97,942.18 483.02,950.92 " fill="none" id="stakeholder-to-anyActor" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="none" points="483.73,943.95,502.95,952.87,482.37,957.89,483.73,943.95" style="stroke:#808080;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="29" x="299" y="923.1387">is as</text></g><!--MD5=[b2287736e0b89591df603bcc712fa3d8]
+link stakeholder to anyUseCase--><g id="link_stakeholder_anyUseCase"><path d="M157.37,910.42 C175.58,908.39 197.37,906.01 217,904 C300.94,895.39 322.11,895.12 406,886 C435.37,882.81 468.17,878.81 494.53,875.5 " fill="none" id="stakeholder-anyUseCase" style="stroke:#808080;stroke-width:3.0;"/></g><!--MD5=[df6f507b53c1a15fc15306715d7882bb]
+link existing to remove--><g id="link_existing_remove"><path d="M1032.89,784.34 C1123.48,784.91 1303.54,786.04 1397.04,786.63 " fill="none" id="existing-to-remove" style="stroke:#FF0000;stroke-width:3.0;"/><polygon fill="#FF0000" points="1402.25,786.66,1393.273,782.6086,1397.2501,786.6314,1393.2273,790.6085,1402.25,786.66" style="stroke:#FF0000;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="60" x="1149" y="782.1387">«remove»</text></g><!--MD5=[6974e237ac21918f667d54db6037e59f]
+link existing to notouch--><g id="link_existing_notouch"><path d="M1032.74,796.76 C1058.25,805.11 1087.34,818.4 1107.5,839 C1114.2,845.84 1108.63,852.33 1115.5,859 C1177.64,919.33 1216.29,898.75 1298.5,926 C1329.83,936.38 1365,946.95 1394.19,955.43 " fill="none" id="existing-to-notouch" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="1399.19,956.88,1391.67,950.52,1394.39,955.48,1389.43,958.2,1399.19,956.88" style="stroke:#808080;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="66" x="1146" y="856.1387">«notouch»</text></g><!--MD5=[962088329990587ae92f228838c1368b]
+link existing to change--><g id="link_existing_change"><path d="M1032.89,795.01 C1123.57,813.2 1303.9,849.38 1397.32,868.13 " fill="none" id="existing-to-change" style="stroke:#DEB887;stroke-width:3.0;"/><polygon fill="#DEB887" points="1402.25,869.12,1394.2156,863.4236,1397.3482,868.1339,1392.6379,871.2665,1402.25,869.12" style="stroke:#DEB887;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="61" x="1148.5" y="810.1387">«change»</text></g><!--MD5=[2442ea277d7d22158fbec20fb33b8fc6]
+link change to done--><g id="link_change_done"><path d="M1402.5,882.24 C1298.86,885.75 1065.09,889.79 870.5,865 C772.68,852.54 661.16,823.25 597.92,805.18 " fill="none" id="change-to-done" style="stroke:#DEB887;stroke-width:3.0;"/><polygon fill="#DEB887" points="593.07,803.79,600.6248,810.1086,597.8776,805.1636,602.8226,802.4164,593.07,803.79" style="stroke:#DEB887;stroke-width:3.0;"/><path d="M919.5,835 L919.5,860 L1034.5,860 L1034.5,845 L1024.5,835 L919.5,835 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><path d="M1024.5,835 L1024.5,845 L1034.5,845 L1024.5,835 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><path d="M939.2917,843.2161 L938.75,844.5053 C938.6417,844.5378 938.5442,844.592 938.4467,844.6461 L937.1575,844.1045 L936.3775,844.8845 L936.9192,846.1736 C936.865,846.282 936.8217,846.3686 936.7783,846.477 L935.4892,847.0186 L935.4892,848.102 L936.7783,848.6436 C936.8217,848.752 936.865,848.8386 936.9192,848.947 L936.3775,850.2361 L937.1575,851.0161 L938.4467,850.4745 C938.5442,850.5178 938.6417,850.572 938.75,850.6153 L939.2917,851.9045 L940.375,851.9045 L940.9167,850.6153 C941.0142,850.572 941.1225,850.5286 941.22,850.4745 L942.5092,851.0161 L943.2892,850.2361 L942.7475,848.947 C942.7908,848.8495 942.845,848.7411 942.8883,848.6436 L944.1775,848.102 L944.1775,847.0186 L942.8883,846.477 C942.8558,846.3795 942.8017,846.2711 942.7475,846.1736 L943.2892,844.8845 L942.5092,844.1045 L941.22,844.6461 C941.1225,844.6028 941.0142,844.5486 940.9167,844.5053 L940.375,843.2161 L939.2917,843.2161 M939.8333,845.9245 C940.7325,845.9245 941.4583,846.6503 941.4583,847.5495 C941.4583,848.4486 940.7325,849.1745 939.8333,849.1745 C938.9342,849.1745 938.2083,848.4486 938.2083,847.5495 C938.2083,846.6503 938.9342,845.9245 939.8333,845.9245 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="75" x="945.1667" y="852.0669">change_link</text></g><!--MD5=[0f9157a388fdd62f7ddca180a2c61bfc]
+link new to done--><g id="link_new_done"><path d="M159.69,749.21 C177.02,757.2 197.51,765.36 217,770 C312.69,792.76 428.25,793.93 493.53,792.28 " fill="none" id="new-to-done" style="stroke:#0000FF;stroke-width:3.0;"/><polygon fill="#0000FF" points="498.91,792.13,489.7991,788.3894,493.9121,792.2732,490.0283,796.3861,498.91,792.13" style="stroke:#0000FF;stroke-width:3.0;"/><path d="M267,740 L267,765 L360,765 L360,750 L350,740 L267,740 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><path d="M350,740 L350,750 L360,750 L350,740 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><path d="M286.7917,748.2161 L286.25,749.5053 C286.1417,749.5378 286.0442,749.592 285.9467,749.6461 L284.6575,749.1045 L283.8775,749.8845 L284.4192,751.1736 C284.365,751.282 284.3217,751.3686 284.2783,751.477 L282.9892,752.0186 L282.9892,753.102 L284.2783,753.6436 C284.3217,753.752 284.365,753.8386 284.4192,753.947 L283.8775,755.2361 L284.6575,756.0161 L285.9467,755.4745 C286.0442,755.5178 286.1417,755.572 286.25,755.6153 L286.7917,756.9045 L287.875,756.9045 L288.4167,755.6153 C288.5142,755.572 288.6225,755.5286 288.72,755.4745 L290.0092,756.0161 L290.7892,755.2361 L290.2475,753.947 C290.2908,753.8495 290.345,753.7411 290.3883,753.6436 L291.6775,753.102 L291.6775,752.0186 L290.3883,751.477 C290.3558,751.3795 290.3017,751.2711 290.2475,751.1736 L290.7892,749.8845 L290.0092,749.1045 L288.72,749.6461 C288.6225,749.6028 288.5142,749.5486 288.4167,749.5053 L287.875,748.2161 L286.7917,748.2161 M287.3333,750.9245 C288.2325,750.9245 288.9583,751.6503 288.9583,752.5495 C288.9583,753.4486 288.2325,754.1745 287.3333,754.1745 C286.4342,754.1745 285.7083,753.4486 285.7083,752.5495 C285.7083,751.6503 286.4342,750.9245 287.3333,750.9245 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="53" x="292.6667" y="757.0669">new_link</text></g><!--MD5=[a9d732c41edbb07c77805e18cf1df757]
+link done to existing--><g id="link_done_existing"><path d="M593.32,789.35 C671.6,788.26 829.96,786.04 916.4,784.83 " fill="none" id="done-to-existing" style="stroke:#008000;stroke-width:3.0;"/><polygon fill="#008000" points="921.48,784.76,912.4238,780.889,916.4805,784.8314,912.5381,788.8882,921.48,784.76" style="stroke:#008000;stroke-width:3.0;"/></g><!--MD5=[554f3e101dce4c9e68c6a06b7c545824]
+link new to anyUseCase--><g id="link_new_anyUseCase"><path d="M144.41,758.87 C162.91,778.24 188.99,801.73 217,815 C297.35,853.06 399.78,864.87 468.62,868.24 " fill="none" id="new-to-anyUseCase" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="none" points="469.13,861.25,488.84,869.03,468.58,875.24,469.13,861.25" style="stroke:#808080;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="72" x="277.5" y="812.1387">Implements</text></g><!--MD5=[ce1d2dab0a164ac5860eec9a3e5f2e5d]
+link existing to remove_future--><g id="link_existing_remove_future"><path d="M1032.63,764.6 C1098.49,740.92 1205,701.63 1242.5,682 C1269.15,668.05 1271.28,656.8 1298.5,644 C1324.78,631.63 1355.11,621.83 1382.13,614.51 " fill="none" id="existing-to-remove_future" style="stroke:#008000;stroke-width:3.0;"/><polygon fill="#008000" points="1387.13,613.18,1377.4038,611.6304,1382.2984,614.4665,1379.4623,619.3611,1387.13,613.18" style="stroke:#008000;stroke-width:3.0;"/><path d="M1120.5,652 L1120.5,677 L1237.5,677 L1237.5,662 L1227.5,652 L1120.5,652 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><path d="M1227.5,652 L1227.5,662 L1237.5,662 L1227.5,652 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><path d="M1140.2917,660.2161 L1139.75,661.5053 C1139.6417,661.5378 1139.5442,661.592 1139.4467,661.6461 L1138.1575,661.1045 L1137.3775,661.8845 L1137.9192,663.1736 C1137.865,663.282 1137.8217,663.3686 1137.7783,663.477 L1136.4892,664.0186 L1136.4892,665.102 L1137.7783,665.6436 C1137.8217,665.752 1137.865,665.8386 1137.9192,665.947 L1137.3775,667.2361 L1138.1575,668.0161 L1139.4467,667.4745 C1139.5442,667.5178 1139.6417,667.572 1139.75,667.6153 L1140.2917,668.9045 L1141.375,668.9045 L1141.9167,667.6153 C1142.0142,667.572 1142.1225,667.5286 1142.22,667.4745 L1143.5092,668.0161 L1144.2892,667.2361 L1143.7475,665.947 C1143.7908,665.8495 1143.845,665.7411 1143.8883,665.6436 L1145.1775,665.102 L1145.1775,664.0186 L1143.8883,663.477 C1143.8558,663.3795 1143.8017,663.2711 1143.7475,663.1736 L1144.2892,661.8845 L1143.5092,661.1045 L1142.22,661.6461 C1142.1225,661.6028 1142.0142,661.5486 1141.9167,661.5053 L1141.375,660.2161 L1140.2917,660.2161 M1140.8333,662.9245 C1141.7325,662.9245 1142.4583,663.6503 1142.4583,664.5495 C1142.4583,665.4486 1141.7325,666.1745 1140.8333,666.1745 C1139.9342,666.1745 1139.2083,665.4486 1139.2083,664.5495 C1139.2083,663.6503 1139.9342,662.9245 1140.8333,662.9245 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="77" x="1146.1667" y="669.0669">existing_link</text></g><!--MD5=[d5985bed5e036c1f6db359d4c6d4b5ed]
+link existing to change_future--><g id="link_existing_change_future"><path d="M1032.89,773.33 C1118.87,756.62 1285.44,724.25 1382.11,705.46 " fill="none" id="existing-to-change_future" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="1387.23,704.46,1377.6313,702.2544,1382.3222,705.4159,1379.1607,710.1068,1387.23,704.46" style="stroke:#808080;stroke-width:3.0;"/></g><!--MD5=[3e1f9bb02f91389767cf48111d978b12]
+link new to temporary--><g id="link_new_temporary"><path d="M159.71,725.97 C216.76,724.56 320.99,721.88 410,719 C516.91,715.54 543.83,717.88 650.5,710 C729.66,704.15 819.29,693.97 884.42,685.93 " fill="none" id="new-to-temporary" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="889.46,685.3,880.0374,682.4339,884.4977,685.9132,881.0185,690.3735,889.46,685.3" style="stroke:#808080;stroke-width:3.0;"/></g><!--MD5=[82da78c938bb45e3d2e0824dd5475afb]
+link temporary to remove_future--><g id="link_temporary_remove_future"><path d="M1064.58,650.92 C1081.39,646.91 1098.94,643.06 1115.5,640 C1206.54,623.2 1312.53,611.33 1381.88,604.59 " fill="none" id="temporary-to-remove_future" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="1387.23,604.08,1377.8837,600.9741,1382.2537,604.5662,1378.6616,608.9362,1387.23,604.08" style="stroke:#808080;stroke-width:3.0;"/><text fill="#FF0000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="71" x="1143.5" y="619.1387">outofscope</text></g><!--MD5=[70455408f678e556efda83f7fb824818]
+link new to alternative--><g id="link_new_alternative"><path d="M159.6,720.73 C236.2,709.45 397.36,685.73 485.06,672.82 " fill="none" id="new-to-alternative" style="stroke:#800080;stroke-width:3.0;"/><polygon fill="#800080" points="490.21,672.06,480.7229,669.4152,485.2634,672.7891,481.8895,677.3297,490.21,672.06" style="stroke:#800080;stroke-width:3.0;"/><path d="M271.5,657 L271.5,682 L355.5,682 L355.5,667 L345.5,657 L271.5,657 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><path d="M345.5,657 L345.5,667 L355.5,667 L345.5,657 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><path d="M291.2917,665.2161 L290.75,666.5053 C290.6417,666.5378 290.5442,666.592 290.4467,666.6461 L289.1575,666.1045 L288.3775,666.8845 L288.9192,668.1736 C288.865,668.282 288.8217,668.3686 288.7783,668.477 L287.4892,669.0186 L287.4892,670.102 L288.7783,670.6436 C288.8217,670.752 288.865,670.8386 288.9192,670.947 L288.3775,672.2361 L289.1575,673.0161 L290.4467,672.4745 C290.5442,672.5178 290.6417,672.572 290.75,672.6153 L291.2917,673.9045 L292.375,673.9045 L292.9167,672.6153 C293.0142,672.572 293.1225,672.5286 293.22,672.4745 L294.5092,673.0161 L295.2892,672.2361 L294.7475,670.947 C294.7908,670.8495 294.845,670.7411 294.8883,670.6436 L296.1775,670.102 L296.1775,669.0186 L294.8883,668.477 C294.8558,668.3795 294.8017,668.2711 294.7475,668.1736 L295.2892,666.8845 L294.5092,666.1045 L293.22,666.6461 C293.1225,666.6028 293.0142,666.5486 292.9167,666.5053 L292.375,665.2161 L291.2917,665.2161 M291.8333,667.9245 C292.7325,667.9245 293.4583,668.6503 293.4583,669.5495 C293.4583,670.4486 292.7325,671.1745 291.8333,671.1745 C290.9342,671.1745 290.2083,670.4486 290.2083,669.5495 C290.2083,668.6503 290.9342,667.9245 291.8333,667.9245 " fill="#000000" style="stroke:;stroke-width:0.0;stroke-dasharray:;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="44" x="297.1667" y="674.0669">alt_link</text></g><!--MD5=[37b1f2ef3d0646ac8a21539d490721fe]
+reverse link anyEntity to anyControl--><g id="link_anyEntity_anyControl"><path d="M977,1711.79 C977,1703.53 977,1695.27 977,1687.02 " fill="none" id="anyEntity-backto-anyControl" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="977,1716.93,981,1707.93,977,1711.93,973,1707.93,977,1716.93" style="stroke:#808080;stroke-width:3.0;"/></g><!--MD5=[a2dcfdb92627056705f0320830af2138]
+reverse link anyControl to anyBoundary--><g id="link_anyControl_anyBoundary"><path d="M977,1633.79 C977,1625.53 977,1617.27 977,1609.02 " fill="none" id="anyControl-backto-anyBoundary" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="977,1638.93,981,1629.93,977,1633.93,973,1629.93,977,1638.93" style="stroke:#808080;stroke-width:3.0;"/></g><!--MD5=[00bdb1231e53d55de5a0468632becefb]
+link anyActor to anyBoundary--><g id="link_anyActor_anyBoundary"><path d="M573.19,995.34 C652.24,1111.06 887.26,1455.09 956.56,1556.54 " fill="none" id="anyActor-to-anyBoundary" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="959.54,1560.9,957.7759,1551.2104,956.7238,1556.7686,951.1656,1555.7164,959.54,1560.9" style="stroke:#808080;stroke-width:3.0;"/></g><!--MD5=[55e6334cac518b0338d2c9f50b5584fa]
+link anyControl to anyDatabase--><g id="link_anyControl_anyDatabase"><path d="M1042.15,1650.47 C1095.73,1639.98 1174.11,1624.59 1242.5,1611 C1299.05,1599.76 1363.96,1586.69 1407.33,1577.94 " fill="none" id="anyControl-to-anyDatabase" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="1412.25,1576.95,1402.6379,1574.8035,1407.3482,1577.9361,1404.2156,1582.6464,1412.25,1576.95" style="stroke:#808080;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="104" x="1127" y="1608.1387">POST/PUT/PATCH</text></g><!--MD5=[347e608dc14650bdb78e677c4c98c760]
+link anyDatabase to anyControl--><g id="link_anyDatabase_anyControl"><path d="M1412.39,1556.59 C1341.1,1541 1200.02,1522.42 1115.5,1593 C1104.58,1602.12 1117.36,1613.74 1107.5,1624 C1091.62,1640.53 1069.02,1650.12 1047.14,1655.67 " fill="none" id="anyDatabase-to-anyControl" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="1042.19,1656.86,1051.877,1658.6384,1047.0506,1655.6877,1050.0013,1650.8614,1042.19,1656.86" style="stroke:#808080;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="24" x="1167" y="1542.1387">GET</text></g><!--MD5=[6bd47ab934a9e99dc3ab99fbb05f4797]
+link anyControl to anyFile--><g id="link_anyControl_anyFile"><path d="M1042.04,1674.38 C1141.96,1692.13 1332.15,1725.91 1415.57,1740.73 " fill="none" id="anyControl-to-anyFile" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="1420.91,1741.68,1412.7439,1736.1741,1415.9864,1740.8094,1411.351,1744.0519,1420.91,1741.68" style="stroke:#808080;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="30" x="1164" y="1686.1387">Save</text></g><!--MD5=[9807888f9625e0fb5184374822de3c10]
+link anyFile to anyControl--><g id="link_anyFile_anyControl"><path d="M1420.89,1758.61 C1353.14,1776.43 1204.55,1803.79 1115.5,1732 C1104.76,1723.34 1117.1,1711.91 1107.5,1702 C1091.55,1685.54 1068.94,1675.96 1047.06,1670.41 " fill="none" id="anyFile-to-anyControl" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="1042.11,1669.22,1049.9253,1675.2134,1046.9714,1670.389,1051.7958,1667.4351,1042.11,1669.22" style="stroke:#808080;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="51" x="1153.5" y="1729.1387">Retrieve</text></g><!--MD5=[436c2c0b04a310df1d715853c85a634f]
+link anyControl to Topic_outbound--><g id="link_anyControl_Topic_outbound"><path d="M1042.14,1662.55 C1095.7,1662.16 1174.08,1661.58 1242.5,1661 C1286.55,1660.63 1335.7,1660.17 1375.77,1659.79 " fill="none" id="anyControl-to-Topic_outbound" style="stroke:#808080;stroke-width:3.0;"/><line style="stroke:#808080;stroke-width:3.0;" x1="1390.94" x2="1375.94" y1="1659.64" y2="1659.79"/><line style="stroke:#808080;stroke-width:3.0;" x1="1390.94" x2="1381.9023" y1="1659.64" y2="1655.7259"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="34" x="1162" y="1658.1387">PUSH</text></g><!--MD5=[122ccb8c2038c9ee1ddac0b8938a5977]
+link Topic_inbound to anyControl--><g id="link_Topic_inbound_anyControl"><path d="M607.1,1664.72 C682.76,1664.37 812.93,1663.76 896.68,1663.37 " fill="none" id="Topic_inbound-to-anyControl" style="stroke:#808080;stroke-width:3.0;"/><line style="stroke:#808080;stroke-width:3.0;" x1="911.76" x2="896.755" y1="1663.3" y2="1663.37"/><line style="stroke:#808080;stroke-width:3.0;" x1="911.76" x2="902.7411" y1="1663.3" y2="1659.3429"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="29" x="758" y="1661.1387">PULL</text></g><!--MD5=[1ff434e7571cce66f255365bd79ec5b1]
+link ApiGateway to anyBoundary--><g id="link_ApiGateway_anyBoundary"><path d="M555.19,1584.02 C603.67,1584.13 854.04,1584.72 943.87,1584.93 " fill="none" id="ApiGateway-anyBoundary" style="stroke:#808080;stroke-width:3.0;"/></g><!--MD5=[b93edd4478ea2bea54dda2664b197cae]
+link Transaction_resource_A to Control_With_TransactionScope--><g id="link_Transaction_resource_A_Control_With_TransactionScope"><path d="M221.08,344 C221.08,344 401.52,344 470.17,344 " fill="none" id="Transaction_resource_A-Control_With_TransactionScope" style="stroke:#FFA500;stroke-width:3.0;stroke-dasharray:1.0,1.0;"/><polygon fill="#FFA500" points="483.43,344,474.43,340,478.43,344,474.43,348,483.43,344" style="stroke:#FFA500;stroke-width:3.0;"/><line style="stroke:#FFA500;stroke-width:3.0;" x1="478.43" x2="470.43" y1="344" y2="344"/><polygon fill="#FFA500" points="209.08,344,215.08,348,221.08,344,215.08,340,209.08,344" style="stroke:#FFA500;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="29" x="299" y="275.1387">read</text><path d="M222,283.9688 L222,338.9688 L405,338.9688 L405,293.9688 L395,283.9688 L222,283.9688 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><path d="M395,283.9688 L395,293.9688 L405,293.9688 L395,283.9688 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="101" x="261" y="301.0356">In transaction</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="362" y="301.0356"> </text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="149" x="237" y="316.1685">Use Composition Arrow</text><text fill="#FF0000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="28" x="299.5" y="331.3013">*--&gt;</text></g><!--MD5=[f31b5c9da6ba653ade6061dee2ed921a]
+link Control_With_TransactionScope to Transaction_resource_B--><g id="link_Control_With_TransactionScope_Transaction_resource_B"><path d="M620.1703,368.4445 C620.1703,368.4445 662.35,379.23 682.5,382 C761.75,392.9 782.5,382.7 862.5,382 C865.05,381.98 867.63,381.95 870.24,381.92 " fill="none" id="Control_With_TransactionScope-Transaction_resource_B" style="stroke:#FFA500;stroke-width:3.0;stroke-dasharray:1.0,1.0;"/><polygon fill="#FFA500" points="883.4,381.77,874.3523,377.8791,878.4004,381.8304,874.449,385.8785,883.4,381.77" style="stroke:#FFA500;stroke-width:3.0;"/><line style="stroke:#FFA500;stroke-width:3.0;" x1="878.4004" x2="870.395" y1="381.8304" y2="381.92"/><polygon fill="#FFA500" points="608.64,365.12,613.297,370.6257,620.1703,368.4445,615.5133,362.9388,608.64,365.12" style="stroke:#FFA500;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="30" x="757.5" y="343.1387">write</text><path d="M712,351.9688 L712,376.9688 L833,376.9688 L833,361.9688 L823,351.9688 L712,351.9688 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><path d="M823,351.9688 L823,361.9688 L833,361.9688 L823,351.9688 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="87" x="727" y="369.0356">In transaction</text></g><!--MD5=[140be42b0fc1a348ed56fb61b9ce26b4]
+link Control_With_TransactionScope to No_Transaction_resource_C--><g id="link_Control_With_TransactionScope_No_Transaction_resource_C"><path d="M608.72,336.68 C631.86,333.95 658.38,330.82 682.5,328 C742.84,320.94 810.16,313.14 865.1,306.79 " fill="none" id="Control_With_TransactionScope-to-No_Transaction_resource_C" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="870.37,306.18,860.9638,303.2605,865.4043,306.765,861.8998,311.2056,870.37,306.18" style="stroke:#808080;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="30" x="757.5" y="269.1387">write</text><path d="M687.5,277.9688 L687.5,302.9688 L857.5,302.9688 L857.5,287.9688 L847.5,277.9688 L687.5,277.9688 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><path d="M847.5,277.9688 L847.5,287.9688 L857.5,287.9688 L847.5,277.9688 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="136" x="702.5" y="295.0356">NOT in transaction</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="838.5" y="295.0356"> </text></g><!--MD5=[5e76e77ed8a5ed907f5fa9bf9dc077ff]
+link publisher_topic to topic--><g id="link_publisher_topic_topic"><path d="M168.63,66 C258.41,66 440.69,66 513.71,66 " fill="none" id="publisher_topic-to-topic" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="518.78,66,509.78,62,513.78,66,509.78,70,518.78,66" style="stroke:#808080;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="45" x="291" y="63.1387">Publish</text></g><!--MD5=[f0a26b3d045144b221dfac783f64e352]
+link topic to consumer_topic--><g id="link_topic_consumer_topic"><path d="M573.19,66 C640.59,66 821.37,66 916.15,66 " fill="none" id="topic-to-consumer_topic" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="921.43,66,912.43,62,916.43,66,912.43,70,921.43,66" style="stroke:#808080;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="58" x="743.5" y="63.1387">Consume</text></g><!--MD5=[29f4554f8a9a0332e2c9d7d739d87f1c]
+link persister_storage to storage--><g id="link_persister_storage_storage"><path d="M176.51,143.17 C261.07,141.98 414.53,139.83 494.1,138.71 " fill="none" id="persister_storage-to-storage" style="stroke:#808080;stroke-width:3.0;"/><line style="stroke:#808080;stroke-width:3.0;" x1="509.45" x2="494.445" y1="138.5" y2="138.71"/><line style="stroke:#808080;stroke-width:3.0;" x1="509.45" x2="500.3938" y1="138.5" y2="134.629"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="34" x="296.5" y="138.1387">Store</text></g><!--MD5=[4fc4fefce8964129b045a2c76c4fc180]
+link storage to querier_storage--><g id="link_storage_querier_storage"><path d="M582.84,138.5 C656.86,139.54 827.22,141.92 917.45,143.18 " fill="none" id="storage-to-querier_storage" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="922.48,143.25,913.5381,139.1218,917.4805,143.1786,913.4238,147.121,922.48,143.25" style="stroke:#808080;stroke-width:3.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="36" x="754.5" y="137.1387">Query</text></g><rect fill="#FFFFFF" height="38.2969" rx="7.5" ry="7.5" style="stroke:#000000;stroke-width:1.0;" width="531" x="535.25" y="1872"/><text fill="#FFFFFF" filter="url(#bc07d8ygoz4520)" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="541.25" y="1890.9951">Text Tag</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="5" x="605.25" y="1890.9951">|</text><text fill="#000000" filter="url(#bc07d8ygoz4521)" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30" x="614.25" y="1890.9951">New</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="5" x="648.25" y="1890.9951">|</text><text fill="#000000" filter="url(#bc07d8ygoz4522)" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="653.25" y="1890.9951">Existing</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="5" x="710.25" y="1890.9951">|</text><text fill="#000000" filter="url(#bc07d8ygoz4523)" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="54" x="715.25" y="1890.9951">Change</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="5" x="773.25" y="1890.9951">|</text><text fill="#000000" filter="url(#bc07d8ygoz4524)" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="57" x="782.25" y="1890.9951">Remove</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="5" x="843.25" y="1890.9951">|</text><text fill="#000000" filter="url(#bc07d8ygoz4525)" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="119" x="856.25" y="1890.9951">Existing no touch</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="5" x="979.25" y="1890.9951">|</text><text fill="#000000" filter="url(#bc07d8ygoz4526)" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="988.25" y="1890.9951">Alternative</text><text fill="#000000" font-family="sans-serif" font-size="8" lengthAdjust="spacing" textLength="134" x="733.75" y="1901.7227">Plantuml 1.2022.6 | 2022-Aug-31</text><!--MD5=[31c66991b80f9726c9ca0d8bb92f9df5]
+@startuml style
+'https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html
+'allow_mixing
+'skinparam monochrome true
+'skinparam linetype polyline
+'skinparam linetype ortho
+
+!include <azure/AzureCommon>
+!include <azure/Databases/AzureCosmosDb>
+!include <azure/Databases/AzureSqlDatabase>
+!include <cloudinsight/kafka>
+!include <cloudinsight/java>
+
+!startsub BASIC
+
+!$defaultColor = '#white'
+!$defaultPartSeparator = '__'
+!$defaultWordSeparator = '_'
+!$scaleTextUp = 8
+!$scaleTextDown = 4
+
+!$scaleText = $scaleTextUp / $scaleTextDown
+
+!function $remark($text,$color=red) return "<color:" + $color+ ">" + $text + "</color>"  
+!function $out_of_scope() return $remark(out-of-scope)
+
+!function $notouch($type = "any") return "#lightgray"
+!function $notouch_link($type = "any") return "#gray"
+!function $exiting($type = "any") return $existing($type)
+!function $existing($type = "any") return "#lightgreen"  
+!function $existing_link($type = "any") return "#green"  
+!function $new($type = "any") return "#powderBlue"
+!function $new_link($type = "any") return "#blue"  
+!function $change($type = "any") return %lighten(Yellow,70)  
+
+!function $change_link($type = "any") return "#burlywood"  
+!function $remove($type = "any") return "#pink"  
+!function $remove_link($type = "any") return "#red"  
+!function $alt($type = "any") return "#plum"
+!function $alt_link($type = "any") return "#purple"  
+!function $done($type = "any") return "#CornflowerBlue"
+!function $temporary($type = "any") return "#powderBlue|pink" 
+!function $remove_future($type = "any") return "#lightgreen|pink"  
+!function $change_future($type = "any") return "#lightgreen|yellow"  
+
+skinparam fileBackgroundColor #white
+skinparam ActorBackgroundColor #white
+skinparam ComponentBackgroundColor #white
+skinparam UseCaseBackgroundColor #white
+skinparam ArrowThickness 3
+skinparam ArrowLollipopColor #blue
+skinparam ArrowColor grey
+skinparam legendBackgroundColor #white
+skinparam NoteBorderThickness 1.5
+skinparam QueueBackgroundColor #white
+skinparam BoundaryBackgroundColor #white
+skinparam ControlBackgroundColor #white
+skinparam EntityBackgroundColor #white
+skinparam InterfaceBackgroundColor #white
+skinparam DatabaseBackgroundColor #white
+'skinparam WrapWidth 200
+skinparam Nodesep 30
+skinparam Ranksep 10
+
+<style>
+    .environment {
+        RoundCorner 150
+        Shadowing 3
+    }
+    .service {
+        RoundCorner 50
+        Shadowing 3
+        :depth(3) {
+            LineThickness 10
+        }
+    }
+    .transaction {
+        LineColor #orange
+        'LineStyle 7
+        '#line.dashed 
+    }
+    .done {
+        LineColor $existing_link()
+        LineThickness 6
+        'LineStyle 6
+    }
+    .temporary {
+        LineColor #red
+        LineThickness 3
+        'LineStyle 6
+    }
+    .new {
+        BackGroundColor $new()
+    }
+    .change {
+        BackGroundColor $change()
+    }
+    .existing {
+        BackGroundColor $existing()
+    }
+    .remove {
+        BackGroundColor $remove()
+    }
+    .alt {
+        BackGroundColor $alt()
+    }
+    .notouch {
+        BackGroundColor $notouch()
+    }
+
+    .next-phase{
+        BorderThickness 0.5
+        BackGroundColor #white|$new()
+        LineStyle 70
+        DiagonalCorner 20 
+    }
+arrow {
+    .new {
+        LineColor $new_link()
+    }
+    .change {
+        LineColor $change_link()
+    }
+    .existing {
+        LineColor $existing_link()
+    }
+    .remove {
+        LineColor $remove_link()
+    }
+    .alt {
+        LineColor $alt_link()
+    }
+    .notouch {
+        LineColor $notouch_link()
+    }
+    .transaction {
+        LineColor #orange
+        LineStyle 1
+        LineThickness 3
+    }
+
+}
+</style>
+
+!function $strReplace($str,$find,$replace)
+    !$len = %strlen($str)
+    !$res = ""
+    !while $len >= 0
+        !$chr = %substr($str,$len,1)
+        !if $chr == $find
+            !$res = $replace + $res
+        !else
+            !$res = $chr + $res
+        !endif
+        !$len = $len - 1
+    !endwhile
+    !return $res
+!endfunction
+
+!procedure $ShowJson($json,$text='=json')
+    label l [
+        $text
+        $json
+        {{json
+        $json
+        }}
+    ]
+!endprocedure
+
+!function $CountPart($str,$separator=$defaultPartSeparator)
+    !$res = $str
+    !$pos = 1
+    !$count = 1
+    !while ($pos > 0)
+        !$pos = %strpos($res,$separator)
+        !if ($pos > 0)
+            !$count = $count + 1
+            !$res = %substr($res,$pos + %strlen($separator) )
+        !endif
+    !endwhile
+    !return $count
+!endfunction
+!procedure $CountPart_Test()
+    !$count = $CountPart(Part1__Part2__Part3,$defaultPartSeparator) 
+    node CountPart_Test $example
+    note right
+        $count
+    endnote
+!endprocedure
+'$CountPart_Test()
+
+!function $LastPart($str,$separator=$defaultPartSeparator)
+    !$res = $str
+    !$pos = 1
+    !while ($pos > 0)
+        !$pos = %strpos($res,$separator)
+        !if ($pos > 0)
+            !$res = %substr($res,$pos + %strlen($separator) )
+        !endif
+    !endwhile 
+'    !$parts = %splitstr($str,$separator) ' Splits by char not by string so is not whats required
+'    !foreach $item in $parts
+'        !$res = $item
+'    !endfor 
+    !return $res
+!endfunction
+!procedure $LastPart_Test() 
+    node LastPart_Test $example
+    note right
+        $LastPart(Part1__Part2__Part3,'__')
+    endnote
+!endprocedure
+'$LastPart_Test()
+
+!function $highlight($str,$start='{',$end='}',$color='red')
+    !$res = $strReplace($str,$start,"<color:red>")
+    !$res = $strReplace($res,$end,"</color>")
+    !return $res
+!endfunction
+'node aaa as "$highlight('dd{d}d')"
+
+!unquoted function $stereotype($str)
+    !if ($str=='')
+        return $str
+    !endif
+
+    !$result = ''
+    !$parts = %splitstr($str,";") 
+    !foreach $item in $parts
+        !if (%substr($item,0,1) != "#" )
+            !$result = $result + '<<' + $item + '>>'
+        '!else
+        '    !$actionColor = $item 
+        !endif
+    !endfor 
+    !return $result
+!endfunction
+' [ <<aa>> $stereotype(one;two) <<cc>>]
+
+!unquoted function $label($str,$type = '',$sizeArg = 0)
+    !$sizeArg = %intval($sizeArg)
+    !$size = ( $sizeArg * $scaleTextUp / $scaleTextDown  )
+    !$res = $str
+    !$actionColor = ''
+    !if ($type!='')
+        !$stereotypeStr = $stereotype($type)
+        !if ($stereotypeStr!='')
+            !$res = $res + ' ' + $stereotypeStr
+        !endif
+    !endif
+
+    !if ($size > 0)
+        !$sizeStart = '<size:' + $size + '>'
+        !$sizeEnd = '</size>'
+    !else
+        !$sizeStart = ''
+        !$sizeEnd = ''
+    !endif
+
+    !$name = $LastPart($str)
+    !$name = $strReplace($name,$defaultWordSeparator,' ')
+    !$entityLevel = $CountPart($str)
+
+    !$res = $res + ' as "' + $sizeStart + $name + $sizeEnd + '"'
+
+'    !if (%strlen($actionColor) > 0)
+'        !$actionColor = %darken($action , ($entityLevel - 2) * 10)
+'        !$res = $res + " " + $actionColor + " "
+'    !endif
+
+    !return $res
+!endfunction
+
+!procedure $label_Test() 
+    rectangle label_Test [
+        == label_Test
+        - - -
+            No Size
+            $label(Any_Service,service;new)
+        - - -
+            Size = 30
+            $label(Any_Service,service;new, 30)
+        - - -
+            $label(Any_Service,service;new;change)
+    ]
+!endprocedure
+' $label_Test()
+
+
+!unquoted procedure $scale($type, $name, $action = '', $factor = 4)
+    !$scale2 = $factor * $scaleText
+    label $name [
+    {{
+        scale $scale2
+        $type $label($name,$action,10)
+    }}
+    ]
+!endprocedure
+!procedure $scale_Test() 
+    $scale(actor/,ACTOR_T,'')
+!endprocedure
+' $scale_Test()
+
+!unquoted function $service($name = 'anyService', $action = '')
+    !return "frame " + $label($name,"service;" + $action,50) 
+!endfunction
+
+!unquoted function $environment($name = 'anyEnvironment', $action = '')
+    !return "rectangle " + $label($name, "environment;" + $action ,30)
+!endfunction
+
+!unquoted function $external($name = 'anyEnvironment', $action = '')
+    !return "cloud " + $label($name,"environment;$action",30)
+!endfunction
+
+!unquoted function $transaction($name, $action = '') {
+    !return "hexagon " + $label($name,'transaction;' + $action)
+!endfunction
+
+!function $push() return "- ->"
+
+!$kafkaControlCenterUrl = 'https://kafka/{topic}'
+
+!procedure $topic($name,$type='')
+    !$topicName = $strReplace($name,'_','-')
+    !$topicName = $strReplace($name,'- -','_')
+    !$topicUrl = $strReplace($kafkaControlCenterUrl,'{topic}',$topicName)
+    !$stereotypeStr = $stereotype($type)
+    queue $name $stereotypeStr [
+        [[$topicUrl{$name} $topicName]]
+    ] 
+!endprocedure
+
+!unquoted procedure $tag($text='',$desc='', $tagcolor='#black')
+    note on link $tagcolor|lightgray
+        <&cog><color:#black>$text</color><back:#white><color:#black>$desc</color></back>
+    endnote
+!endprocedure
+
+!unquoted procedure $black_tag($text='',$desc='')
+    note on link #black|lightgray
+        <&cog><color:#black>$text</color><back:#white><color:#black>$desc</color></back>
+    endnote
+!endprocedure
+
+!unquoted procedure $legend($text='',$desc='')
+legend
+<back:#black><color:#white>Text Tag</color></back> | <back:$new()>New</back> |<back:$existing()>Existing</back> |<back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$alt()>Alternative</back>
+<size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
+end legend
+!endprocedure
+
+!endsub
+
+!unquoted procedure $example_style($text='')
+    left to right direction
+
+    together example_style $example {
+        together {
+            component anyComponent
+            component new <<new>>
+            component existing <<existing>> 
+            component remove <<remove>>
+            component temporary<<new>><<temporary>> 
+            component notouch <<notouch>> 
+            component done<<done>> 
+            component change <<change>>
+            component alternative <<alt>>
+
+            new ..|> anyComponent : Realization 
+            usecase anyUseCase as "use case"
+            actor anyActor as "user/system" 
+            actor stakeholder  
+            stakeholder - -|> anyActor : is as
+            stakeholder - - anyUseCase
+
+            existing - -> remove <<remove>> : "<<remove>>"
+            existing - -> notouch <<notouch>> : "<<notouch>>"
+            existing - -> change <<change>> : "<<change>>" 
+            change - -> done <<change>>
+                $black_tag(change_link)
+            new - -> done <<new>>
+                $black_tag(new_link)
+            done - -> existing <<existing>>
+
+            new - -|> anyUseCase : Implements
+
+            rectangle "In the scope of another workstream" <<next-phase>> {
+                component remove_future <<remove>>
+                component change_future <<change>>
+
+                existing - -> remove_future <<existing>>
+                    $black_tag(existing_link)
+                
+                existing - -> change_future
+
+                new - -> temporary
+                temporary - -> remove_future : $out_of_scope()
+                new - -> alternative <<alt>>
+                    $tag(alt_link)
+            }
+        }
+
+    $service(Any_Service_Group, existing){
+        $service(Any_Service, new) {
+            $environment(Any_Service__Any_Environment, new) {
+
+                database anyDatabase as "Queryable\nstorage"
+                file anyFile as "File\nstorage"
+                node process {
+                    entity anyEntity as "Aggregate / Entity"
+                    control anyControl as "Control / Controller"
+                    boundary anyBoundary as "Boundary"
+                    anyControl -l-> anyEntity
+                    anyBoundary -l-> anyControl
+                    anyActor - -> anyBoundary
+                }
+
+                anyControl - -> anyDatabase : POST/PUT/PATCH
+                anyDatabase - -> anyControl : GET
+                anyControl - -> anyFile : Save
+                anyFile - -> anyControl : Retrieve
+
+                $topic(Topic_outbound,outbound)
+                $topic(Topic_inbound,inbound)
+
+                anyControl - -\\ Topic_outbound : PUSH
+                Topic_inbound - -\\ anyControl : PULL
+
+                interface ApiGateway as "ApiGateway Proxy"
+                ApiGateway -d- anyBoundary
+
+            }
+        }
+    } 
+}
+
+frame Transaction_Diagram_convention $example {
+
+    database Transaction_resource_A 
+
+    $transaction(Any_TransactionScope) {
+        control $label(Control_With_TransactionScope)
+    }
+
+    database Transaction_resource_B
+    File No_Transaction_resource_C
+
+    Transaction_resource_A *- -> Control_With_TransactionScope <<transaction>> : read
+        note on link
+            **In transaction** 
+            Use Composition Arrow 
+            <color:red>*- -></color>
+        endnote
+    Control_With_TransactionScope *- -> Transaction_resource_B <<transaction>> : write
+        note on link
+            In transaction 
+        endnote
+    Control_With_TransactionScope - -> No_Transaction_resource_C : write
+        note on link
+            **NOT in transaction** 
+        endnote
+}
+
+!endprocedure
+
+!unquoted procedure $flow_vs_dependency()
+
+frame flow_vs_dependency as "flow vs dependency" $example {
+    
+    control publisher_topic 
+
+    queue topic
+    control consumer_topic
+
+    publisher_topic - -> topic : Publish
+    topic - -> consumer_topic : Consume
+
+    control persister_storage 
+    database storage
+    control querier_storage
+
+    persister_storage - -\\ storage : Store
+    storage - -> querier_storage : Query
+}
+
+!endprocedure
+
+$example_style()
+$flow_vs_dependency()
+$legend()
+'remove @unlinked
+@enduml
+
+@startuml style
+
+
+
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam rectangle {
+    StereotypeFontSize 12
+}
+
+skinparam Arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 12
+}
+
+
+
+
+
+
+
+sprite $AzureCosmosDb [70x70/16] {
+0000000000010000000000000000000000000000000000000000000000002467775100
+000000000003000000000000000000000000000000000000000000000269AAAAAAAA40
+000000000005000000000000000000000000000000000000000000048AAAAAAAAAAAA2
+0000000000093000000000000000000000000000000000000000049AAAAA9642237AA7
+00000000002A70000000000000000000000000000000000000049AAAA9620000000AAA
+00000000007AA20000000000000000000000000000000000028AAAA9400000000008AA
+0000000002AAA700000000000000000000000000000000017AAAA940000000000008AA
+0000000019AAAA500000000000000000000000000000004AAAA94000000000000009AA
+000000019AAAAAA4000000000000000000000000000017AAAA60000000000000000AA9
+00000029AAAAAAAA6000000000000000000000000003AAAA9200000000000000003AA7
+000027AAAAAAAAAAA9400000000000000000000000026AA50000000000000000006AA4
+1359AAAAAAAAAAAAAAAA7420000000000011000000000010000000000000000000AAA1
+00037AAAAAAAAAAAAA941000000012344444444431000000000000000000000003AA80
+0000017AAAAAAAAA94000000002444444444444444431000000000000000000008AA30
+00000005AAAAAAA91000000034444444444444444566663000000000000000002AA900
+000000004AAAAA800000002444444444444444445666666510000000000000007AA500
+0000000006AAA910000003444444444444444444666666666300000000000002AAA000
+00000000009AA400000144444444444444444445666666666640000000000008AA5000
+00000000004A900000144444444444444444444566666666666500000000003AAA0000
+00000000000A400001444444444444444445555566666666666640000000009AA40000
+00000000000710000444444444444444456666666666666666666400000005AA900000
+0000000000040000344444444444444456666666666666666666662000001AAA300000
+0000000000020002444444444444444566666666666666666666666000007AA7000000
+000000000000000444444444444444466666666666666666666666640004AAA1000000
+00000000000000344444444444444456666666666666666666666663001AAA40000000
+00000000000000444444444444444456666666666666666666666650008AA700000000
+0000000000000244444444444444445666666666666666666666660005AAA100000000
+000000000000044444444444444444566666666666666666666661002AAA3000000000
+000000000000144444444444444444566666666666666666666630009AA60000000000
+00000000000024444444444444444446666666666666666666640007AA900000000000
+0000000000004555555444444444444566666666666666666650005AAA200000000000
+000000000000666666666544444444445666666666666666660003AAA4000000000000
+00000000000166666666665444444444445666666666666661001AAA60000000000000
+00000000000266666666666544444444444444444444444410019AA700000000000000
+0000000000026666666666664444444444444444444444410008AA9000000000000000
+000000000002666666666666544444444444444444444410007AA91000200000000000
+00000000000266666666666654444444444444444444420006AAA20004200000000000
+0000000000016666666666665444444444444444444420005AAA400035200000000000
+000000000000666666666666555444444444444444430004AAA5000566300000000000
+00000000000066666666666666665444444444444440003AAA60004666200000000000
+0000000000005666666666666666664444444444430003AAA700036666000000000000
+000000000000366666666666666666644444444430002AAA7000266666000000000000
+00000000000016666666666666666665444444420002AAA80002666664000000000000
+0000000003200566666666666666666544444420002AAA800016666661000000000000
+000000001A60036666666666666666664444420003AAA9100166666650000000000000
+000000007AA000666666666666666666444420003AAA91001666666620000000000000
+00000004AAA10036666666666666666544410004AAA800016666666500000000000000
+0000001AAA40000666666666666666654410004AAA8000166666666100000000000000
+0000006AA80000016666666666666664410005AAA80001666666664000000000000000
+000002AAA1000000366666666666665400006AAA700016666666660000000000000000
+000008AA5000000004666666666665300007AAA7000166666666600000000000000000
+00004AA9000000000045555555554200018AAA50002666666666100000000000000000
+00009AA400000000000244444444100029AAA400026666666661000000000000000000
+0004AA80000000000000144444300003AAAA2000366666666610000000000100000000
+0009AA3000000000000001444200006AAA920004666666664000000000000400000000
+004AA8000000000000000002100018AAA8100035666666510000000000000900000000
+008AA300000000000000000000039AAA60000344555652000000000000002A40000000
+01AA90000000000000000000005AAAA300004444432000000000000000008A90000000
+06AA5000000000000000000028AAA8100002222100000000000000000005AAA7000000
+09AA10000000000000000005AAAA6000000000000000000000000000005AAAAA700000
+1AA90000000000000000018AAAA4000000000000000000000000000028AAAAAAA93000
+4AA600000000000000005AAAA7100000000000000000000000000149AAAAAAAAAAA942
+6AA30000000000000049AAAA4000000000000000000000000000000049AAAAAAAA5100
+7AA200000000000028AAAA7100000000000000000000000000000000007AAAAA910000
+7AA1000000000038AAAA8200000000000000000000000000000000000007AAA9000000
+7AA30000000049AAAA9400000000000000000000000000000000000000009AA1000000
+5AA80000147AAAAAA50000000000000000000000000000000000000000003A50000000
+1AAAA889AAAAAA94000000000000000000000000000000000000000000000910000000
+04AAAAAAAAAA8400000000000000000000000000000000000000000000000500000000
+0028AAAA97410000000000000000000000000000000000000000000000000200000000
+}
+
+skinparam rectangle<<AzureCosmosDb>> {
+    BackgroundColor #FFFFFF
+    BorderColor #3C7FC0
+}
+sprite $AzureSqlDatabase [65x70/16] {
+0000000000000134578899A998876532000000000000000000000000000000000
+0000000002479AAAAAAAAAAAAAAAAAAA985300000000000000000000000000000
+000000158AAAAAAAAAAAAAAAAAAAAAAAAAAA96200000000000000000000000000
+000016AAAAAAAAA9765444344445679AAAAAAAA83000000000000000000000000
+0006AAAAAAA752000000000000000001358AAAAAA820000000000000000000000
+018AAAAA941000000000000000000000000159AAAA94000000000000000000000
+08AAAAA60000000000000000000000000000018AAAAA400000000000000000000
+5AAAAA7000000000000000000000000000000009AAAAA20000000000000000000
+9AAAAA5000000000000000000000000000000007AAAAA60000000000000000000
+AAAAAA9100000000000000000000000000000029AAAAA70000000000000000000
+AAAAAAA93000000000000000000000000000049AAAAAA80000000000000000000
+AAAAAAAAA8410000000000000000000000259AAAAAAAA80000000000000000000
+AAAAAAAAAAAA8642100000000000013479AAAAAAAAAAA80000000000000000000
+AAAAAAAAAAAAAAAAAA9887777889AAAAAAAAAAAAAAAAA80000000000000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA80000000000000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA80000000000000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA80000000000000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA80000000000000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA80000000000000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA80000000000000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA80000000000000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA80000000000000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA80000000000000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA80000000000000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA80000000000000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA80000000000000000000
+AAAAAAAAAA97779AAAAA976679AAAAA8889AAAAAAAAAA80000000000000000000
+AAAAAAAA71000006AAA60000016AAAA0003AAAAAAAAAA80000000000000000000
+AAAAAAA700000005AA5000000005AAA0003AAAAAAAAAA80000000000000000000
+AAAAAAA200024305A800004400007AA0003AAAAAAAAAA80000000000000000000
+AAAAAAA00009AA98A30006AA70003AA0003AAAAAAAAAA80000000000000000000
+AAAAAAA0000169AA90001AAAA2000AA0003AAAAAAAAAA80000000000000000000
+AAAAAAA40000005A90003AAAA30009A0003AAAAAAAAAA80000000000000000000
+AAAAAAAA5000000480002AAAA40009A0003AAAAAAAAAA80000000000000000000
+AAAAAAAAA8400000700009AAA2001AA0003AAAAAAAAAA80000000000000000000
+AAAAAAA79AA70000720004AA50004AA0003AAAAAAAAAA80000000000000000000
+AAAAAAA3157500009700000100019AA00013333AAAAAA80000000000000000000
+AAAAAAA300000004AA1000000007AAA00000000AAAAAA80000000000000000000
+AAAAAAA300000059AA930000029AAAA00000000AAAAAA80000000000000000000
+AAAAAAAA866679AAAAAA9720006AAAA88888888AAA96530000000000000000000
+AAAAAAAAAAAAAAAAAAAAAA920004AAAAAAAAAAA95100000000000000000000000
+AAAAAAAAAAAAAAAAAAAAAAA9100039AAAAAAA950014689A987410000000000000
+AAAAAAAAAAAAAAAAAAAAAAAA977778AAAAAA820169A9765679AA7100000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA700599620000000259950000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7007A820000000000016A7000000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9107A60000000000000004A800000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA206A5000000000000000003A70000000
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA603A600000000000000000005A4000000
+AAAAAAAAAAAAAAAAAAAAAAAAAA852100009900000000000000000000089000000
+AAAAAAAAAAAAAAAAAAAAAAAA8300123324A40000000000000000000002A500000
+AAAAAAAAAAAAAAAAAAAAAAA60038AAAAAA9000000000000000000000007800000
+AAAAAAAAAAAAAAAAAAAAAA5018A95322465000000000000000000000004A20000
+9AAAAAAAAAAAAAAAAAAAA60299400000000000000000000000000000001A40000
+7AAAAAAAAAAAAAAAAAAA901992000000000000000000000000000000000A50000
+29AAAAAAAAAAAAAAAAAA407920000000000000000000000000000000000960000
+04AAAAAAAAAAAAAAAAA902A500000000000000000000000000000000000870000
+0039AAAAAAAAAAAAAAA7069000000000000000000000000000000000000960000
+00016AAAAAAAAAAAAAA4097000000000000000000000000000000000001A50000
+00000269AAAAAAAAAAA30A5000000000000000000000000000000000003AA8400
+00000000479AAAAAAAA21A4000000000000000000000000000000000004679A70
+000000000002468AAAA20A50000000000000000000000000000000000000005A7
+0000000000000000123109600000000000000000000000000000000000000005A
+00000000000000000000079000000000000000000000000000000000000000009
+0000000000000000000004A300000000000000000000000000000000000000008
+00000000000000000000008900000000000000000000000000000000000000008
+00000000000000000000003A7000000000000000000000000000000000000001A
+000000000000000000000004A810000000000000000000000000000000000006A
+000000000000000000000000499520000000000000000000000000000000016A6
+000000000000000000000000017AA98888888888888888888888888888888AA60
+00000000000000000000000000014677777777777777777777777777777776200
+}
+
+skinparam rectangle<<AzureSqlDatabase>> {
+    BackgroundColor #FFFFFF
+    BorderColor #3C7FC0
+}
+sprite $kafka [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+0000000000000005CFFD8000000000000000000000000000
+000000000000009FFFFFFC10000000000000000000000000
+00000000000007FFFDCFFFB0000000000000000000000000
+0000000000000FFF6003EFF4000000000000000000000000
+0000000000004FFB00006FF8000000000000000000000000
+0000000000006FF800004FF9000000000000000000000000
+0000000000004FFB00006FF8000000000000000000000000
+0000000000000EFF6003EFF4000000464100000000000000
+00000000000005FFFEEFFFA000007FFFFF80000000000000
+000000000000008FFFFFFC000009FFFFFFF9000000000000
+0000000000000003AFFD7000005FFFB8BFFF500000000000
+00000000000000002FF4000000CFF70006FFC00000000000
+00000000000000002FF4000000FFF00000EFF00000000000
+00000000000000002FF4000000FFE00000EFF00000000000
+000000000000002AFFFFC50000EFF40003FFD00000000000
+00000000000006FFFFFFFFB02CFFFF646EFF800000000000
+0000000000005FFFFFFFFFFCFFFFFFFFFFFC000000000000
+000000000001FFFFB658FFFFFF71BFFFFFB1000000000000
+000000000007FFF600002EFFE20003898400000000000000
+00000000000BFFC0000006FFF10000000000000000000000
+00000000000DFF90000003FFF40000000000000000000000
+00000000000DFF90000003FFF30000000000000000000000
+00000000000AFFD0000007FFF10000000000000000000000
+000000000006FFF800005FFFF30005ACA600000000000000
+000000000000EFFFC77AFFFFFF83DFFFFFD2000000000000
+0000000000004FFFFFFFFFFAFFFFFFFFFFFE100000000000
+00000000000004EFFFFFFF701AFFFE525DFF800000000000
+0000000000000018CFFE820000EFF30002FFD00000000000
+00000000000000002FF6000000FFE00000EFF00000000000
+00000000000000002FF6000000EFF10000FFF00000000000
+00000000000000002FF6000000BFF80008FFB00000000000
+0000000000000003AFFE6000004FFFC9CFFF400000000000
+000000000000007FFFFFFC100007FFFFFFF8000000000000
+00000000000005FFFFEFFFA000005EFFFE60000000000000
+0000000000000EFF7004FFF3000000242000000000000000
+0000000000004FFC00007FF8000000000000000000000000
+0000000000005FF800004FF9000000000000000000000000
+0000000000004FFB00006FF8000000000000000000000000
+0000000000001FFF5002EFF5000000000000000000000000
+00000000000008FFFCCFFFC0000000000000000000000000
+000000000000009FFFFFFC10000000000000000000000000
+0000000000000005CFFD8000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+sprite $java [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000800000000000000000000
+000000000000000000000000002C00000000000000000000
+000000000000000000000000009E00000000000000000000
+00000000000000000000000005FC00000000000000000000
+0000000000000000000000005FF600000000000000000000
+000000000000000000000008FFD000000000000000000000
+0000000000000000000001CFFF3016BC3000000000000000
+000000000000000000003EFFF42BFF900000000000000000
+00000000000000000004FFFF35FFF6000000000000000000
+0000000000000000002FFFF22FFE20000000000000000000
+0000000000000000009FFF309FF400000000000000000000
+000000000000000000DFF800CFF000000000000000000000
+000000000000000000CFF200CFF300000000000000000000
+0000000000000000005FF2007FFA00000000000000000000
+0000000000000000000EF6000EFF40000000000000000000
+00000000000000000003EE0004FFA0000000000000000000
+000000000000000000003E7000CFC0000000000000000000
+0000000000000000000002C2009F80000000000000000000
+00000000000000357841000400D900000698300000000000
+0000000000008EFFA100000005400022127FF40000000000
+000000000000FFFFFCA999999ABDFFC10008FB0000000000
+0000000000003BFFFFFFFFFFFFEC84000006FB0000000000
+00000000000000015756664420000000000AF80000000000
+0000000000000008FC20000000146000002FF30000000000
+000000000000000EFFFDB99ABDFFFB1003DF400000000000
+00000000000000019EFFFFFFFFFD95005E91000000000000
+000000000000000002835666420000004100000000000000
+00000000000000004FF8422457BF90000000000000000000
+00000000000246409FFFFFFFFFFFF5000000000000000000
+0000000002CFFB8605BEFFFFFEB71000000C100000000000
+000000000AFFC0000000122100000000008F600000000000
+0000000008FFF92000000000000000004AFE300000000000
+00000000007FFFFDA8644422234689CFFFA1004100000000
+0000000000015ADFFFFFFFFFFFFFFFEB6100199000000000
+000000000000000135688999887431000049FC1000000000
+00000000000000036420000000000248BFFD600000000000
+00000000000000000258ACCCCCDEFFFDB730000000000000
+000000000000000000000012444442000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+
+
+
+
+
+
+skinparam fileBackgroundColor #white
+skinparam ActorBackgroundColor #white
+skinparam ComponentBackgroundColor #white
+skinparam UseCaseBackgroundColor #white
+skinparam ArrowThickness 3
+skinparam ArrowLollipopColor #blue
+skinparam ArrowColor grey
+skinparam legendBackgroundColor #white
+skinparam NoteBorderThickness 1.5
+skinparam QueueBackgroundColor #white
+skinparam BoundaryBackgroundColor #white
+skinparam ControlBackgroundColor #white
+skinparam EntityBackgroundColor #white
+skinparam InterfaceBackgroundColor #white
+skinparam DatabaseBackgroundColor #white
+skinparam Nodesep 30
+skinparam Ranksep 10
+
+<style>
+    .environment {
+        RoundCorner 150
+        Shadowing 3
+    }
+    .service {
+        RoundCorner 50
+        Shadowing 3
+        :depth(3) {
+            LineThickness 10
+        }
+    }
+    .transaction {
+        LineColor #orange
+    }
+    .done {
+        LineColor #green
+        LineThickness 6
+    }
+    .temporary {
+        LineColor #red
+        LineThickness 3
+    }
+    .new {
+        BackGroundColor #powderBlue
+    }
+    .change {
+        BackGroundColor #FFFFB3
+    }
+    .existing {
+        BackGroundColor #lightgreen
+    }
+    .remove {
+        BackGroundColor #pink
+    }
+    .alt {
+        BackGroundColor #plum
+    }
+    .notouch {
+        BackGroundColor #lightgray
+    }
+
+    .next-phase{
+        BorderThickness 0.5
+        BackGroundColor #white|#powderBlue
+        LineStyle 70
+        DiagonalCorner 20 
+    }
+arrow {
+    .new {
+        LineColor #blue
+    }
+    .change {
+        LineColor #burlywood
+    }
+    .existing {
+        LineColor #green
+    }
+    .remove {
+        LineColor #red
+    }
+    .alt {
+        LineColor #purple
+    }
+    .notouch {
+        LineColor #gray
+    }
+    .transaction {
+        LineColor #orange
+        LineStyle 1
+        LineThickness 3
+    }
+
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    left to right direction
+
+    together example_style $example {
+        together {
+            component anyComponent
+            component new <<new>>
+            component existing <<existing>> 
+            component remove <<remove>>
+            component temporary<<new>><<temporary>> 
+            component notouch <<notouch>> 
+            component done<<done>> 
+            component change <<change>>
+            component alternative <<alt>>
+
+            new ..|> anyComponent : Realization 
+            usecase anyUseCase as "use case"
+            actor anyActor as "user/system" 
+            actor stakeholder  
+            stakeholder - -|> anyActor : is as
+            stakeholder - - anyUseCase
+
+            existing - -> remove <<remove>> : "<<remove>>"
+            existing - -> notouch <<notouch>> : "<<notouch>>"
+            existing - -> change <<change>> : "<<change>>" 
+            change - -> done <<change>>
+                    note on link #black|lightgray
+        <&cog><color:#black>change_link</color><back:#white><color:#black></color></back>
+    endnote
+            new - -> done <<new>>
+                    note on link #black|lightgray
+        <&cog><color:#black>new_link</color><back:#white><color:#black></color></back>
+    endnote
+            done - -> existing <<existing>>
+
+            new - -|> anyUseCase : Implements
+
+            rectangle "In the scope of another workstream" <<next-phase>> {
+                component remove_future <<remove>>
+                component change_future <<change>>
+
+                existing - -> remove_future <<existing>>
+                        note on link #black|lightgray
+        <&cog><color:#black>existing_link</color><back:#white><color:#black></color></back>
+    endnote
+                
+                existing - -> change_future
+
+                new - -> temporary
+                temporary - -> remove_future : <color:red>outofscope</color>
+                new - -> alternative <<alt>>
+                        note on link #black|lightgray
+        <&cog><color:#black>alt_link</color><back:#white><color:#black></color></back>
+    endnote
+            }
+        }
+
+    frame Any_Service_Group <<service>><<existing>> as "<size:100>Any Service Group</size>"{
+        frame Any_Service <<service>><<new>> as "<size:100>Any Service</size>" {
+            rectangle Any_Service__Any_Environment <<environment>><<new>> as "<size:60>Any Environment</size>" {
+
+                database anyDatabase as "Queryable\nstorage"
+                file anyFile as "File\nstorage"
+                node process {
+                    entity anyEntity as "Aggregate / Entity"
+                    control anyControl as "Control / Controller"
+                    boundary anyBoundary as "Boundary"
+                    anyControl -l-> anyEntity
+                    anyBoundary -l-> anyControl
+                    anyActor - -> anyBoundary
+                }
+
+                anyControl - -> anyDatabase : POST/PUT/PATCH
+                anyDatabase - -> anyControl : GET
+                anyControl - -> anyFile : Save
+                anyFile - -> anyControl : Retrieve
+
+                    queue Topic_outbound <<outbound>> [
+        [[https://kafka/{topic}{Topic_outbound} Topic_outbound]]
+    ] 
+                    queue Topic_inbound <<inbound>> [
+        [[https://kafka/{topic}{Topic_inbound} Topic_inbound]]
+    ] 
+
+                anyControl - -\\ Topic_outbound : PUSH
+                Topic_inbound - -\\ anyControl : PULL
+
+                interface ApiGateway as "ApiGateway Proxy"
+                ApiGateway -d- anyBoundary
+
+            }
+        }
+    } 
+}
+
+frame Transaction_Diagram_convention $example {
+
+    database Transaction_resource_A 
+
+    hexagon Any_TransactionScope <<transaction>> as "Any TransactionScope" {
+        control Control_With_TransactionScope as "Control With TransactionScope"
+    }
+
+    database Transaction_resource_B
+    File No_Transaction_resource_C
+
+    Transaction_resource_A *- -> Control_With_TransactionScope <<transaction>> : read
+        note on link
+            **In transaction** 
+            Use Composition Arrow 
+            <color:red>*- -></color>
+        endnote
+    Control_With_TransactionScope *- -> Transaction_resource_B <<transaction>> : write
+        note on link
+            In transaction 
+        endnote
+    Control_With_TransactionScope - -> No_Transaction_resource_C : write
+        note on link
+            **NOT in transaction** 
+        endnote
+}
+
+
+frame flow_vs_dependency as "flow vs dependency" $example {
+    
+    control publisher_topic 
+
+    queue topic
+    control consumer_topic
+
+    publisher_topic - -> topic : Publish
+    topic - -> consumer_topic : Consume
+
+    control persister_storage 
+    database storage
+    control querier_storage
+
+    persister_storage - -\\ storage : Store
+    storage - -> querier_storage : Query
+}
+
+legend
+<back:#black><color:#white>Text Tag</color></back> | <back:#powderBlue>New</back> |<back:#lightgreen>Existing</back> |<back:#FFFFB3>Change</back> | <back:#pink>Remove</back> |  <back:#lightgray>Existing no touch</back> | <back:#plum>Alternative</back>
+<size:8> Plantuml 1.2022.6 | 2022-Aug-31 </size>
+end legend
+@enduml
+
+PlantUML version 1.2022.6(Tue Jun 21 17:34:49 UTC 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>
