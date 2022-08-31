@@ -5,7 +5,7 @@ title Conventions
 '!theme spacelab
 !include https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master/style-simple.puml
 
-$example_style()
+'$example_style()
 $legend()
 
 @enduml

@@ -16,6 +16,7 @@
 !$defaultColor = '#white'
 !$defaultPartSeparator = '__'
 !$defaultWordSeparator = '_'
+!$scaleBase = 1
 
 !function $remark($text,$color=red) return "<color:" + $color+ ">" + $text + "</color>"  
 !function $out_of_scope() return $remark(out-of-scope)
@@ -66,6 +67,9 @@ skinparam Ranksep 10
     .service {
         RoundCorner 50
         Shadowing 3
+        :depth(3) {
+            LineThickness 10
+        }
     }
     .transaction {
         LineColor #orange
@@ -126,6 +130,12 @@ arrow {
     .notouch {
         LineColor $notouch_link()
     }
+    .transaction {
+        LineColor #orange
+        LineStyle 1
+        LineThickness 3
+    }
+
 }
 </style>
 
@@ -207,6 +217,7 @@ arrow {
 'node aaa as "$highlight('dd{d}d')"
 
 !unquoted function $label($str,$type='',$size=0)
+    !$size = $size * $scaleBase
     !$res = $str
     !$stereotype = ''
     !$actionColor = ''
@@ -262,6 +273,7 @@ arrow {
 '$label_Test()
 
 !unquoted procedure $scale($type, $name, $action = '', $scale = 5)
+    !$scale = $scale * $scaleBase
     label $name [
         {{
             scale $scale
@@ -287,7 +299,7 @@ arrow {
 !endfunction
 
 !unquoted function $transaction($name, $action = '') {
-    !return "package " + $label($name,'transaction;$action', 15)
+    !return "hexagon " + $label($name,'transaction;$action', 15)
 !endfunction
 
 !unquoted procedure $tag($text='',$desc='', $tagcolor='#black')
@@ -347,53 +359,55 @@ end legend
             new -u-|> anyUseCase : Implements
 
             rectangle "In the scope of another workstream" <<next-phase>> {
-                component remove_future $remove()
+                component remove_future <<remove>>
                     ' $remove_future() 
-                component change_future $change()
+                component change_future <<change>>
                     ' $change_future()
 
-                existing -[$existing_link()]-> remove_future
+                existing --> remove_future <<existing>>
                     $black_tag(existing_link)
                 
                 existing --> change_future
 
                 new --> temporary
                 temporary --> remove_future : $out_of_scope()
-                new -[$alt_link()]-> alternative
+                new --> alternative <<alt>>
                     $tag(alt_link)
             }
         }
 
-    $service(Any_Service, new) {
-        $environment(Any_Service__Any_Environment, new) {
+    $service(Any_Service_Group, existing){
+        $service(Any_Service, new) {
+            $environment(Any_Service__Any_Environment, new) {
 
-            database anyDatabase as "Queryable\nstorage"
-            file anyFile as "File\nstorage"
-            node process {
-                entity anyEntity as "Aggregate / Entity"
-                control anyControl as "Control / Controller"
-                boundary anyBoundary as "Boundary"
-                anyControl -l-> anyEntity
-                anyBoundary -l-> anyControl
-                anyActor --> anyBoundary
+                database anyDatabase as "Queryable\nstorage"
+                file anyFile as "File\nstorage"
+                node process {
+                    entity anyEntity as "Aggregate / Entity"
+                    control anyControl as "Control / Controller"
+                    boundary anyBoundary as "Boundary"
+                    anyControl -l-> anyEntity
+                    anyBoundary -l-> anyControl
+                    anyActor --> anyBoundary
+                }
+
+                anyControl --> anyDatabase : POST/PUT/PATCH
+                anyDatabase --> anyControl : GET
+                anyControl --> anyFile : Save
+                anyFile --> anyControl : Retrieve
+
+                queue Topic_outbound <<outbound>> as "topic"
+                queue Topic_inbound <<inbound>> as "topic"
+
+                anyControl --\\ Topic_outbound : PUSH
+                Topic_inbound --\\ anyControl : PULL
+
+                interface ApiGateway as "ApiGateway Proxy"
+                ApiGateway -d- anyBoundary
+
             }
-
-            anyControl --> anyDatabase : POST/PUT/PATCH
-            anyDatabase --> anyControl : GET
-            anyControl --> anyFile : Save
-            anyFile --> anyControl : Retrieve
-
-            queue Topic_outbound <<outbound>> as "topic"
-            queue Topic_inbound <<inbound>> as "topic"
-
-            anyControl --\\ Topic_outbound : PUSH
-            Topic_inbound --\\ anyControl : PULL
-
-            interface ApiGateway as "ApiGateway Proxy"
-            ApiGateway -d- anyBoundary
-
         }
-    }
+    } 
 }
 
 frame Transaction_Diagram_convention $example {
@@ -407,13 +421,13 @@ frame Transaction_Diagram_convention $example {
     database Transaction_resource_B
     File No_Transaction_resource_C
 
-    Transaction_resource_A *--> Control_With_TransactionScope : read
+    Transaction_resource_A *--> Control_With_TransactionScope <<transaction>> : read
         note on link
             **In transaction** 
             Use Composition Arrow 
             <color:red>*--></color>
         endnote
-    Control_With_TransactionScope *--> Transaction_resource_B : write
+    Control_With_TransactionScope *--> Transaction_resource_B <<transaction>> : write
         note on link
             In transaction 
         endnote
