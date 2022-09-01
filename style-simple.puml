@@ -319,6 +319,10 @@ arrow {
 
 !function $push() return "-->"
 
+!function $transactionLink()
+    !return ' *--> "<<transaction>>"'
+!endfunction
+
 !$kafkaControlCenterUrl = 'https://kafka/{topic}'
 
 !procedure $topic($name,$type='')
