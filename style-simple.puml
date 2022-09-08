@@ -84,6 +84,11 @@ skinparam Ranksep 10
         LineThickness 6
         'LineStyle 6
     }
+    .ready {
+        LineColor $existing_link()
+        LineThickness 6
+        LineStyle 3
+    }
     .temporary {
         LineColor #red
         LineThickness 3
@@ -365,9 +370,10 @@ end legend
             component new <<new>>
             component existing <<existing>> 
             component remove <<remove>>
-            component temporary<<new>><<temporary>> 
+            component temporary <<new>> <<temporary>> 
             component notouch <<notouch>> 
-            component done<<done>> 
+            component done <<done>> 
+            component ready <<ready>> 
             component change <<change>>
             component alternative <<alt>>
 
@@ -385,6 +391,7 @@ end legend
                 $black_tag(change_link)
             new --> done <<new>>
                 $black_tag(new_link)
+            ready --> done
             done --> existing <<existing>>
 
             new --|> anyUseCase : Implements
