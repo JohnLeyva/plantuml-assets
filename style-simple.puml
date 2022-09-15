@@ -242,6 +242,10 @@ arrow {
 !endfunction
 ' [ <<aa>> $stereotype(one;two) <<cc>>]
 
+!unquoted function $link($text, $url)
+    !return "[[" + $url + " " + $text + "]]"
+!endfunction
+
 !unquoted function $label($str,$type = '',$sizeArg = 0)
     !$sizeArg = %intval($sizeArg)
     !$size = ( $sizeArg * $scaleTextUp / $scaleTextDown  )
@@ -361,20 +365,26 @@ end legend
 
 !endsub
 
+!unquoted procedure $componentExample($type)
+        component $type <<$type>> [
+            ]   
+!endprocedure
+
 !unquoted procedure $example_style($text='')
     left to right direction
+
 
     together example_style $example {
         together {
             component anyComponent
-            component new <<new>>
-            component existing <<existing>> 
-            component remove <<remove>>
+            $componentExample(new)
+            $componentExample(existing)
+            $componentExample(remove)
             component temporary <<new>> <<temporary>> 
-            component notouch <<notouch>> 
-            component done <<done>> 
-            component ready <<ready>> 
-            component change <<change>>
+            $componentExample(notouch) 
+            $componentExample(done) 
+            $componentExample(ready)
+            $componentExample(change)
             component alternative <<alt>>
 
             new ..|> anyComponent : Realization 
@@ -500,7 +510,6 @@ frame flow_vs_dependency as "flow vs dependency" $example {
 $example_style()
 $flow_vs_dependency()
 $legend()
-'remove @unlinked
 @enduml
 
 
