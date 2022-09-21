@@ -89,6 +89,11 @@ skinparam Ranksep 10
         LineThickness 6
         LineStyle 3
     }
+    .wip {
+        LineColor $change_link()
+        LineThickness 6
+        LineStyle 3
+    }
     .temporary {
         LineColor #red
         LineThickness 3
@@ -397,6 +402,7 @@ end legend
             $componentExample(notouch) 
             $componentExample(done) 
             $componentExample(ready)
+            $componentExample(wip)
             $componentExample(change)
             component alternative <<alt>>
 
@@ -414,6 +420,7 @@ end legend
                 $black_tag(change_link)
             new --> done <<new>>
                 $black_tag(new_link)
+            wip --> done
             ready --> done
             done --> existing <<existing>>
 
