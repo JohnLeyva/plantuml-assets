@@ -257,7 +257,7 @@ arrow {
         $link('/Aure+Replacement+',https://ukmail.atlassian.net/wiki/spaces/AR/pages/3691970663/Aure+Replacement+-+ConsignmentV1+-+Opsys+request+Batching)
     ]
 !endprocedure
-$link_Test()
+'$link_Test()
 
 !unquoted function $label($str,$type = '',$sizeArg = 0)
     !$sizeArg = %intval($sizeArg)
