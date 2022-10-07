@@ -505,8 +505,42 @@ frame Transaction_Diagram_convention $example {
 
 !endprocedure
 
-!unquoted procedure $flow_vs_dependency()
+!unquoted procedure PK($field)
+    <u>$field</u>
+!endprocedure
 
+!unquoted procedure NotUsed($field)
+    <s:red>$field</s>
+!endprocedure
+
+!unquoted procedure $model_notation_example()
+frame model_notation $example {
+    label model_notation_label [
+        {{
+            left to right direction
+            skinparam Nodesep 50
+            skinparam Ranksep 50
+
+            Entity "Customer Concept" as Costumer_Concept {}
+            Class "System specific Concept" as Sys_Concept {
+                PK(Primary Key)
+                Normal Property
+            }
+            enum SetOfValues {
+                PK(default)
+                Active
+                NotUsed(Not Used)
+            }
+
+            Costumer_Concept --|> Sys_Concept : Is a
+            Sys_Concept "Composed by" *---{ "many" Part  
+            Part -- SetOfValues
+        }}
+    ]
+}
+!endprocedure
+
+!unquoted procedure $flow_vs_dependency()
 frame flow_vs_dependency as "flow vs dependency" $example {
     
     control publisher_topic 
@@ -524,11 +558,11 @@ frame flow_vs_dependency as "flow vs dependency" $example {
     persister_storage --\\ storage : Store
     storage --> querier_storage : Query
 }
-
 !endprocedure
 
 $example_style()
 $flow_vs_dependency()
+$model_notation_example()
 $legend()
 @enduml
 
