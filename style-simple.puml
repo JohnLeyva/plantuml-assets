@@ -149,7 +149,26 @@ arrow {
         LineThickness 3
     }
 
+    .link {
+        ' LineColor $change_link()
+        LineThickness 6
+        'LineStyle 3
+        'ArrowThickness 100
+    }
+    .link_inbound {
+        LineColor #green
+        LineThickness 6
+        'LineStyle 3
+        'ArrowThickness 100
+    }
+    .link_outbound {
+        LineColor #orange
+        LineThickness 6
+        'LineStyle 3
+        'ArrowThickness 100
+    }
 }
+
 </style>
 
 !function $strReplace($str,$find,$replace)
@@ -199,30 +218,36 @@ arrow {
 !endprocedure
 '$CountPart_Test()
 
-!function $LastPart($str,$separator=$defaultPartSeparator)
+!function $GetPart($str,$separator=$defaultPartSeparator,$count=(0-1))
     !$res = $str
     !$pos = 1
-    !while ($pos >= 0)
+    !while ($pos >= 0)&&($count!=0)
+        !$count = $count - 1
         !$pos = %strpos($res,$separator)
         !if ($pos >= 0)
             !$res = %substr($res,$pos + %strlen($separator) )
         !endif
-    !endwhile 
+    !endwhile
+    !$pos = %strpos($res,$separator)
+    !if ($pos >= 0)
+        !$res = %substr($res,0,$pos)
+    !endif
 '    !$parts = %splitstr($str,$separator) ' Splits by char not by string so is not whats required
 '    !foreach $item in $parts
 '        !$res = $item
 '    !endfor 
     !return $res
 !endfunction
-!procedure $LastPart_Test() 
-    node LastPart_Test $example
+!procedure $GetPart_Test() 
+    node GetPart_Test $example
     note right
-        $LastPart(Part1__Part2__Part3__Part4,'__')
-        $LastPart('Part1++Part2+Part3+Part4','+')
-        $LastPart('https://ukmail.atlassian.net/wiki/spaces/AR/pages/3691970663/Aure+Replacement+-+ConsignmentV1+-+Opsys+request+Batching','/')
+        $GetPart(Part1__Part2__Part3__Part4,'__',0)
+        $GetPart(Part1__Part2__Part3__Part4,'__')
+        $GetPart('Part1++Part2+Part3+Part4','+')
+        $GetPart('https://ukmail.atlassian.net/wiki/spaces/AR/pages/3691970663/Aure+Replacement+-+ConsignmentV1+-+Opsys+request+Batching','/')
     endnote
 !endprocedure
-'$LastPart_Test()
+'$GetPart_Test()
 
 !function $highlight($str,$start='{',$end='}',$color='red')
     !$res = $strReplace($str,$start,"<color:red>")
@@ -247,11 +272,11 @@ arrow {
     !endfor 
     !return $result
 !endfunction
-' [ <<aa>> $stereotype(one;two) <<cc>>]
+'[ <<aa>> $stereotype(one;two) <<cc>>]
 
 !unquoted function $link($text, $url)
     !if (%substr($text,0,1) == '/')
-        !$text = $LastPart($url,$text)
+        !$text = $GetPart($url,$text)
     !endif
     !$text = $strReplace($text,'+',' ')
     !return "[[" + $url + " " + $text + "]]"
@@ -264,17 +289,79 @@ arrow {
 !endprocedure
 '$link_Test()
 
-!unquoted function $label($str,$type = '',$sizeArg = 0)
-    !$sizeArg = %intval($sizeArg)
-    !$size = ( $sizeArg * $scaleTextUp / $scaleTextDown  )
-    !$res = $str
-    !$actionColor = ''
-    !if ($type!='')
-        !$stereotypeStr = $stereotype($type)
-        !if ($stereotypeStr!='')
-            !$res = $res + ' ' + $stereotypeStr
+!function $linkRes($str)
+    !$separator="|"
+    !$count = $CountPart($str,$separator) -  1
+    !$res = ''
+    !while ($count >= 0)
+        !$part = $GetPart($str,$separator,$count)
+        !$text = $GetPart($part,'!',0)
+        !$url = $GetPart($part,'!',1)
+        !$res = $link($text, $url) + " " + $res
+        !$count = $count - 1
+    !endwhile 
+    !return $res 
+!endprocedure
+!procedure $linkRes_Test()
+    label linkRes [
+        $linkRes('A!http://aaa.com|B!http://bbb.com|C!http://ccc.com')
+    ]
+!endprocedure
+'$linkRes_Test()
+
+!function $linkObj($json_object)
+    !$res = ''
+    !if (%get_json_type($json_object) == "object")
+        !foreach $key in %get_json_keys($json_object)
+            !$res = $res + " " + $link($key,$json_object[$key])
+        !endfor
+    !endif
+    !return $res 
+!endprocedure
+!procedure $linkObj_Test()
+    !$url_data = { 
+        "A" : "http://aaa.com",
+        "B" : "http://bbb.com",
+        "C" : "http://ccc.com"
+      }
+    label linkObj [
+        $linkObj($url_data)
+    ]
+!endprocedure
+'$linkObj_Test()
+
+!function $label($str,$data=0,$sizeArg=0)
+    !$dataname = "$" + $str + "_data"
+    !$links = ''
+    !if (%get_json_type($data) != "object")
+        !if (%variable_exists($dataname))
+            !$data = %get_variable_value($dataname)
         !endif
     !endif
+
+    !if (%get_json_type($data) == "object")
+        !$links = $linkObj($data.url)
+        !if ($data.text_size > 0)
+            !$sizeArg = $data.text_size
+        !endif
+    !endif
+
+    !if (%get_json_type($data) == "string")
+    !if (%strpos($data,"://") > 0)
+        !$links = $linkRes($data.url)
+        !if ($data.text_size > 0)
+            !$sizeArg = $data.text_size
+        !endif
+    !endif
+    !endif
+
+
+    !$sizeArg = %intval($sizeArg)
+    !$size = ( $sizeArg * $scaleTextUp / $scaleTextDown  )
+
+    !$parts = %splitstr($str,";")
+    !$res = $str
+    !$actionColor = ''
 
     !if ($size > 0)
         !$sizeStart = '<size:' + $size + '>'
@@ -284,11 +371,14 @@ arrow {
         !$sizeEnd = ''
     !endif
 
-    !$name = $LastPart($str)
+    !$name = $GetPart($str)
     !$name = $strReplace($name,$defaultWordSeparator,' ')
     !$entityLevel = $CountPart($str)
 
-    !$res = $res + ' as "' + $sizeStart + $name + $sizeEnd + '"'
+    !global $global_last_name = $name
+    !global $global_last_entityLevel = $entityLevel
+
+    !$res = $res + ' as "' + $sizeStart + $name + $sizeEnd + $links + '" '
 
 '    !if (%strlen($actionColor) > 0)
 '        !$actionColor = %darken($action , ($entityLevel - 2) * 10)
@@ -298,20 +388,34 @@ arrow {
     !return $res
 !endfunction
 
+
+!unquoted function $labelOld($str,$data=0,$sizeArg = 0)
+    !return $labelExtra($str,$data,$sizeArg)
+!endfunction
+
 !procedure $label_Test() 
+    !global $Any_Service_3_data1 = { "url" : { 
+        "A" : "http://aaa.com",
+        "B" : "http://bbb.com",
+        "C" : "http://ccc.com"
+      },
+      "text_size" : 40 }
+
     rectangle label_Test [
         == label_Test
         ---
             No Size
-            $label(Any_Service,service;new)
+            $label(Any_Service_1)
         ---
             Size = 30
-            $label(Any_Service,service;new, 30)
+            $label(Any_Service_2,0,20)
         ---
-            $label(Any_Service,service;new;change)
+            $label(Any_Service_3,$Any_Service_3_data1,15)
+        ---
+            $label(Any_Service_4,'F!http://aaa.com|G!http://bbb.com|H!http://ccc.com',15)
     ]
 !endprocedure
-' $label_Test()
+$label_Test()
 
 
 !unquoted procedure $scale($type, $name, $action = '', $factor = 4)
@@ -328,20 +432,20 @@ arrow {
 !endprocedure
 ' $scale_Test()
 
-!unquoted function $service($name = 'anyService', $action = '')
-    !return "frame " + $label($name,"service;" + $action,50) 
+!function $service($name = 'anyService', $action = '')
+    !return "frame " + $label($name,$action,50) + " <<service>> " 
 !endfunction
 
-!unquoted function $environment($name = 'anyEnvironment', $action = '')
-    !return "rectangle " + $label($name, "environment;" + $action ,30)
+!function $environment($name = 'anyEnvironment', $action = '')
+    !return "rectangle " + $label($name, $action ,30) + " <<environment>> "
 !endfunction
 
-!unquoted function $external($name = 'anyEnvironment', $action = '')
-    !return "cloud " + $label($name,"environment;$action",30)
+!function $external($name = 'anyEnvironment', $action = '')
+    !return "cloud " + $label($name,$action,30) + " <<environment>> "
 !endfunction
 
-!unquoted function $transaction($name, $action = '') {
-    !return "hexagon " + $label($name,'transaction;' + $action)
+!function $transaction($name, $action = '') {
+    !return "hexagon " + $label($name,$action) + " <<transaction>> "
 !endfunction
 
 !function $push() return "-->"
