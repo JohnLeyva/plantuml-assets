@@ -274,7 +274,7 @@ arrow {
 !endfunction
 '[ <<aa>> $stereotype(one;two) <<cc>>]
 
-!unquoted function $link($text, $url)
+!function $link($text, $url)
     !if (%substr($text,0,1) == '/')
         !$text = $GetPart($url,$text)
     !endif
@@ -295,9 +295,10 @@ arrow {
     !$res = ''
     !while ($count >= 0)
         !$part = $GetPart($str,$separator,$count)
-        !$text = $GetPart($part,'!',0)
+        !$key = $GetPart($part,'!',0)
         !$url = $GetPart($part,'!',1)
-        !$res = $link($text, $url) + " " + $res
+        !$keytag = "<" + $key + ">"
+        !$res = $link($keytag, $url) + " " + $res
         !$count = $count - 1
     !endwhile 
     !return $res 
@@ -313,7 +314,8 @@ arrow {
     !$res = ''
     !if (%get_json_type($json_object) == "object")
         !foreach $key in %get_json_keys($json_object)
-            !$res = $res + " " + $link($key,$json_object[$key])
+            !$keytag = "<" + $key + ">"
+            !$res = $res + " " + $link($keytag,$json_object[$key])
         !endfor
     !endif
     !return $res 
@@ -415,8 +417,7 @@ arrow {
             $label(Any_Service_4,'F!http://aaa.com|G!http://bbb.com|H!http://ccc.com',15)
     ]
 !endprocedure
-$label_Test()
-
+'$label_Test()
 
 !unquoted procedure $scale($type, $name, $action = '', $factor = 4)
     !$scale2 = $factor * $scaleText
