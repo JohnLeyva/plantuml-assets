@@ -457,16 +457,13 @@ arrow {
 
 !$kafkaControlCenterUrl = 'https://kafka/{topic}'
 
-!procedure $topic($name,$type='')
+!procedure $topic($name)
     !$topicName = $strReplace($name,'_queue','')
     !$topicName = $strReplace($name,'_topic','')
     !$topicName = $strReplace($name,'_','-')
     !$topicName = $strReplace($name,'--','_')
     !$topicUrl = $strReplace($kafkaControlCenterUrl,'{topic}',$topicName)
-    !$stereotypeStr = $stereotype($type)
-    queue $name $stereotypeStr [
-        [[$topicUrl{$name} $topicName]]
-    ] 
+    queue $name as "[[$topicUrl{$name} $topicName]]"
 !endprocedure
 
 !unquoted procedure $tag($text='',$desc='', $tagcolor='#black')
@@ -569,8 +566,8 @@ end legend
                 anyControl --> anyFile : Save
                 anyFile --> anyControl : Retrieve
 
-                $topic(Topic_outbound,outbound)
-                $topic(Topic_inbound,inbound)
+                $topic(Topic_outbound) <<outbound>>
+                $topic(Topic_inbound) <<inbound>>
 
                 anyControl --\\ Topic_outbound : PUSH
                 Topic_inbound --\\ anyControl : PULL
