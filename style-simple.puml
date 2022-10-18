@@ -566,8 +566,8 @@ end legend
                 anyControl --> anyFile : Save
                 anyFile --> anyControl : Retrieve
 
-                $topic(Topic_outbound) <<outbound>>
-                $topic(Topic_inbound,'Topic-{Type}-accepted-from_{source}') <<inbound>>
+                $topic(Topic_outbound,'{MessageType}-from_{source}-processed') <<outbound>>
+                $topic(Topic_inbound,'{MessageType}-from_{source}-accepted') <<inbound>>
 
                 anyControl --\\ Topic_outbound : PUSH
                 Topic_inbound --\\ anyControl : PULL
