@@ -458,6 +458,8 @@ arrow {
 !$kafkaControlCenterUrl = 'https://kafka/{topic}'
 
 !procedure $topic($name,$type='')
+    !$topicName = $strReplace($name,'_queue','')
+    !$topicName = $strReplace($name,'_topic','')
     !$topicName = $strReplace($name,'_','-')
     !$topicName = $strReplace($name,'--','_')
     !$topicUrl = $strReplace($kafkaControlCenterUrl,'{topic}',$topicName)
