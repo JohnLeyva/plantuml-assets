@@ -466,6 +466,14 @@ arrow {
     queue $name as "[[$topicUrl{$name} $topicName]]\n$highlight($format)"
 !endprocedure
 
+!procedure $topic_message($topicname,$messageType) 
+    !$notename = $topicname + "_" + $messageType
+    note as $notename
+        %invoke_procedure($messageType)
+    end note
+    $topicname -- $notename
+!endprocedure
+
 !unquoted procedure $tag($text='',$desc='', $tagcolor='#black')
     note on link $tagcolor|lightgray
         <&cog><color:#black>$text</color><back:#white><color:#black>$desc</color></back>
@@ -492,9 +500,21 @@ end legend
             ]   
 !endprocedure
 
+!procedure messageTypeExample ()
+    {{
+        json jsonschema {
+            "Key" : "Header.CorrelationID",
+            "Value" : {
+                "EntityId" : "string",
+                "status" : ["Success", "Warning", "Failed"],
+                "Errors[]" : "record"
+            }
+        }
+    }}
+!end procedure
+
 !unquoted procedure $example_style($text='')
     left to right direction
-
 
     together example_style $example {
         together {
@@ -546,9 +566,9 @@ end legend
             }
         }
 
-    $service(Any_Service_Group, existing){
-        $service(Any_Service, new) {
-            $environment(Any_Service__Any_Environment, new) {
+    $service(Any_Service_Group) <<existing>> {
+        $service(Any_Service) <<new>> {
+            $environment(Any_Service__Any_Environment) <<new>> {
 
                 database anyDatabase as "Queryable\nstorage"
                 file anyFile as "File\nstorage"
@@ -568,17 +588,18 @@ end legend
 
                 $topic(Topic_outbound,'{MessageType}-from_{source}-processed') <<outbound>>
                 $topic(Topic_inbound,'{MessageType}-from_{source}-accepted') <<inbound>>
+                $topic_message(Topic_outbound,messageTypeExample)
 
                 anyControl --\\ Topic_outbound : PUSH
                 Topic_inbound --\\ anyControl : PULL
 
                 interface ApiGateway as "ApiGateway Proxy"
                 ApiGateway -d- anyBoundary
-
             }
         }
     } 
 }
+
 
 frame Transaction_Diagram_convention $example {
 
