@@ -172,19 +172,21 @@ arrow {
 </style>
 
 !function $strReplace($str,$find,$replace)
-    !$len = %strlen($str)
+    !$tail = $str
+    !$len = %strlen($find)
     !$res = ""
-    !while $len >= 0
-        !$chr = %substr($str,$len,1)
-        !if $chr == $find
-            !$res = $replace + $res
-        !else
-            !$res = $chr + $res
+    !$pos = 0
+    !while $pos >= 0
+        !$pos = %strpos($tail,$find)
+        !if $pos >= 0
+            !$head = %substr($tail, $0, $pos)
+            !$tail = %substr($tail, $pos + $len)
+            !$res = $res + $head + $replace
         !endif
-        !$len = $len - 1
     !endwhile
-    !return $res
+    !return $res + $tail
 !endfunction
+'node strReplace_Test as "$strReplace('{{a}}-{{b}}-{{c}}','{{','<')"
 
 !procedure $ShowJson($json,$text='=json')
     label l [
@@ -249,12 +251,12 @@ arrow {
 !endprocedure
 '$GetPart_Test()
 
-!function $highlight($str,$start='{',$end='}',$color='red')
+!function $highlight($str,$start='{{',$end='}}',$color='red')
     !$res = $strReplace($str,$start,"<color:red>")
     !$res = $strReplace($res,$end,"</color>")
     !return $res
 !endfunction
-'node aaa as "$highlight('dd{d}d')"
+'node highlight_test as "$highlight('{{a}}-{{b}}-{{c}}')"
 
 !unquoted function $stereotype($str)
     !if ($str=='')
@@ -586,8 +588,8 @@ end legend
                 anyControl --> anyFile : Save
                 anyFile --> anyControl : Retrieve
 
-                $topic(Topic_outbound,'{MessageType}-from_{source}-processed') <<outbound>>
-                $topic(Topic_inbound,'{MessageType}-from_{source}-accepted') <<inbound>>
+                $topic(Topic_outbound,'{{MessageType}}-from_{{source}}-processed') <<outbound>>
+                $topic(Topic_inbound,'{{MessageType}}-from_{{source}}-accepted') <<inbound>>
                 $topic_message(Topic_outbound,messageTypeExample)
 
                 anyControl --\\ Topic_outbound : PUSH
