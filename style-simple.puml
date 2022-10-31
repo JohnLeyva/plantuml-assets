@@ -359,9 +359,8 @@ arrow {
     !endif
     !endif
 
-
     !$sizeArg = %intval($sizeArg)
-    !$size = ( $sizeArg * $scaleTextUp / $scaleTextDown  )
+    !$size = ( $sizeArg * $scaleTextUp / $scaleTextDown )
 
     !$parts = %splitstr($str,";")
     !$res = $str
