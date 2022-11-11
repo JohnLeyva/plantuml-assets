@@ -117,7 +117,11 @@ skinparam Ranksep 10
     .notouch {
         BackGroundColor $notouch()
     }
-
+    .out-of-scope {
+        BackGroundColor $notouch()|$new()
+        LineStyle 70
+        DiagonalCorner 20 
+    }
     .next-phase{
         BorderThickness 0.5
         BackGroundColor #white|$new()
