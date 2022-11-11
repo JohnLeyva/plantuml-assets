@@ -13,6 +13,10 @@
 
 !startsub BASIC
 
+!global $service_textSize = 50
+!global $environment_textSize = 30
+!global $external_textSize = 30
+
 !$defaultColor = '#white'
 !$defaultPartSeparator = '__'
 !$defaultWordSeparator = '_'
@@ -438,16 +442,17 @@ arrow {
 !endprocedure
 ' $scale_Test()
 
+
 !function $service($name = 'anyService', $action = '')
-    !return "frame " + $label($name,$action,50) + " <<service>> " 
+    !return "frame " + $label($name,$action,$service_textSize) + " <<service>> " 
 !endfunction
 
 !function $environment($name = 'anyEnvironment', $action = '')
-    !return "rectangle " + $label($name, $action ,30) + " <<environment>> "
+    !return "rectangle " + $label($name, $action,$environment_textSize) + " <<environment>> "
 !endfunction
 
 !function $external($name = 'anyEnvironment', $action = '')
-    !return "cloud " + $label($name,$action,30) + " <<environment>> "
+    !return "cloud " + $label($name,$action,$external_textSize) + " <<environment>> "
 !endfunction
 
 !function $transaction($name, $action = '') {
