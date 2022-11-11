@@ -133,6 +133,11 @@ skinparam Ranksep 10
         DiagonalCorner 20 
     }
 arrow {
+    .done {
+        LineColor $existing_link()
+        LineThickness 3
+        LineStyle 6
+    }
     .new {
         LineColor $new_link()
     }
