@@ -137,6 +137,7 @@ arrow {
         LineColor $existing_link()
         LineThickness 3
         LineStyle 20
+        ArrowThickness 20
     }
     .new {
         LineColor $new_link()
