@@ -204,7 +204,7 @@ arrow {
 'node strReplace_Test as "$strReplace('{{a}}-{{b}}-{{c}}','{{','<')"
 
 !function $option_label($text='',$desc='')
-    !return '<color:purple><size:25><&tag>' + $text + '</size></color>'
+    !return '<color:purple><size:20><&tag>' + $text + '</size></color>'
 !endfunction
 
 !function $option_pro() {
