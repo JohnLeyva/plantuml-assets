@@ -220,7 +220,8 @@ arrow {
     !global $global_last_note_name = $name
     !global $global_last_note_target = $target
     note as $name
-        Opt : $option_label($str)
+        $option_label($str)
+        ===
         ===
 !endprocedure
 
