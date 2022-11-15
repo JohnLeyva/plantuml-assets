@@ -220,7 +220,7 @@ arrow {
     !global $global_last_note_name = $name
     !global $global_last_note_target = $target
     note as $name
-        $option_label($str)
+        Opt : $option_label($str)
         ===
 !endprocedure
 
@@ -241,6 +241,8 @@ rectangle option_test $example {
     ]
 
     $option_note_start('note_opt_test', 'option_test_card')
+        description
+        ---
         $option_pro() : option_pro 
         $option_con() : option_con 
     $option_note_end()
