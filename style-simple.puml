@@ -221,7 +221,7 @@ arrow {
     !global $global_last_note_target = $target
     note as $name
         $option_label($str)
-        --
+        ___
 !endprocedure
 
 !procedure $option_note_end()
