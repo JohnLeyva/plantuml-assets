@@ -186,6 +186,10 @@ arrow {
 
 </style>
 
+!function $option_label($text='',$desc='')
+    !return '<color:purple><size:25><&tag>' + $text + '</size></color>'
+!endfunction
+
 !function $option_pro() {
     !return '<color:green><size:25><&thumb-up></size></color>'
 !endfunction
@@ -193,6 +197,14 @@ arrow {
 !function $option_con() {
     !return '<color:red><size:25><&thumb-down></size></color>'
 !endfunction
+
+rectangle option_test $example {
+    card option_test_card [
+        $option_label("Opt ABC")
+        $option_pro() : option_pro 
+        $option_con() : option_con 
+    ]
+}
 
 !function $strReplace($str,$find,$replace)
     !$tail = $str
