@@ -186,26 +186,6 @@ arrow {
 
 </style>
 
-!function $option_label($text='',$desc='')
-    !return '<color:purple><size:25><&tag>' + $text + '</size></color>'
-!endfunction
-
-!function $option_pro() {
-    !return '<color:green><size:25><&thumb-up></size></color>'
-!endfunction
-
-!function $option_con() {
-    !return '<color:red><size:25><&thumb-down></size></color>'
-!endfunction
-
-rectangle option_test $example {
-    card option_test_card [
-        $option_label("Opt ABC")
-        $option_pro() : option_pro 
-        $option_con() : option_con 
-    ]
-}
-
 !function $strReplace($str,$find,$replace)
     !$tail = $str
     !$len = %strlen($find)
@@ -222,6 +202,51 @@ rectangle option_test $example {
     !return $res + $tail
 !endfunction
 'node strReplace_Test as "$strReplace('{{a}}-{{b}}-{{c}}','{{','<')"
+
+!function $option_label($text='',$desc='')
+    !return '<color:purple><size:25><&tag>' + $text + '</size></color>'
+!endfunction
+
+!function $option_pro() {
+    !return '<color:green><size:25><&thumb-up></size></color>'
+!endfunction
+
+!function $option_con() {
+    !return '<color:red><size:25><&thumb-down></size></color>'
+!endfunction
+
+!procedure $option_note_start($name, $target)
+    !$str = $strReplace($name,$defaultWordSeparator,' ')
+    !global $global_last_note_name = $name
+    !global $global_last_note_target = $target
+    note as $name
+        == $option_label($str) ==
+!endprocedure
+
+!procedure $option_note_end()
+    end note
+    !if ($global_last_note_target != '')
+        $global_last_note_name -- $global_last_note_target
+    !endif
+    !global $global_last_note_name = ''
+    !global $global_last_note_target = ''
+!endprocedure
+
+rectangle option_test $example {
+    card option_test_card [
+        $option_label("Opt ABC")
+        $option_pro() : option_pro 
+        $option_con() : option_con 
+    ]
+
+    note as abcd
+        sdfdf
+    end note
+    abcd -- option_test_card
+
+    $option_note_start('note_opt_test', 'option_test_card')
+    $option_note_end()
+}
 
 !procedure $ShowJson($json,$text='=json')
     label l [
