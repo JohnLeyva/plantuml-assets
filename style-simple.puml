@@ -186,6 +186,14 @@ arrow {
 
 </style>
 
+!function $option_pro() {
+    !return '<color:green><size:25><&thumb-up></size></color>'
+!endfunction
+
+!function $option_con() {
+    !return '<color:red><size:25><&thumb-down></size></color>'
+!endfunction
+
 !function $strReplace($str,$find,$replace)
     !$tail = $str
     !$len = %strlen($find)
