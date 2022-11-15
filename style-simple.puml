@@ -215,12 +215,13 @@ arrow {
     !return '<color:red><size:25><&thumb-down></size></color>'
 !endfunction
 
-!procedure $option_note_start($name, $target)
+!procedure $option_note_start($name, $target='')
     !$str = $strReplace($name,$defaultWordSeparator,' ')
     !global $global_last_note_name = $name
     !global $global_last_note_target = $target
     note as $name
-        == $option_label($str) ==
+        $option_label($str)
+        --
 !endprocedure
 
 !procedure $option_note_end()
@@ -239,12 +240,9 @@ rectangle option_test $example {
         $option_con() : option_con 
     ]
 
-    note as abcd
-        sdfdf
-    end note
-    abcd -- option_test_card
-
     $option_note_start('note_opt_test', 'option_test_card')
+        $option_pro() : option_pro 
+        $option_con() : option_con 
     $option_note_end()
 }
 
