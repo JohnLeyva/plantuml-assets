@@ -47,6 +47,7 @@
 !function $remove_future($type = "any") return "#lightgreen|pink"  
 !function $change_future($type = "any") return "#lightgreen|yellow"  
 
+skinparam defaultTextAlignment left
 skinparam fileBackgroundColor #white
 skinparam ActorBackgroundColor #white
 skinparam ComponentBackgroundColor #white
