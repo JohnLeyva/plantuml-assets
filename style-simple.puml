@@ -215,11 +215,15 @@ arrow {
     !return '<color:red><size:25><&thumb-down></size></color>'
 !endfunction
 
-!procedure $option_note_start($name, $target='')
+!procedure $option_note_start($name='', $target='')
     !$str = $strReplace($name,$defaultWordSeparator,' ')
     !global $global_last_note_name = $name
     !global $global_last_note_target = $target
+    !if ($name == '')
+    note on link
+    !else
     note as $name
+    !endif
         $option_label($str)
 !endprocedure
 
