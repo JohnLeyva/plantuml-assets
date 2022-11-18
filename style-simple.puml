@@ -26,7 +26,7 @@
 !$scaleText = $scaleTextUp / $scaleTextDown
 
 !function $remark($text,$color=red) return "<color:" + $color+ ">" + $text + "</color>"  
-!function $out_of_scope() return $remark(out-of-scope)
+'!function $out_of_scope() return $remark(out-of-scope)
 
 !function $notouch($type = "any") return "#lightgray"
 !function $notouch_link($type = "any") return "#gray"
@@ -137,6 +137,13 @@ skinparam Ranksep 10
         DiagonalCorner 20 
     }
 arrow {
+    .out-of-scope {
+        LineColor $alt()
+        LineThickness 3
+        BackGroundColor $notouch()|$new()
+        LineStyle 70
+        DiagonalCorner 20
+    }
     .done {
         LineColor $existing_link()
         LineThickness 3
@@ -193,6 +200,10 @@ arrow {
     remove '$' + $name
     remove '<<' + $name + '>>'
 !endprocedure
+
+!unquoted function $link_type($name)
+    !return '<<' + $name + '>> : ' + "<" + $name + '>' 
+!endfunction
 
 !function $strReplace($str,$find,$replace)
     !$tail = $str
@@ -610,15 +621,15 @@ end legend
             stakeholder --|> anyActor : is as
             stakeholder -- anyUseCase
 
-            existing --> remove <<remove>> : "<<remove>>"
-            existing --> notouch <<notouch>> : "<<notouch>>"
-            existing --> change <<change>> : "<<change>>" 
-            change --> done <<change>>
-            new --> done <<new>>
+            existing --> remove $link_type(remove)
+            existing --> notouch $link_type(notouch)
+            existing --> change $link_type(change) 
+            change --> done $link_type(change)
+            new --> done $link_type(new)
                 $black_tag(new_link)
             wip --> done
             ready --> done
-            done --> existing <<existing>>
+            done --> existing $link_type(existing)
 
             new --|> anyUseCase : Implements
 
@@ -635,8 +646,8 @@ end legend
                 existing --> change_future
 
                 new --> temporary
-                temporary --> remove_future : $out_of_scope()
-                new --> alternative <<alt>>
+                temporary --> remove_future $link_type(out-of-scope)
+                new --> alternative $link_type(alt)
                     $tag(alt_link)
             }
         }
