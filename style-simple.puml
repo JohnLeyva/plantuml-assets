@@ -124,7 +124,7 @@ skinparam Ranksep 10
     }
     .out-of-scope {
         LineColor $alt()
-        LineThickness 3
+        LineThickness 8
         BackGroundColor $notouch()|$new()
         LineStyle 70
         DiagonalCorner 20 
