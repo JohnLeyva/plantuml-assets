@@ -100,7 +100,7 @@ skinparam Ranksep 10
         LineStyle 3
     }
     .temporary {
-        LineColor #red
+        LineColor $remove()
         LineThickness 3
         'LineStyle 6
     }
@@ -123,12 +123,15 @@ skinparam Ranksep 10
         BackGroundColor $notouch()
     }
     .out-of-scope {
+        LineColor $alt()
+        LineThickness 3
         BackGroundColor $notouch()|$new()
         LineStyle 70
         DiagonalCorner 20 
     }
     .next-phase{
-        BorderThickness 0.5
+        LineThickness 3
+        BorderThickness 10
         BackGroundColor #white|$new()
         LineStyle 70
         DiagonalCorner 20 
@@ -185,6 +188,11 @@ arrow {
 }
 
 </style>
+
+!procedure $hide($name)
+    remove '$' + $name
+    remove '<<' + $name + '>>'
+!endprocedure
 
 !function $strReplace($str,$find,$replace)
     !$tail = $str
@@ -606,7 +614,6 @@ end legend
             existing --> notouch <<notouch>> : "<<notouch>>"
             existing --> change <<change>> : "<<change>>" 
             change --> done <<change>>
-                $black_tag(change_link)
             new --> done <<new>>
                 $black_tag(new_link)
             wip --> done
@@ -615,8 +622,11 @@ end legend
 
             new --|> anyUseCase : Implements
 
-            rectangle "In the scope of another workstream" <<next-phase>> {
+            rectangle "No in the project scope" <<out-of-scope>> {
                 component remove_future <<remove>>
+            }
+            
+            rectangle "In the scope of another workstream" <<next-phase>> {
                 component change_future <<change>>
 
                 existing --> remove_future <<existing>>
