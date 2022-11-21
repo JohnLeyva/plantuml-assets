@@ -193,6 +193,10 @@ arrow {
         'ArrowThickness 100
     }
 }
+usecase {
+    FontSize 30
+    BackgroundColor AliceBlue
+}
 
 </style>
 
