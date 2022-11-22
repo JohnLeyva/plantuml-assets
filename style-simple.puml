@@ -245,7 +245,8 @@ usecase {
     !if ($name == '')
     note on link
     !else
-    note as $name
+    !$handle = '$' + $name 
+    note as $name $handle 
     !endif
         $option_label($str)
 !endprocedure
@@ -266,7 +267,7 @@ rectangle option_test $example {
         $option_con() : option_con 
     ]
 
-    $option_note_start('note_opt_test', 'option_test_card')
+    $option_note_start(note_opt_test, 'option_test_card')
         description
         ---
         $option_pro() : option_pro 
