@@ -208,6 +208,22 @@ usecase {
     remove $stereotype
 !endprocedure
 
+!procedure $hide($name)
+    !$handle = '$' + $name
+    !$stereotype = '<<' + $name + '>>'
+    hide $name
+    hide $handle
+    hide $stereotype
+!endprocedure
+
+!procedure $show($name)
+    !$handle = '$' + $name
+    !$stereotype = '<<' + $name + '>>'
+    show $name
+    show $handle
+    show $stereotype
+!endprocedure
+
 !unquoted function $link_type($name)
     !return '<<' + $name + '>> : ' + "<" + $name + '>' 
 !endfunction
@@ -242,7 +258,8 @@ usecase {
 !endfunction
 
 !function $option_link($name) {
-    !return '<<alt>> <<' + $name + '>> : ' + $option_label($name) 
+    '!return '<<alt>> <<' + $name + '>> : ' + $option_label($name) 
+    !return '<<alt>> <<' + $name + '>> ' 
 !endfunction
 
 !procedure $option_note_start($name='', $target='')
@@ -284,6 +301,8 @@ rectangle option_test $example {
         $option_pro() : option_pro 
         $option_con() : option_con 
     $option_note_end()
+
+    '$rem(note_opt_test)
 }
 
 !procedure $ShowJson($json,$text='=json')
