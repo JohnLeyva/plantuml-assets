@@ -258,8 +258,7 @@ usecase {
 !endfunction
 
 !function $option_link($name) {
-    '!return '<<alt>> <<' + $name + '>> : ' + $option_label($name) 
-    !return '<<alt>> <<' + $name + '>> ' 
+    !return '<<alt>> <<' + $name + '>> : ' + $option_label($name) 
 !endfunction
 
 !procedure $option_note_start($name='', $target='')
