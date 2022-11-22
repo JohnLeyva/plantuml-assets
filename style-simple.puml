@@ -238,6 +238,10 @@ usecase {
     !return '<color:red><size:25><&thumb-down></size></color>'
 !endfunction
 
+!function $option_link($name) {
+    !return '<<alt>> <<' + $name + '>> : ' + $option_label($name) 
+!endfunction
+
 !procedure $option_note_start($name='', $target='')
     !$str = $strReplace($name,$defaultWordSeparator,' ')
     !global $global_last_note_name = $name
@@ -266,6 +270,10 @@ rectangle option_test $example {
         $option_pro() : option_pro 
         $option_con() : option_con 
     ]
+
+    component option_test_component
+
+    option_test_card -- option_test_component $option_link(note_opt_test)
 
     $option_note_start(note_opt_test, 'option_test_card')
         description
