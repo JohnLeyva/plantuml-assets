@@ -200,9 +200,12 @@ usecase {
 
 </style>
 
-!procedure $hide($name)
-    remove '$' + $name
-    remove '<<' + $name + '>>'
+!procedure $rem($name)
+    !$handle = '$' + $name
+    !$stereotype = '<<' + $name + '>>'
+    remove $name
+    remove $handle
+    remove $stereotype
 !endprocedure
 
 !unquoted function $link_type($name)
