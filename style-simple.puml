@@ -468,6 +468,12 @@ rectangle option_test $example {
 !endprocedure
 '$linkObj_Test()
 
+!function $GetName($str)
+    !$name = $GetPart($str)
+    !$name = $strReplace($name,$defaultWordSeparator,' ')
+    !return $name 
+!endfunction
+
 !function $label($str,$data=0,$sizeArg=0)
     !$dataname = "$" + $str + "_data"
     !$links = ''
@@ -508,8 +514,7 @@ rectangle option_test $example {
         !$sizeEnd = ''
     !endif
 
-    !$name = $GetPart($str)
-    !$name = $strReplace($name,$defaultWordSeparator,' ')
+    !$name = $GetName($str)
     !$entityLevel = $CountPart($str)
 
     !global $global_last_name = $name
