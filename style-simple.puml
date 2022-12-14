@@ -13,6 +13,8 @@
 
 !startsub BASIC
 
+!$kafkaControlCenterUrl = 'https://kafka/{topic}'
+
 !global $service_textSize = 50
 !global $environment_textSize = 30
 !global $external_textSize = 30
@@ -261,26 +263,40 @@ usecase {
     !return '<<alt>> <<' + $name + '>> : ' + $option_label($name) 
 !endfunction
 
-!procedure $option_note_start($name='', $target='')
+!procedure $note_start($name='', $target='')
     !$str = $strReplace($name,$defaultWordSeparator,' ')
     !global $global_last_note_name = $name
-    !global $global_last_note_target = $target
+
+    !if ($target=='')
+        !global $global_last_note_target = $global_last_name
+    !else
+        !global $global_last_note_target = $target
+    !endif
+
     !if ($name == '')
     note on link
     !else
     !$handle = '$' + $name 
     note as $name $handle 
     !endif
+!endprocedure
+
+!procedure $option_note_start($name='', $target='')
+    $note_start($name, $target)
         $option_label($str)
 !endprocedure
 
-!procedure $option_note_end()
+!procedure $note_end()
     end note
     !if ($global_last_note_target != '')
         $global_last_note_name -- $global_last_note_target
     !endif
     !global $global_last_note_name = ''
     !global $global_last_note_target = ''
+!endprocedure
+
+!procedure $option_note_end()
+    $note_end()
 !endprocedure
 
 rectangle option_test $example {
@@ -572,8 +588,6 @@ rectangle option_test $example {
 !function $transactionLink()
     !return ' *--> "<<transaction>>"'
 !endfunction
-
-!$kafkaControlCenterUrl = 'https://kafka/{topic}'
 
 !procedure $topic($name,$format='')
     !$topicName = $strReplace($name,'_queue','')
