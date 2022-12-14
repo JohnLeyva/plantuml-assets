@@ -264,26 +264,29 @@ usecase {
 !endfunction
 
 !procedure $note_start($name='', $target='')
-    !$str = $strReplace($name,$defaultWordSeparator,' ')
-    !global $global_last_note_name = $name
-
     !if ($target=='')
         !global $global_last_note_target = $global_last_name
     !else
         !global $global_last_note_target = $target
     !endif
 
+    !if ($name=='')
+        !$name = $global_last_name + "_note"
+    !endif
+    !global $global_last_note_name = $name
+
     !if ($name == '')
     note on link
     !else
-    !$handle = '$' + $name 
+    !$handle = '$' + $name
     note as $name $handle 
     !endif
 !endprocedure
 
 !procedure $option_note_start($name='', $target='')
     $note_start($name, $target)
-        $option_label($str)
+    !$str = $strReplace($name,$defaultWordSeparator,' ')
+    $option_label($str)
 !endprocedure
 
 !procedure $note_end()
@@ -309,7 +312,6 @@ rectangle option_test $example {
     component option_test_component
 
     option_test_card -- option_test_component $option_link(note_opt_test)
-
     $option_note_start(note_opt_test, 'option_test_card')
         description
         ---
