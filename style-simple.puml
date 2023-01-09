@@ -54,7 +54,7 @@ skinparam fileBackgroundColor #white
 skinparam ActorBackgroundColor #white
 skinparam ComponentBackgroundColor #white
 skinparam UseCaseBackgroundColor #white
-skinparam ArrowThickness 3
+skinparam LineThickness 3
 skinparam ArrowLollipopColor #blue
 skinparam ArrowColor grey
 skinparam legendBackgroundColor #white
@@ -150,7 +150,7 @@ arrow {
         LineColor $existing_link()
         LineThickness 3
         LineStyle 20
-        ArrowThickness 20
+        LineThickness 20
     }
     .new {
         LineColor $new_link()
@@ -180,19 +180,28 @@ arrow {
         ' LineColor $change_link()
         LineThickness 6
         'LineStyle 3
-        'ArrowThickness 100
+        'LineThickness 100
     }
     .link_inbound {
         LineColor #green
         LineThickness 6
         'LineStyle 3
-        'ArrowThickness 100
+        'LineThickness 100
     }
     .link_outbound {
         LineColor #orange
         LineThickness 6
         'LineStyle 3
-        'ArrowThickness 100
+        'LineThickness 100
+    }
+    .temporary {
+        LineColor $remove_link()
+        LineStyle 15
+        LineThickness 5
+    }
+    .eventually {
+        LineThickness 5
+        LineStyle 15
     }
 }
 usecase {
@@ -698,9 +707,9 @@ end legend
                 existing --> remove_future <<existing>>
                     $black_tag(existing_link)
                 
-                existing --> change_future
+                existing --> change_future $link_type(eventually)
 
-                new --> temporary
+                new --> temporary $link_type(temporary)
                 temporary --> remove_future $link_type(out-of-scope)
                 new --> alternative $link_type(alt)
                     $tag(alt_link)
