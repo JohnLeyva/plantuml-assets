@@ -179,20 +179,14 @@ arrow {
     .link {
         ' LineColor $change_link()
         LineThickness 6
-        'LineStyle 3
-        'LineThickness 100
     }
     .link_inbound {
         LineColor #green
         LineThickness 6
-        'LineStyle 3
-        'LineThickness 100
     }
     .link_outbound {
         LineColor #orange
         LineThickness 6
-        'LineStyle 3
-        'LineThickness 100
     }
     .temporary {
         LineColor $remove_link()
