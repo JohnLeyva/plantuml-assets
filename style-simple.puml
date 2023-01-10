@@ -559,11 +559,16 @@ usecase {
     endnote
 !endprocedure
 
-!unquoted procedure $legend($text='',$desc='')
+!unquoted procedure $legend($open=0)
+!if ($open==0)
 legend
-<back:#black><color:#white>Text Tag</color></back> | <back:$new()>New</back> |<back:$existing()>Existing</back> |<back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$alt()>Alternative</back>
+!endif
+<back:$new()>New</back> |<back:$existing()>Existing</back> |<back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$alt()>Alternative</back>
+More about [[https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master/style-simple.svg Conventions]]
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
+!if ($open==0)
 end legend
+!endif
 !endprocedure
 
 !endsub
@@ -650,8 +655,6 @@ rectangle option_test $example {
 
     '$rem(note_opt_test)
 }
-
-
 
 ' Examples
 
