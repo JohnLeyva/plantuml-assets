@@ -668,7 +668,7 @@ rectangle option_test $example {
 !unquoted procedure $example_style($text='')
     left to right direction
 
-    together example_style $example {
+    rectangle example_style $example {
         together {
             component anyComponent
             $componentExample(new)
@@ -720,6 +720,7 @@ rectangle option_test $example {
             }
         }
 
+  
     $service(Any_Service_Group) <<existing>> {
         $service(Any_Service) <<new>> {
             $environment(Any_Service__Any_Environment) <<new>> {
