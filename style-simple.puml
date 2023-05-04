@@ -533,6 +533,10 @@ usecase {
     queue $name as "[[$topicUrl{$name} $topicName]]\n$highlight($format)"
 !endprocedure
 
+!procedure $kafka($name,$format='')
+    $topic($name,"<$kafka*0.5>" + $format)
+!endprocedure
+
 !procedure $topic_message($topicname,$messageType) 
     !$notename = $topicname + "_" + $messageType
     note as $notename
