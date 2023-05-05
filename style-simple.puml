@@ -9,6 +9,7 @@
 !include <azure/Databases/AzureCosmosDb>
 !include <azure/Databases/AzureSqlDatabase>
 !include <cloudinsight/kafka>
+!include <cloudinsight/mongodb>
 !include <cloudinsight/java>
 
 !startsub BASIC
@@ -57,7 +58,6 @@ skinparam UseCaseBackgroundColor #white
 skinparam LineThickness 3
 skinparam ArrowLollipopColor #blue
 skinparam ArrowColor grey
-skinparam legendBackgroundColor #white
 skinparam NoteBorderThickness 1.5
 skinparam QueueBackgroundColor #white
 skinparam BoundaryBackgroundColor #white
@@ -70,6 +70,11 @@ skinparam Nodesep 30
 skinparam Ranksep 10
 
 <style>
+    legend {
+        BackgroundColor #white
+        LineColor #black
+        FontColor #black
+    }
     .environment {
         RoundCorner 150
         Shadowing 3
