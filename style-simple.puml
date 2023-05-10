@@ -53,23 +53,24 @@
 skinparam defaultTextAlignment left
 skinparam fileBackgroundColor #white
 skinparam ActorBackgroundColor #white
-skinparam ComponentBackgroundColor #white
-skinparam UseCaseBackgroundColor #white
 skinparam LineThickness 3
 skinparam ArrowLollipopColor #blue
 skinparam ArrowColor grey
 skinparam NoteBorderThickness 1.5
-skinparam QueueBackgroundColor #white
-skinparam BoundaryBackgroundColor #white
-skinparam ControlBackgroundColor #white
-skinparam EntityBackgroundColor #white
-skinparam InterfaceBackgroundColor #white
-skinparam DatabaseBackgroundColor #white
 'skinparam WrapWidth 200
 skinparam Nodesep 30
 skinparam Ranksep 10
 
 <style>
+    Component { BackgroundColor #white }
+    UseCase { BackgroundColor #white }
+    Boundary { BackgroundColor #white }
+    Interface { BackgroundColor #white }
+    Control { BackgroundColor #white }
+    Entity { BackgroundColor #white }
+    database { BackgroundColor #white }
+    Queue { BackgroundColor #white }
+
     legend {
         BackgroundColor #white
         LineColor #black
@@ -238,6 +239,22 @@ usecase {
     !return '<<' + $name + '>> : ' + "<" + $name + '>' 
 !endfunction
 
+!function $strAppend($source,$append,$separator='')
+    !if ( %strlen($append) > 0 )
+        !return $source + $separator + $append
+    !else
+        !return $source
+    !endif
+!endfunction
+
+!function $strPrepend($source,$append,$separator='')
+    !if ( %strlen($append) > 0 )
+        !return $append + $separator + $source
+    !else
+        !return $source
+    !endif
+!endfunction
+
 !function $strReplace($str,$find,$replace)
     !$tail = $str
     !$len = %strlen($find)
@@ -319,7 +336,7 @@ usecase {
 '$GetPart_Test()
 
 !function $highlight($str,$start='{{',$end='}}',$color='red')
-    !$res = $strReplace($str,$start,"<color:red>")
+    !$res = $strReplace($str,$start,"<color:" + $color + ">")
     !$res = $strReplace($res,$end,"</color>")
     !return $res
 !endfunction
@@ -463,11 +480,6 @@ usecase {
     !return $res
 !endfunction
 
-
-!unquoted function $labelOld($str,$data=0,$sizeArg = 0)
-    !return $labelExtra($str,$data,$sizeArg)
-!endfunction
-
 !procedure $label_Test() 
     !global $Any_Service_3_data1 = { "url" : { 
         "A" : "http://aaa.com",
@@ -529,17 +541,21 @@ usecase {
     !return ' *--> "<<transaction>>"'
 !endfunction
 
-!procedure $topic($name,$format='')
+!procedure $topic($name,$format='',$icon='')
     !$topicName = $strReplace($name,'_queue','')
     !$topicName = $strReplace($name,'_topic','')
     !$topicName = $strReplace($name,'_','-')
     !$topicName = $strReplace($name,'--','_')
     !$topicUrl = $strReplace($kafkaControlCenterUrl,'{topic}',$topicName)
-    queue $name as "[[$topicUrl{$name} $topicName]]\n$highlight($format)"
+    !$topicLink = $link($topicName,$topicUrl)
+    !$alias = $topicLink
+    !$alias = $strPrepend($alias,$icon,' ')
+    !$alias = $strAppend($alias,$highlight($format),'\n')
+    queue $name as "$alias" 
 !endprocedure
 
 !procedure $kafka($name,$format='')
-    $topic($name,"<$kafka*0.5>" + $format)
+    $topic($name,$format,"<$kafka*0.5>")
 !endprocedure
 
 !procedure $topic_message($topicname,$messageType) 
@@ -562,7 +578,7 @@ usecase {
     endnote
 !endprocedure
 
-!unquoted procedure $legend($open=0)
+!procedure $legend($open=0)
 !if ($open==0)
 legend
 !endif
@@ -576,12 +592,15 @@ end legend
 
 !endsub
 
-!unquoted procedure $componentExample($type)
-        component $type <<$type>> [
-            ]   
+' Options
+
+!unquoted procedure PK($field)
+    <u>$field</u>
 !endprocedure
 
-' Options
+!unquoted procedure NotUsed($field)
+    <s:red>$field</s>
+!endprocedure
 
 !function $option_label($text='',$desc='')
     !$linklabel = $GetName($text)
@@ -674,7 +693,14 @@ rectangle option_test $example {
     }}
 !end procedure
 
-!unquoted procedure $example_style($text='')
+
+!unquoted procedure $componentExample($type)
+        component $type <<$type>> [
+            ]   
+!endprocedure
+
+!procedure $example_style()
+
     left to right direction
 
     rectangle example_style $example {
@@ -750,7 +776,7 @@ rectangle option_test $example {
                 anyControl --> anyFile : Save
                 anyFile --> anyControl : Retrieve
 
-                $topic(Topic_outbound,'{{MessageType}}-from_{{source}}-processed') <<outbound>>
+                $kafka(Topic_outbound,'{{MessageType}}-from_{{source}}-processed') <<outbound>>
                 $topic(Topic_inbound,'{{MessageType}}-from_{{source}}-accepted') <<inbound>>
                 $topic_message(Topic_outbound,messageTypeExample)
 
@@ -765,6 +791,9 @@ rectangle option_test $example {
 }
 
 
+!endprocedure
+
+!procedure $Transaction_example()
 frame Transaction_Diagram_convention $example {
 
     database Transaction_resource_A 
@@ -791,67 +820,87 @@ frame Transaction_Diagram_convention $example {
             **NOT in transaction** 
         endnote
 }
-
 !endprocedure
 
-!unquoted procedure PK($field)
-    <u>$field</u>
-!endprocedure
 
-!unquoted procedure NotUsed($field)
-    <s:red>$field</s>
-!endprocedure
+!procedure $model_notation_example()
+frame $label(model_notation) $example {
+     label model_notation_label [
+         {{
+             'left to right direction
+             'skinparam Nodesep 100
+             skinparam Ranksep 35
 
-!unquoted procedure $model_notation_example()
-frame model_notation $example {
-    label model_notation_label [
-        {{
-            left to right direction
-            skinparam Nodesep 50
-            skinparam Ranksep 50
+             Entity "Car" as Car {}
+             Class "Vehicle" as Vehicle {
+                 PK(Primary Key)
+                 Normal Property
+             }
+             enum SetOfValues {
+                 PK(default)
+                 Active
+                 NotUsed(Not Used)
+             }
 
-            Entity "Customer Concept" as Costumer_Concept {}
-            Class "System specific Concept" as Sys_Concept {
-                PK(Primary Key)
-                Normal Property
-            }
-            enum SetOfValues {
-                PK(default)
-                Active
-                NotUsed(Not Used)
-            }
-
-            Costumer_Concept --|> Sys_Concept : Is a
-            Sys_Concept "Composed by" *---{ "many" Part  
-            Part -- SetOfValues
-        }}
-    ]
+             Car --|> Vehicle : Is a
+             Vehicle "Composed by" *---{ "many" Part  
+             Part -- SetOfValues
+         }} 
+     ]
 }
 !endprocedure
 
-!unquoted procedure $flow_vs_dependency()
-frame flow_vs_dependency as "flow vs dependency" $example {
+!procedure $flow_vs_dependency()
+frame $label(flow_vs_dependency) $example {
     
-    control publisher_topic 
+    rectangle flow_vs_dependency_A as " "  {
+        control publisher_topic
+        queue topic
+        control consumer_topic
 
-    queue topic
-    control consumer_topic
+        publisher_topic -l-> topic : Publish
+        topic -l-> consumer_topic : Consume
+    }
 
-    publisher_topic --> topic : Publish
-    topic --> consumer_topic : Consume
+    rectangle flow_vs_dependency_B as " " {
+        control persister_storage
+        database storage
+        control querier_storage
 
-    control persister_storage 
-    database storage
-    control querier_storage
+        persister_storage -l-> storage : Store
+        storage -l-> querier_storage : Query
+    }
 
-    persister_storage --\\ storage : Store
-    storage --> querier_storage : Query
+    rectangle flow_vs_dependency_C as " " {
+        control API_client_POST
+        interface API_Gateway_POST
+        boundary API_Backend_POST
+
+        API_client_POST -l(0-> API_Gateway_POST : POST
+        API_Gateway_POST -l(0-> API_Backend_POST : POST
+    }
+
+    rectangle flow_vs_dependency_D as " " {
+        control API_client_GET
+        interface API_Gateway_GET
+        boundary API_Backend_GET
+
+        API_client_GET <-l(0- API_Gateway_GET : GET
+        API_Gateway_GET <-l(0- API_Backend_GET : GET
+    }
+
+    flow_vs_dependency_A -[#hidden]-> flow_vs_dependency_B
+    flow_vs_dependency_B -[#hidden]-> flow_vs_dependency_C
+    flow_vs_dependency_C -[#hidden]-> flow_vs_dependency_D
 }
 !endprocedure
 
+rectangle {
+    $flow_vs_dependency()
+    $model_notation_example()
+    $Transaction_example()
+}
 $example_style()
-$flow_vs_dependency()
-$model_notation_example()
 $legend()
 @enduml
 
