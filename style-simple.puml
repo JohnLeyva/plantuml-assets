@@ -200,6 +200,9 @@ arrow {
         LineThickness 5
         LineStyle 15
     }
+    .thick {
+        LineThickness 5
+    }
 }
 usecase {
     FontSize 30
@@ -211,17 +214,29 @@ usecase {
 !procedure $rem($name)
     !$handle = '$' + $name
     !$stereotype = '<<' + $name + '>>'
+    %set_variable_value($name + '_hidden', 1)
     remove $name
     remove $handle
     remove $stereotype
 !endprocedure
 
+!function $ishidden($name)
+    !return %get_variable_value($name + '_hidden')
+!endfunction
+
 !procedure $hide($name)
     !$handle = '$' + $name
     !$stereotype = '<<' + $name + '>>'
+    
+    %set_variable_value($name + '_hidden', 1)
+
+    'card ['$name_hidden_var' = $ishidden($name_hidden_var)]
+
     hide $name
     hide $handle
     hide $stereotype
+    skinparam ArrowThickness<<$name>> 0
+    skinparam ArrowFontSize<<$name>> 0
 !endprocedure
 
 !procedure $show($name)
@@ -613,7 +628,10 @@ end legend
 !endfunction
 
 !function $option_link($name)
-    !return '<<alt>> <<' + $name + '>> : ' + $option_label($name) 
+    !if ($ishidden($name) == 1)
+        !return '<<alt>> <<' + $name + '>> : . '
+    !endif 
+    !return '<<alt>> <<' + $name + '>> : ' + $option_label($name)
 !endfunction
 
 !procedure $note_start($name='', $target='')
