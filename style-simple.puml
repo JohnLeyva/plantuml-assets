@@ -707,6 +707,18 @@ rectangle option_test $example {
     Person($name, $GetName($name), $description)
 !endprocedure
 
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons/master
+!include osaPuml/Common.puml
+!include osaPuml/User/all.puml
+
+!include <office/Servers/database_server>
+!include <office/Servers/file_server>
+!include <office/Servers/application_server>
+!include <office/Concepts/service_application>
+!include <office/Concepts/firewall>
+
 ' Examples
 
 !procedure messageTypeExample ()
