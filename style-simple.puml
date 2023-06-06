@@ -693,6 +693,20 @@ rectangle option_test $example {
     '$rem(note_opt_test)
 }
 
+
+' C4
+
+!include <cloudinsight/mongodb>
+!include <C4/C4_Deployment>
+
+!procedure $C4_System($name,$description='')
+    System($name, $GetName($name), $description)
+!endprocedure
+
+!procedure $C4_Person($name,$description='')
+    Person($name, $GetName($name), $description)
+!endprocedure
+
 ' Examples
 
 !procedure messageTypeExample ()
