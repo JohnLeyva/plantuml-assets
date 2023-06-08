@@ -6,7 +6,7 @@
 'skinparam linetype ortho
 
 !startsub BASIC
-
+g
 '<< (S,#FF7700) Singleton >>
 skinparam ActorBackgroundColor #white
 skinparam ComponentBackgroundColor #white
