@@ -5,6 +5,10 @@
 'skinparam linetype polyline
 'skinparam linetype ortho
 
+!$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
+!include $commonincludepath/style-base.puml
+
+
 !include <azure/AzureCommon>
 !include <azure/Databases/AzureCosmosDb>
 !include <azure/Databases/AzureSqlDatabase>
@@ -12,15 +16,14 @@
 !include <cloudinsight/mongodb>
 !include <cloudinsight/java>
 
-!startsub BASIC
-
 !$kafkaControlCenterUrl = 'https://kafka/{topic}'
 
 !global $service_textSize = 50
 !global $environment_textSize = 30
 !global $external_textSize = 30
 
-!$defaultColor = '#white'
+!startsub BASIC
+
 !$defaultPartSeparator = '__'
 !$defaultWordSeparator = '_'
 !$scaleTextUp = 8

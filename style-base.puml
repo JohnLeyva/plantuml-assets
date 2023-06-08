@@ -1,5 +1,7 @@
 @startuml style-base
 
+!$defaultColor = '#white'
+
 !function $remark($text,$color=red) return "<color:" + $color+ ">" + $text + "</color>"  
 
 !function $notouch($type = "any") return "#lightgray"
