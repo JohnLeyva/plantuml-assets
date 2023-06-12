@@ -69,12 +69,12 @@ skinparam Ranksep 50
     }
     .ready {
         LineColor $existing_link()
-        LineThickness 6
+        LineThickness 3
         LineStyle 3
     }
     .wip {
         LineColor $change_link()
-        LineThickness 6
+        LineThickness 3
         LineStyle 3
     }
     .temporary {
@@ -89,6 +89,9 @@ skinparam Ranksep 50
         BackGroundColor $change()
     }
     .existing {
+        BackGroundColor $existing()
+    }
+    .live {
         BackGroundColor $existing()
     }
     .remove {
@@ -127,9 +130,14 @@ arrow {
         LineStyle 70
         DiagonalCorner 20
     }
+    .wip {
+        LineColor $change_link()
+        LineThickness 3
+        LineStyle 3
+    }
     .done {
         LineColor $existing_link()
-        LineThickness 5
+        LineThickness 3
         LineStyle 20
     }
     .new {
@@ -139,6 +147,9 @@ arrow {
         LineColor $change_link()
     }
     .existing {
+        LineColor $existing_link()
+    }
+    .live {
         LineColor $existing_link()
     }
     .remove {
@@ -169,12 +180,10 @@ arrow {
         LineThickness 6
     }
     .temporary {
-        LineColor $remove_link()
-        LineStyle 15
-        LineThickness 5
+        LineColor #pink
+        LineStyle 3
     }
     .eventually {
-        LineThickness 5
         LineStyle 15
     }
     .thick {
@@ -200,23 +209,27 @@ usecase {
 !endprocedure
 
 !procedure $legend_States_Content()
+$componentExample(any)
 $componentExample(new)
 $componentExample(alt)
 $componentExample(wip)
 $componentExample(done)
-$componentExample(existing)
+$componentExample(ready)
+$componentExample(live)
 $componentExample(notouch)
 $componentExample(change)
 $componentExample(temporary)
 $componentExample(remove)
-new -> alt
-alt -> wip
-wip -> done
-done -> existing
-existing -> notouch
-notouch -> change
-change -> temporary
-temporary -> remove
+any -> new <<new>>
+new -> alt <<alt>>
+alt -> wip <<wip>>
+wip -> ready <<ready>>
+ready -> done <<done>>
+done -> live <<live>> 
+live -> notouch <<notouch>>
+notouch -> change <<change>>
+change -> temporary <<temporary>> 
+temporary -> remove <<remove>>
 !endprocedure
 
 !procedure $legend_Arrows_Content()
@@ -224,7 +237,7 @@ temporary -> remove
     B =\\ C : Push Message 
     C =r(0=> D : API POST
     D <=r(0= E : API GET
-    E .> F : Eventually
+    E -> F <<eventually>> : Eventually
 !endprocedure
 
 !procedure $legend_Content()

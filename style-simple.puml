@@ -50,16 +50,12 @@
 !global $environment_textSize = 30
 !global $external_textSize = 30
 
-!startsub BASIC
-
 !$defaultPartSeparator = '__'
 !$defaultWordSeparator = '_'
 !$scaleTextUp = 8
 !$scaleTextDown = 4
 
 !$scaleText = $scaleTextUp / $scaleTextDown
-
-
 
 !procedure $rem($name)
     !$handle = '$' + $name
@@ -440,8 +436,6 @@
     endnote
 !endprocedure
 
-!endsub
-
 ' Options
 
 !unquoted procedure PK($field)
@@ -696,9 +690,9 @@ frame $label(model_notation) $example {
                  NotUsed(Not Used)
              }
 
-             Car --|> Vehicle : Is a
+             Car -|> Vehicle : Is a
              Vehicle "Composed by" *---{ "many" Part  
-             Part -- SetOfValues
+             Part - SetOfValues
          }} 
      ]
 }
@@ -743,9 +737,9 @@ frame $label(flow_vs_dependency) $example {
         API_Gateway_GET <-l(0- API_Backend_GET : GET
     }
 
-    flow_vs_dependency_A -[#hidden]-> flow_vs_dependency_B
-    flow_vs_dependency_B -[#hidden]-> flow_vs_dependency_C
-    flow_vs_dependency_C -[#hidden]-> flow_vs_dependency_D
+    flow_vs_dependency_A -- flow_vs_dependency_B <<hide>>
+    flow_vs_dependency_B -- flow_vs_dependency_C <<hide>>
+    flow_vs_dependency_C -- flow_vs_dependency_D <<hide>>
 }
 !endprocedure
 
