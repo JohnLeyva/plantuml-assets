@@ -190,6 +190,14 @@ usecase {
 legend
 !endif
 <back:$new()>New</back> |<back:$existing()>Existing</back> |<back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$alt()>Alternative</back>
+{{
+scale 0.7
+left to right direction
+'skinparam linetype ortho
+    A ==\\ B : Push Message 
+    B =(0=> C : API POST
+    C <=(0= D : API GET
+}}
 More about [[https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master/style-simple.svg Conventions]]
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
 !if ($open==0)
@@ -197,5 +205,6 @@ end legend
 !endif
 !endprocedure
 
+$legend()
 
 @enduml

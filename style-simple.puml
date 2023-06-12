@@ -6,6 +6,7 @@
 'skinparam linetype ortho
 
 !$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
+
 !include $commonincludepath/style-base.puml
 
 
@@ -31,188 +32,7 @@
 
 !$scaleText = $scaleTextUp / $scaleTextDown
 
-!function $remark($text,$color=red) return "<color:" + $color+ ">" + $text + "</color>"  
 
-!function $notouch($type = "any") return "#lightgray"
-!function $notouch_link($type = "any") return "#gray"
-!function $exiting($type = "any") return $existing($type)
-!function $existing($type = "any") return "#lightgreen"  
-!function $existing_link($type = "any") return "#green"  
-!function $new($type = "any") return "#powderBlue"
-!function $new_link($type = "any") return "#blue"  
-!function $change($type = "any") return %lighten(Yellow,70)  
-
-!function $change_link($type = "any") return "#burlywood"  
-!function $remove($type = "any") return "#pink"  
-!function $remove_link($type = "any") return "#red"  
-!function $alt($type = "any") return "#plum"
-!function $alt_link($type = "any") return "#purple"  
-!function $done($type = "any") return "#CornflowerBlue"
-!function $temporary($type = "any") return "#powderBlue|pink" 
-!function $remove_future($type = "any") return "#lightgreen|pink"  
-!function $change_future($type = "any") return "#lightgreen|yellow"  
-
-skinparam defaultTextAlignment left
-skinparam fileBackgroundColor #white
-skinparam LineThickness 3
-skinparam ArrowLollipopColor #blue
-skinparam NoteBorderThickness 1.5
-'skinparam WrapWidth 200
-skinparam Nodesep 40
-skinparam Ranksep 50
-
-<style>
-    Component { BackgroundColor #white }
-    Boundary { BackgroundColor #white }
-    Interface { BackgroundColor #white }
-    Control { BackgroundColor #white }
-    Entity { BackgroundColor #white }
-    database { BackgroundColor #white }
-    Queue { BackgroundColor #white }
-
-    legend {
-        BackgroundColor #white
-        LineColor #black
-        FontColor #black
-    }
-    .environment {
-        RoundCorner 150
-        Shadowing 3
-    }
-    .service {
-        RoundCorner 50
-        Shadowing 3
-        :depth(3) {
-            LineThickness 10
-        }
-    }
-    .transaction {
-        LineColor #orange
-        'LineStyle 7
-        '#line.dashed 
-    }
-    .done {
-        LineColor $existing_link()
-        LineThickness 6
-        'LineStyle 6
-    }
-    .ready {
-        LineColor $existing_link()
-        LineThickness 6
-        LineStyle 3
-    }
-    .wip {
-        LineColor $change_link()
-        LineThickness 6
-        LineStyle 3
-    }
-    .temporary {
-        LineColor $remove()
-        LineThickness 3
-        'LineStyle 6
-    }
-    .new {
-        BackGroundColor $new()
-    }
-    .change {
-        BackGroundColor $change()
-    }
-    .existing {
-        BackGroundColor $existing()
-    }
-    .remove {
-        BackGroundColor $remove()
-    }
-    .alt {
-        BackGroundColor $alt()
-    }
-    .notouch {
-        BackGroundColor $notouch()
-    }
-    .out-of-scope {
-        LineColor $alt()
-        LineThickness 8
-        BackGroundColor $notouch()|$new()
-        LineStyle 70
-        DiagonalCorner 20 
-    }
-    .next-phase{
-        LineThickness 3
-        BorderThickness 10
-        BackGroundColor #white|$new()
-        LineStyle 70
-        DiagonalCorner 20 
-    }
-arrow {
-    LineColor #gray
-
-    .out-of-scope {
-        LineColor $alt()
-        LineThickness 3
-        BackGroundColor $notouch()|$new()
-        LineStyle 70
-        DiagonalCorner 20
-    }
-    .done {
-        LineColor $existing_link()
-        LineThickness 5
-        LineStyle 20
-    }
-    .new {
-        LineColor $new_link()
-    }
-    .change {
-        LineColor $change_link()
-    }
-    .existing {
-        LineColor $existing_link()
-    }
-    .remove {
-        LineColor $remove_link()
-    }
-    .alt {
-        LineColor $alt_link()
-    }
-    .notouch {
-        LineColor $notouch_link()
-    }
-    .transaction {
-        LineColor #orange
-        LineStyle 1
-        LineThickness 3
-    }
-
-    .link {
-        ' LineColor $change_link()
-        LineThickness 6
-    }
-    .link_inbound {
-        LineColor #green
-        LineThickness 6
-    }
-    .link_outbound {
-        LineColor #orange
-        LineThickness 6
-    }
-    .temporary {
-        LineColor $remove_link()
-        LineStyle 15
-        LineThickness 5
-    }
-    .eventually {
-        LineThickness 5
-        LineStyle 15
-    }
-    .thick {
-        LineThickness 5
-    }
-}
-usecase {
-    FontSize 30
-    BackgroundColor AliceBlue
-}
-
-</style>
 
 !procedure $rem($name)
     !$handle = '$' + $name
@@ -591,18 +411,6 @@ usecase {
     note on link #black|lightgray
         <&cog><color:#black>$text</color><back:#white><color:#black>$desc</color></back>
     endnote
-!endprocedure
-
-!procedure $legend($open=0)
-!if ($open==0)
-legend
-!endif
-<back:$new()>New</back> |<back:$existing()>Existing</back> |<back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$alt()>Alternative</back>
-More about [[https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master/style-simple.svg Conventions]]
-<size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
-!if ($open==0)
-end legend
-!endif
 !endprocedure
 
 !endsub
