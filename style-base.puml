@@ -182,6 +182,8 @@ arrow {
     }
     .hide {
         LineThickness 0
+        LineColor #transparent
+        FontColor #transparent
     }
 }
 usecase {
@@ -197,16 +199,7 @@ usecase {
             ]   
 !endprocedure
 
-!procedure $legend($open=0)
-!if ($open==0)
-legend
-!endif
-'<back:$new()>New</back> |<back:$existing()>Existing</back> | <back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$alt()>Alternative</back>
-{{
-scale 0.7
-left to right direction
-!$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
-!include $commonincludepath/style-base.puml
+!procedure $legend_States_Content()
 $componentExample(new)
 $componentExample(alt)
 $componentExample(wip)
@@ -216,27 +209,47 @@ $componentExample(notouch)
 $componentExample(change)
 $componentExample(temporary)
 $componentExample(remove)
-new --> alt <<hide>>
-alt --> wip
-wip --> done
-done --> existing
-existing --> notouch
-notouch --> change
-change --> temporary
-temporary --> remove
+new -> alt
+alt -> wip
+wip -> done
+done -> existing
+existing -> notouch
+notouch -> change
+change -> temporary
+temporary -> remove
+!endprocedure
+
+!procedure $legend_Arrows_Content()
+    A -> B : Information Flow 
+    B =\\ C : Push Message 
+    C =r(0=> D : API POST
+    D <=r(0= E : API GET
+    E .> F : Eventually
+!endprocedure
+
+!procedure $legend_Content()
+$legend_States_Content()
+$legend_Arrows_Content()
+!endprocedure
+
+'$legend_Content()
+
+!procedure $legend($open=0)
+!if ($open==0)
+legend
+!endif
+{{
+scale 0.7
+!$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
+!include $commonincludepath/style-base.puml
+$legend_States_Content()
 }}
 
 {{
 scale 0.7
-left to right direction
-skinparam Nodesep 10
-skinparam Ranksep 15
-'skinparam linetype ortho
-    A --> B : Information Flow 
-    B ==\\ C : Push Message 
-    C =(0=> D : API POST
-    D <=(0= E : API GET
-    E ..> F : Eventually
+!$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
+!include $commonincludepath/style-base.puml
+$legend_Arrows_Content()
 }}
 More about [[https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master/style-simple.svg Conventions]]
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
@@ -245,6 +258,5 @@ end legend
 !endif
 !endprocedure
 
-'$legend()
 
 @enduml
