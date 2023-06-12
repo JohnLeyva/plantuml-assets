@@ -752,7 +752,6 @@ rectangle {
     $Transaction_example()
 }
 $example_style()
-$legend()
 @enduml
 
 

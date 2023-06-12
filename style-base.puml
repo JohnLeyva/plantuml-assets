@@ -193,10 +193,14 @@ legend
 {{
 scale 0.7
 left to right direction
+'skinparam Nodesep 100
+skinparam Ranksep 15
 'skinparam linetype ortho
-    A ==\\ B : Push Message 
-    B =(0=> C : API POST
-    C <=(0= D : API GET
+    A --> B : Information Flow 
+    B ==\\ C : Push Message 
+    C =(0=> D : API POST
+    D <=(0= E : API GET
+    E ..> F : Eventually
 }}
 More about [[https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master/style-simple.svg Conventions]]
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
