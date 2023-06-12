@@ -7,15 +7,40 @@
 
 !$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
 
-!include $commonincludepath/style-base.puml
-
-
 !include <azure/AzureCommon>
 !include <azure/Databases/AzureCosmosDb>
 !include <azure/Databases/AzureSqlDatabase>
 !include <cloudinsight/kafka>
 !include <cloudinsight/mongodb>
 !include <cloudinsight/java>
+
+
+' C4
+
+!include <cloudinsight/mongodb>
+'!include <C4/C4_Deployment>
+'!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!procedure $C4_System($name,$description='')
+    System($name, $GetName($name), $description)
+!endprocedure
+
+!procedure $C4_Person($name,$description='')
+    Person($name, $GetName($name), $description)
+!endprocedure
+
+
+!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons/master
+!include osaPuml/Common.puml
+!include osaPuml/User/all.puml
+
+!include <office/Servers/database_server>
+!include <office/Servers/file_server>
+!include <office/Servers/application_server>
+!include <office/Concepts/service_application>
+!include <office/Concepts/firewall>
+
+!include $commonincludepath/style-base.puml
 
 !$kafkaControlCenterUrl = 'https://kafka/{topic}'
 
@@ -503,32 +528,6 @@ rectangle option_test $example {
 
     '$rem(note_opt_test)
 }
-
-
-' C4
-
-!include <cloudinsight/mongodb>
-!include <C4/C4_Deployment>
-
-!procedure $C4_System($name,$description='')
-    System($name, $GetName($name), $description)
-!endprocedure
-
-!procedure $C4_Person($name,$description='')
-    Person($name, $GetName($name), $description)
-!endprocedure
-
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
-
-!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons/master
-!include osaPuml/Common.puml
-!include osaPuml/User/all.puml
-
-!include <office/Servers/database_server>
-!include <office/Servers/file_server>
-!include <office/Servers/application_server>
-!include <office/Concepts/service_application>
-!include <office/Concepts/firewall>
 
 ' Examples
 
