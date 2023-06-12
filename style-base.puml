@@ -97,6 +97,9 @@ skinparam Ranksep 50
     .alt {
         BackGroundColor $alt()
     }
+    .alternative {
+        BackGroundColor $alt()
+    }
     .notouch {
         BackGroundColor $notouch()
     }
@@ -177,6 +180,9 @@ arrow {
     .thick {
         LineThickness 5
     }
+    .hide {
+        LineThickness 0
+    }
 }
 usecase {
     FontSize 30
@@ -185,15 +191,45 @@ usecase {
 
 </style>
 
+!unquoted procedure $componentExample($type,$description='')
+        rectangle $type <<$type>> [
+            $description
+            ]   
+!endprocedure
+
 !procedure $legend($open=0)
 !if ($open==0)
 legend
 !endif
-<back:$new()>New</back> |<back:$existing()>Existing</back> |<back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$alt()>Alternative</back>
+'<back:$new()>New</back> |<back:$existing()>Existing</back> | <back:$change()>Change</back> | <back:$remove()>Remove</back> |  <back:$notouch()>Existing no touch</back> | <back:$alt()>Alternative</back>
 {{
 scale 0.7
 left to right direction
-'skinparam Nodesep 100
+!$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
+!include $commonincludepath/style-base.puml
+$componentExample(new)
+$componentExample(alt)
+$componentExample(wip)
+$componentExample(done)
+$componentExample(existing)
+$componentExample(notouch)
+$componentExample(change)
+$componentExample(temporary)
+$componentExample(remove)
+new --> alt <<hide>>
+alt --> wip
+wip --> done
+done --> existing
+existing --> notouch
+notouch --> change
+change --> temporary
+temporary --> remove
+}}
+
+{{
+scale 0.7
+left to right direction
+skinparam Nodesep 10
 skinparam Ranksep 15
 'skinparam linetype ortho
     A --> B : Information Flow 
@@ -209,6 +245,6 @@ end legend
 !endif
 !endprocedure
 
-$legend()
+'$legend()
 
 @enduml

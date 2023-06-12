@@ -5,8 +5,6 @@
 'skinparam linetype polyline
 'skinparam linetype ortho
 
-!$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
-
 !include <azure/AzureCommon>
 !include <azure/Databases/AzureCosmosDb>
 !include <azure/Databases/AzureSqlDatabase>
@@ -14,11 +12,15 @@
 !include <cloudinsight/mongodb>
 !include <cloudinsight/java>
 
+!$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
+
+
 
 ' C4
 
 !include <cloudinsight/mongodb>
-'!include <C4/C4_Deployment>
+!include <C4/C4_Deployment>
+!include <C4/C4_Container>
 '!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 !procedure $C4_System($name,$description='')
@@ -545,8 +547,9 @@ rectangle option_test $example {
 !end procedure
 
 
-!unquoted procedure $componentExample($type)
-        component $type <<$type>> [
+!unquoted procedure $componentExample($type,$description='')
+        rectangle $type <<$type>> [
+            $description
             ]   
 !endprocedure
 
