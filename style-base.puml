@@ -245,6 +245,8 @@ temporary -> remove <<remove>>
     C =r(0=> D : API POST
     D <=r(0= E : API GET
     E -> F <<eventually>> : Eventually
+    F -|> G : Is A
+    G *- H : Composed by
 !endprocedure
 
 !procedure $legend_Content()
@@ -259,14 +261,14 @@ $legend_Arrows_Content()
 legend
 !endif
 {{
-scale 0.7
+scale 0.5
 !$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
 !include $commonincludepath/style-base.puml
 $legend_States_Content()
 }}
 
 {{
-scale 0.7
+scale 0.5
 !$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
 !include $commonincludepath/style-base.puml
 $legend_Arrows_Content()
