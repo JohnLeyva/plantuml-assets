@@ -32,6 +32,13 @@ skinparam NoteBorderThickness 1.5
 skinparam Nodesep 40
 skinparam Ranksep 50
 
+'C4
+!include <C4/C4_Deployment>
+!include <C4/C4_Container>
+!include <C4/C4_Container>
+
+
+
 <style>
     Component { BackgroundColor #white }
     Boundary { BackgroundColor #white }
