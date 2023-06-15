@@ -192,6 +192,36 @@
 !endprocedure
 '$GetPart_Test()
 
+!function $counter_get($name='counter') return %get_variable_value('autonumber_' + $name)
+
+!function $counter_set($name='counter',$value)
+    !return %set_variable_value('autonumber_' + $name, $value)
+!end function
+
+!function $counter($name='counter',$increment=1,$seed=1)
+    !$current = $counter_get($name)
+    !if (%not($current))
+        !$result = $seed
+    !else
+        !$result = $current + $increment
+    !endif
+    !$nop = $counter_set($name, $result)
+    !return $result
+!end function
+
+!function $counter_print($name='counter',$increment=1,$seed=1)
+    !return '<back:black><color:white>[' + $counter($name, $increment, $seed) + ']</color></back>' 
+!end function
+
+!function $link_id($name) 
+    !return '<<thick>>' + '<<' + $name + '>>' + ' :' + $counter_print() + $GetName($name)
+!end function
+
+!function $link_entity($name) 
+    %set_variable_value('entity_last', $name)
+    !return %chr(34) + $name + %chr(34)
+!end function
+
 !function $highlight($str,$start='{{',$end='}}',$color='red')
     !$res = $strReplace($str,$start,"<color:" + $color + ">")
     !$res = $strReplace($res,$end,"</color>")
