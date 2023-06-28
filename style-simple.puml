@@ -5,12 +5,13 @@
 'skinparam linetype polyline
 'skinparam linetype ortho
 
-!include <azure/AzureCommon>
-!include <azure/Databases/AzureCosmosDb>
-!include <azure/Databases/AzureSqlDatabase>
-!include <cloudinsight/kafka>
-!include <cloudinsight/mongodb>
-!include <cloudinsight/java>
+'!include <azure/AzureCommon>
+'!include <azure/Databases/AzureCosmosDb>
+'!include <azure/Databases/AzureSqlDatabase>
+'!include <cloudinsight/kafka>
+'!include <cloudinsight/mongodb>
+'!include <cloudinsight/java>
+'!include <cloudinsight/java>
 
 !$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
 
@@ -18,7 +19,7 @@
 
 ' C4
 
-!include <cloudinsight/mongodb>
+'!include <cloudinsight/mongodb>
 '!include <C4/C4_Deployment>
 '!include <C4/C4_Container>
 '
@@ -31,15 +32,15 @@
 '!endprocedure
 
 
-!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons/master
-!include osaPuml/Common.puml
-!include osaPuml/User/all.puml
-
-!include <office/Servers/database_server>
-!include <office/Servers/file_server>
-!include <office/Servers/application_server>
-!include <office/Concepts/service_application>
-!include <office/Concepts/firewall>
+'!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons/master
+'!include osaPuml/Common.puml
+'!include osaPuml/User/all.puml
+'
+'!include <office/Servers/database_server>
+'!include <office/Servers/file_server>
+'!include <office/Servers/application_server>
+'!include <office/Concepts/service_application>
+'!include <office/Concepts/firewall>
 
 !include $commonincludepath/style-base.puml
 
