@@ -20,16 +20,19 @@
 ' C4
 
 '!include <cloudinsight/mongodb>
-'!include <C4/C4_Deployment>
-'!include <C4/C4_Container>
-'
-'!procedure $C4_System($name,$description='')
-'    System($name, $GetName($name), $description)
-'!endprocedure
-'
-'!procedure $C4_Person($name,$description='')
-'    Person($name, $GetName($name), $description)
-'!endprocedure
+
+!if ($C4_Include)
+  !include <C4/C4_Deployment>
+  !include <C4/C4_Container>
+!endif
+
+!procedure $C4_System($name,$description='')
+    System($name, $GetName($name), $description)
+!endprocedure
+
+!procedure $C4_Person($name,$description='')
+    Person($name, $GetName($name), $description)
+!endprocedure
 
 
 '!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons/master
