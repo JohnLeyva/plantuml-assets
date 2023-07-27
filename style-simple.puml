@@ -131,7 +131,7 @@
     !endwhile
     !return $res + $tail
 !endfunction
-'node strReplace_Test as "$strReplace('{{a}}-{{b}}-{{c}}','{{','<')"
+'node strReplace_Test as "$strReplace('<(a)>-<(b)>-<(c)>','<(','<')"
 
 !procedure $ShowJson($json,$text='=json')
     label l [
@@ -226,12 +226,15 @@
     !return %chr(34) + $name + %chr(34)
 !end function
 
-!function $highlight($str,$start='{{',$end='}}',$color='red')
+!global $highlight_start = '<('
+!global $highlight_end = ')>'
+
+!function $highlight($str,$start=$highlight_start,$end=$highlight_end,$color='red')
     !$res = $strReplace($str,$start,"<color:" + $color + ">")
     !$res = $strReplace($res,$end,"</color>")
     !return $res
 !endfunction
-'node highlight_test as "$highlight('{{a}}-{{b}}-{{c}}')"
+'node highlight_test as "$highlight('<(a)>-<(b)>-<(c)>')"
 
 !unquoted function $stereotype($str)
     !if ($str=='')
@@ -657,8 +660,8 @@ rectangle option_test $example {
                 anyControl --> anyFile : Save
                 anyFile --> anyControl : Retrieve
 
-                $kafka(Topic_outbound,'{{MessageType}}-from_{{source}}-processed') <<outbound>>
-                $topic(Topic_inbound,'{{MessageType}}-from_{{source}}-accepted') <<inbound>>
+                $kafka(Topic_outbound,'<(MessageType)>-from_<(source)>-processed') <<outbound>>
+                $topic(Topic_inbound,'<(MessageType)>-from_<(source)>-accepted') <<inbound>>
                 $topic_message(Topic_outbound,messageTypeExample)
 
                 anyControl --\\ Topic_outbound : PUSH
