@@ -361,7 +361,7 @@
     !$name = $GetName($str)
     !$entityLevel = $CountPart($str)
 
-    !global $global_last_name = $name
+    !global $global_last_name = $str
     !global $global_last_entityLevel = $entityLevel
 
     !$res = $res + ' as "' + $sizeStart + $name + $sizeEnd + $links + '" '
