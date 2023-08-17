@@ -576,6 +576,39 @@ rectangle option_test $example {
     }}
 !end procedure
 
+'entity functions
+
+!function actor        ($name,$data='') !return 'actor '       + $label($name,$data)
+!function actor2       ($name,$data='') !return 'actor/ '      + $label($name,$data)
+!function agent        ($name,$data='') !return 'agent '       + $label($name,$data)
+!function artifact     ($name,$data='') !return 'artifact '    + $label($name,$data)
+!function boundary     ($name,$data='') !return 'boundary '    + $label($name,$data)
+!function card         ($name,$data='') !return 'card '        + $label($name,$data)
+!function circle       ($name,$data='') !return 'circle '      + $label($name,$data)
+!function cloud        ($name,$data='') !return 'cloud '       + $label($name,$data)
+!function collections  ($name,$data='') !return 'collections ' + $label($name,$data)
+!function component    ($name,$data='') !return 'component '   + $label($name,$data)
+!function control      ($name,$data='') !return 'control '     + $label($name,$data)
+!function database     ($name,$data='') !return 'database '    + $label($name,$data)
+!function entity       ($name,$data='') !return 'entity '      + $label($name,$data)
+!function file         ($name,$data='') !return 'file '        + $label($name,$data)
+!function folder       ($name,$data='') !return 'folder '      + $label($name,$data)
+!function frame        ($name,$data='') !return 'frame '       + $label($name,$data)
+!function hexagon      ($name,$data='') !return 'hexagon '     + $label($name,$data)
+!function interface    ($name,$data='') !return 'interface '   + $label($name,$data)
+!function label        ($name,$data='') !return 'label '       + $label($name,$data)
+!function node         ($name,$data='') !return 'node '        + $label($name,$data)
+!function package      ($name,$data='') !return 'package '     + $label($name,$data)
+!function person       ($name,$data='') !return 'person '      + $label($name,$data)
+!function queue        ($name,$data='') !return 'queue '       + $label($name,$data)
+!function rectangle    ($name,$data='') !return 'rectangle '   + $label($name,$data)
+!function stack        ($name,$data='') !return 'stack '       + $label($name,$data)
+!function storage      ($name,$data='') !return 'storage '     + $label($name,$data)
+!function usecase      ($name,$data='') !return 'usecase '     + $label($name,$data)
+!function usecase2     ($name,$data='') !return 'usecase/  '   + $label($name,$data)
+
+
+'big example
 
 !unquoted procedure $componentExample($type,$description='')
         rectangle $type <<$type>> [
