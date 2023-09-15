@@ -186,7 +186,7 @@ arrow {
     }
     .temporary {
         LineColor #pink
-        LineStyle 3
+        LineStyle 5
     }
     .eventually {
         LineStyle 15

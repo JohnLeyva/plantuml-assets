@@ -13,7 +13,7 @@
 '!include <cloudinsight/java>
 '!include <cloudinsight/java>
 
-!$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
+!$commonincludepath ?= "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
 
 
 
@@ -518,9 +518,15 @@
     note on link
     !else
     !$handle = '$' + $name
-    note as $name $handle 
+    !$stereotype = '<<' + $name + '>>'
+    note as $name $handle $stereotype 
+        $name
+        $handle
+        $stereotype
     !endif
 !endprocedure
+
+hide <<note_opt_test>>
 
 !procedure $option_note_start($name='', $target='')
     $note_start($name, $target)
@@ -531,7 +537,11 @@
 !procedure $note_end()
     end note
     !if ($global_last_note_target != '')
-        $global_last_note_name -- $global_last_note_target
+        !$handle = '$' + $name
+        !$stereotype = '<<' + $name + '>>'
+        !if (%not($ishidden($name)))
+            $global_last_note_name -- $global_last_note_target $stereotype
+        !endif
     !endif
     !global $global_last_note_name = ''
     !global $global_last_note_target = ''
@@ -560,6 +570,17 @@ rectangle option_test $example {
 
     '$rem(note_opt_test)
 }
+
+note as bbnote $fff <<abc>>  
+ adasd
+ sdfsdf
+ sdfsdf
+end note
+'hide <<abc>>
+'hide $fff
+'hide bbnote
+
+hide note_opt_test
 
 ' Examples
 
