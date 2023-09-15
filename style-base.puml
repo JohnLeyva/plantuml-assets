@@ -185,6 +185,7 @@ arrow {
         LineThickness 6
     }
     .temporary {
+        LineColor #HotPink
         LineStyle 10
     }
     .eventually {
@@ -263,7 +264,7 @@ $legend_States_Content()
 $legend_Arrows_Content()
 !endprocedure
 
-'$legend_Content()
+$legend_Content()
 
 !procedure $legend($open=0)
 !if ($open==0)
