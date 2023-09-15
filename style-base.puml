@@ -185,8 +185,7 @@ arrow {
         LineThickness 6
     }
     .temporary {
-        LineColor #pink
-        LineStyle 5
+        LineStyle 10
     }
     .eventually {
         LineStyle 15
@@ -200,9 +199,21 @@ arrow {
         FontColor #transparent
     }
 }
-usecase {
+usecase  {
     FontSize 30
     BackgroundColor AliceBlue
+    'MaximumWidth 150
+    'HorizontalAlignment center
+}
+
+component {
+    MaximumWidth 50
+    HorizontalAlignment center
+}
+
+boundary {
+    MaximumWidth 50
+    HorizontalAlignment left
 }
 
 </style>
@@ -280,4 +291,7 @@ end legend
 
 ' General Functions
 
+'$legend()
+
 @enduml
+
