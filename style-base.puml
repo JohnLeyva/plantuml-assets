@@ -11,7 +11,7 @@
 !function $existing_link($type = "any") return "#green"  
 !function $new          ($type = "any") return "#powderBlue"
 !function $new_link     ($type = "any") return "#blue"  
-!function $change       ($type = "any") return %lighten (Yellow,70)  
+!function $change       ($type = "any") return %lighten(Yellow,70)  
 
 !function $change_link  ($type = "any") return "#burlywood"  
 !function $remove       ($type = "any") return "#pink"  

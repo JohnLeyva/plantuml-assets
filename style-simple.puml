@@ -519,14 +519,27 @@
     !else
     !$handle = '$' + $name
     !$stereotype = '<<' + $name + '>>'
-    note as $name $handle $stereotype 
+    note as $name $handle $stereotype
         $name
         $handle
         $stereotype
     !endif
 !endprocedure
 
-hide <<note_opt_test>>
+!procedure $note_end()
+    end note
+    !if ($global_last_note_target != '')
+        !$handle = '$' + $global_last_note_name
+        !$stereotype = '<<' + $global_last_note_name + '>>'
+        !if (%not($ishidden($global_last_note_name)))
+            !if (%not($ishidden($global_last_note_target)))
+                $global_last_note_name -- $global_last_note_target $stereotype
+            !endif
+        !endif
+    !endif
+    !global $global_last_note_name = ''
+    !global $global_last_note_target = ''
+!endprocedure
 
 !procedure $option_note_start($name='', $target='')
     $note_start($name, $target)
@@ -534,28 +547,18 @@ hide <<note_opt_test>>
     $option_label($str)
 !endprocedure
 
-!procedure $note_end()
-    end note
-    !if ($global_last_note_target != '')
-        !$handle = '$' + $name
-        !$stereotype = '<<' + $name + '>>'
-        !if (%not($ishidden($name)))
-            $global_last_note_name -- $global_last_note_target $stereotype
-        !endif
-    !endif
-    !global $global_last_note_name = ''
-    !global $global_last_note_target = ''
-!endprocedure
-
 !procedure $option_note_end()
     $note_end()
 !endprocedure
 
+'$hide(note_opt_test)
+'$rem(note_opt_test)
+
 rectangle option_test $example {
     card option_test_card [
         $option_label("Opt ABC")
-        $option_pro() : option_pro 
-        $option_con() : option_con 
+        $option_pro() : option_pro
+        $option_con() : option_con
     ]
 
     component option_test_component
@@ -564,23 +567,10 @@ rectangle option_test $example {
     $option_note_start(note_opt_test, option_test_card)
         description
         ---
-        $option_pro() : option_pro 
-        $option_con() : option_con 
+        $option_pro() : option_pro
+        $option_con() : option_con
     $option_note_end()
-
-    '$rem(note_opt_test)
 }
-
-note as bbnote $fff <<abc>>  
- adasd
- sdfsdf
- sdfsdf
-end note
-'hide <<abc>>
-'hide $fff
-'hide bbnote
-
-hide note_opt_test
 
 ' Examples
 
