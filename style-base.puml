@@ -219,6 +219,48 @@ boundary {
 
 </style>
 
+' Icons Start
+
+!function $switch_map($original,$input,$output,$ifValue1,$ifValue2='',$ifValue3='') 
+    !if ($original != $input)
+        !return $input
+    !endif    
+    !if ($input == $ifValue1)
+        !return $output
+    !endif
+    !if ($input == $ifValue2)
+        !return $output
+    !endif
+    !if ($input == $ifValue3)
+        !return $output
+    !endif
+    !return $input
+!end function
+
+!function $icon_map($name)
+    !$result = $name
+    !$result = $switch_map($name, $result, 'envelope-closed', 'email', 'mail')
+    !$result = $switch_map($name, $result, 'timer', 'schedule')
+    !$result = $switch_map($name, $result, 'box', 'parcel')
+    !return $result
+!end function
+
+!function $icon($name,$size=0,$color=0)
+    !$name = $icon_map($name)
+    !$result = '<&' + $name + '>'
+    !if ($size)
+        !$result = '<size:' + $size + '>' + $result + '</size>'
+    !endif
+    !if ($color)
+        !$result = '<color:' + $color + '>' + $result + '</color>'
+    !endif
+    !return $result
+!end function
+
+' Icons End
+
+' legend Start
+
 !unquoted procedure $componentExample($type,$description='')
         rectangle $type <<$type>> [
             $description
@@ -293,6 +335,8 @@ end legend
 ' General Functions
 
 '$legend()
+
+' Legend end
 
 @enduml
 

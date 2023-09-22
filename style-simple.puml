@@ -619,6 +619,32 @@ rectangle option_test $example {
 !function usecase2     ($name,$data='') !return 'usecase/  '   + $label($name,$data)
 
 
+!procedure $entity($name,$type,$size=0,$color=0)
+    !$name_inner=$name + "_inner"
+    rectangle $label($name) {
+        label $name_inner [
+            $icon($type,$size,$color)
+        ]
+    }
+!end procedure
+
+!procedure email($name, $size=0,$color=0)
+    $entity($name, 'email', $size, $color)
+!end procedure
+
+!procedure timer($name,$size=0,$color=0)
+    $entity($name, 'timer', $size, $color)
+!end procedure
+
+!procedure parcel($name,$size=100,$color="RosyBrown")
+    $entity($name,parcel,$size,$color)
+!end procedure
+
+!procedure computer($name,$size=100,$color="RosyBrown")
+    $entity($name,monitor,$size,$color)
+!end procedure
+
+
 'big example
 
 !unquoted procedure $componentExample($type,$description='')
