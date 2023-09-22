@@ -259,6 +259,22 @@ boundary {
 
 ' Icons End
 
+' relations start
+
+!unquoted procedure relation($string)
+    !$comment_rel = "' " + $string
+    ' comments seems to be managed by the preprocessor so it cannot be output 
+    ' $comment_rel
+    !$global_postponed_relations = $global_postponed_relations + %newline() + $string
+!end procedure
+
+!procedure relation_flush()
+    $global_postponed_relations
+    !$global_postponed_relations = ''
+!end procedure
+
+' relations end
+
 ' legend Start
 
 !unquoted procedure $componentExample($type,$description='')

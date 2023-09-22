@@ -364,7 +364,10 @@
     !global $global_last_name = $str
     !global $global_last_entityLevel = $entityLevel
 
-    !$res = $res + ' as "' + $sizeStart + $name + $sizeEnd + $links + '" '
+    !$labelAs =  $sizeStart + $name + $sizeEnd + $links
+    !if (%strlen($labelAs) > 0 )
+        !$res = $res + ' as "' + $labelAs + '" '
+    !endif
 
 '    !if (%strlen($actionColor) > 0)
 '        !$actionColor = %darken($action , ($entityLevel - 2) * 10)
