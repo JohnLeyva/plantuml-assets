@@ -2,6 +2,8 @@
 
 !$defaultColor = '#white'
 
+' Review https://github.com/tupadr3/plantuml-icon-font-sprites
+
 !function $remark($text,$color=red) return "<color:" + $color+ ">" + $text + "</color>"  
 
 !function $notouch      ($type = "any") return "#lightgray"
