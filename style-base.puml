@@ -270,7 +270,7 @@ boundary {
     !$global_postponed_relations = $global_postponed_relations + %newline() + $string
 !end procedure
 
-$global_postponed_relations ?= ''
+!$global_postponed_relations ?= ''
 !procedure relation_flush()
     $global_postponed_relations
     !$global_postponed_relations = ''
