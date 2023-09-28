@@ -271,8 +271,10 @@ boundary {
 !end procedure
 
 !procedure relation_flush()
-    $global_postponed_relations
-    !$global_postponed_relations = ''
+    !if ($global_postponed_relations)
+        $global_postponed_relations
+        !$global_postponed_relations = ''
+    !endif
 !end procedure
 
 ' relations end
