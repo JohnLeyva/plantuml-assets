@@ -302,34 +302,34 @@ boundary {
 !endprocedure
 
 !procedure $legend_States_Content()
-$componentExample(any)
-$componentExample(review)
-$componentExample(new)
-$componentExample(alt)
-$componentExample(wip)
-$componentExample(done)
-$componentExample(ready)
-$componentExample(live)
-$componentExample(notouch)
-$componentExample(change)
-$componentExample(temporary)
-$componentExample(remove)
-'$componentExample('out-of-scope')
+    $componentExample(any)
+    $componentExample(review)
+    $componentExample(new)
+    $componentExample(alt)
+    $componentExample(wip)
+    $componentExample(done)
+    $componentExample(ready)
+    $componentExample(live)
+    $componentExample(notouch)
+    $componentExample(change)
+    $componentExample(temporary)
+    $componentExample(remove)
+    '$componentExample('out-of-scope')
         rectangle out_of_scope <<out-of-scope>> [
         ]
 
-any -> review <<review>>
-review -> new <<new>>
-new -> alt <<alt>>
-alt -> wip <<wip>>
-wip -> ready <<ready>>
-ready -> done <<done>>
-done -> live <<live>> 
-live -> notouch <<notouch>>
-notouch -> change <<change>>
-change -> temporary <<temporary>> 
-temporary -> remove <<remove>>
-remove -> out_of_scope <<out-of-scope>>
+    any -> review <<review>>
+    review -> new <<new>>
+    new -> alt <<alt>>
+    alt -> wip <<wip>>
+    wip -> ready <<ready>>
+    ready -> done <<done>>
+    done -> live <<live>> 
+    live -> notouch <<notouch>>
+    notouch -> change <<change>>
+    change -> temporary <<temporary>> 
+    temporary -> remove <<remove>>
+    remove -> out_of_scope <<out-of-scope>>
 !endprocedure
 
 !procedure $legend_Arrows_Content()
@@ -347,7 +347,7 @@ $legend_States_Content()
 $legend_Arrows_Content()
 !endprocedure
 
-$legend_Content()
+'$legend_Content()
 
 !procedure $legend($open=0)
 !if ($open==0)
