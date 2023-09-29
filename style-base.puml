@@ -1,5 +1,7 @@
 @startuml style-base
 
+!global $icon_Size = 50
+
 !$defaultColor = '#white'
 
 ' Review https://github.com/tupadr3/plantuml-icon-font-sprites
@@ -132,9 +134,9 @@ arrow {
 
     .out-of-scope {
         LineColor $alt()
-        LineThickness 3
+        LineThickness 1
         BackGroundColor $notouch()|$new()
-        LineStyle 70
+        LineStyle 20
         DiagonalCorner 20
     }
     .wip {
@@ -244,10 +246,11 @@ boundary {
     !$result = $switch_map($name, $result, 'envelope-closed', 'email', 'mail')
     !$result = $switch_map($name, $result, 'timer', 'schedule')
     !$result = $switch_map($name, $result, 'box', 'parcel')
+    !$result = $switch_map($name, $result, 'link-intact', 'link')
     !return $result
 !end function
 
-!function $icon($name,$size=0,$color=0)
+!function $icon($name,$size=$icon_Size,$color=0)
     !$name = $icon_map($name)
     !$result = '<&' + $name + '>'
     !if ($size)
@@ -298,6 +301,7 @@ $componentExample(notouch)
 $componentExample(change)
 $componentExample(temporary)
 $componentExample(remove)
+$componentExample(out_of_scope)
 any -> new <<new>>
 new -> alt <<alt>>
 alt -> wip <<wip>>
@@ -308,6 +312,7 @@ live -> notouch <<notouch>>
 notouch -> change <<change>>
 change -> temporary <<temporary>> 
 temporary -> remove <<remove>>
+remove -> out_of_scope <<out-of-scope>>
 !endprocedure
 
 !procedure $legend_Arrows_Content()
@@ -353,7 +358,7 @@ end legend
 
 ' General Functions
 
-'$legend()
+$legend()
 
 ' Legend end
 
