@@ -1,5 +1,6 @@
 @startuml style-base
 
+' !$commonincludepath ?= "\code\puml\assets"
 !global $icon_Size = 50
 
 !$defaultColor = '#white'
@@ -36,6 +37,11 @@ skinparam NoteBorderThickness 1.5
 skinparam Nodesep 40
 skinparam Ranksep 50
 
+!global $style__out_of_scope__LineThickness = 5
+!global $style__out_of_scope__LineStyle = 50
+!global $style__out_of_scope__DiagonalCorner = 20
+
+
 'C4
 '!include <C4/C4_Deployment>
 '!include <C4/C4_Container>
@@ -43,12 +49,12 @@ skinparam Ranksep 50
 
 <style>
     Component { BackgroundColor #white }
-    Boundary { BackgroundColor #white }
+    Boundary  { BackgroundColor #white }
     Interface { BackgroundColor #white }
-    Control { BackgroundColor #white }
-    Entity { BackgroundColor #white }
-    database { BackgroundColor #white }
-    Queue { BackgroundColor #white }
+    Control   { BackgroundColor #white }
+    Entity    { BackgroundColor #white }
+    database  { BackgroundColor #white }
+    Queue     { BackgroundColor #white }
 
     legend {
         BackgroundColor #white
@@ -91,6 +97,12 @@ skinparam Ranksep 50
         LineThickness 3
         'LineStyle 6
     }
+    .review {
+        LineColor $change_link()
+        LineThickness 3
+        LineStyle 5
+        BackGroundColor white-%darken($notouch(),50)
+    }
     .new {
         BackGroundColor $new()
     }
@@ -117,10 +129,10 @@ skinparam Ranksep 50
     }
     .out-of-scope {
         LineColor $alt()
-        LineThickness 8
-        BackGroundColor $notouch()|$new()
-        LineStyle 70
-        DiagonalCorner 20 
+        LineThickness $style__out_of_scope__LineThickness
+        BackGroundColor $notouch()|#white
+        LineStyle $style__out_of_scope__LineStyle
+        DiagonalCorner $style__out_of_scope__DiagonalCorner
     }
     .next-phase{
         LineThickness 3
@@ -291,6 +303,7 @@ boundary {
 
 !procedure $legend_States_Content()
 $componentExample(any)
+$componentExample(review)
 $componentExample(new)
 $componentExample(alt)
 $componentExample(wip)
@@ -301,8 +314,12 @@ $componentExample(notouch)
 $componentExample(change)
 $componentExample(temporary)
 $componentExample(remove)
-$componentExample(out_of_scope)
-any -> new <<new>>
+'$componentExample('out-of-scope')
+        rectangle out_of_scope <<out-of-scope>> [
+        ]
+
+any -> review <<review>>
+review -> new <<new>>
 new -> alt <<alt>>
 alt -> wip <<wip>>
 wip -> ready <<ready>>
@@ -330,7 +347,7 @@ $legend_States_Content()
 $legend_Arrows_Content()
 !endprocedure
 
-'$legend_Content()
+$legend_Content()
 
 !procedure $legend($open=0)
 !if ($open==0)
@@ -338,14 +355,16 @@ legend
 !endif
 {{
 scale 0.5
-!$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
+!$commonincludepath ?= "\code\puml\assets"
+!$commonincludepath ?= "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
 !include $commonincludepath/style-base.puml
 $legend_States_Content()
 }}
 
 {{
 scale 0.5
-!$commonincludepath = "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
+!$commonincludepath ?= "\code\puml\assets"
+!$commonincludepath ?= "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
 !include $commonincludepath/style-base.puml
 $legend_Arrows_Content()
 }}
@@ -358,7 +377,7 @@ end legend
 
 ' General Functions
 
-$legend()
+'$legend()
 
 ' Legend end
 
