@@ -615,7 +615,7 @@ left to right direction
     component(note_test_component)
     $note('abc')
 !endprocedure
-$note_test()
+'$note_test()
 
 !procedure $option_note_start($name='', $target='')
     $note_start($name, $target)
