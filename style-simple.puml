@@ -662,9 +662,6 @@ rectangle option_test $example {
 !endprocedure
 
 !procedure $example_style()
-
-    left to right direction
-
     rectangle example_style $example {
         together {
             component anyComponent
@@ -858,12 +855,12 @@ frame $label(flow_vs_dependency) $example {
 
 rectangle {
 ' $option_test()
-    $flow_vs_dependency()
+'    $flow_vs_dependency()
 '    $model_notation_example()
 '    $Transaction_example()
 }
 '$example_style()
-$legend()
+'$legend()
 @enduml
 
 
