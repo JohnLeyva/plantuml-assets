@@ -605,7 +605,7 @@ left to right direction
     !global $global_last_note_target = ''
 !endprocedure
 
-!procedure $note($text, $name='', $target='')
+!procedure note($text, $name='', $target='')
     $note_start($name, $target)
     $text
     $note_end()
@@ -613,7 +613,7 @@ left to right direction
 
 !procedure $note_test()
     component(note_test_component)
-    $note('abc')
+    note(abc)
 !endprocedure
 '$note_test()
 
