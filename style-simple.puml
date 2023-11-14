@@ -188,6 +188,9 @@
 !procedure $GetPart_Test() 
     node GetPart_Test $example
     note right
+        $GetPart('Opsys_Postcode_Update ---> postcode_dat',' ',0)
+        $GetPart('Opsys_Postcode_Update ---> postcode_dat',' ',1)
+        $GetPart('Opsys_Postcode_Update ---> postcode_dat',' ',2)
         $GetPart(Part1__Part2__Part3__Part4,'__',0)
         $GetPart(Part1__Part2__Part3__Part4,'__')
         $GetPart('Part1++Part2+Part3+Part4','+')
@@ -557,6 +560,7 @@
 '$hide(note_opt_test)
 '$rem(note_opt_test)
 
+!procedure $option_test()
 rectangle option_test $example {
     card option_test_card [
         $option_label("Opt ABC")
@@ -574,6 +578,7 @@ rectangle option_test $example {
         $option_con() : option_con
     $option_note_end()
 }
+!endprocedure
 
 ' Examples
 
@@ -814,9 +819,8 @@ frame $label(flow_vs_dependency) $example {
         control publisher_topic
         queue topic
         control consumer_topic
-
-        publisher_topic -l-> topic : Publish
-        topic -l-> consumer_topic : Consume
+        publisher_topic -r-\\ topic : Publish
+        topic -r-\\ consumer_topic : Consume
     }
 
     rectangle flow_vs_dependency_B as " " {
@@ -824,8 +828,8 @@ frame $label(flow_vs_dependency) $example {
         database storage
         control querier_storage
 
-        persister_storage -l-> storage : Store
-        storage -l-> querier_storage : Query
+        persister_storage -r-> storage : Store
+        storage -r-> querier_storage : Query
     }
 
     rectangle flow_vs_dependency_C as " " {
@@ -833,8 +837,8 @@ frame $label(flow_vs_dependency) $example {
         interface API_Gateway_POST
         boundary API_Backend_POST
 
-        API_client_POST -l(0-> API_Gateway_POST : POST
-        API_Gateway_POST -l(0-> API_Backend_POST : POST
+        API_client_POST -r(0-> API_Gateway_POST : POST
+        API_Gateway_POST -r(0-> API_Backend_POST : POST
     }
 
     rectangle flow_vs_dependency_D as " " {
@@ -842,8 +846,8 @@ frame $label(flow_vs_dependency) $example {
         interface API_Gateway_GET
         boundary API_Backend_GET
 
-        API_client_GET <-l(0- API_Gateway_GET : GET
-        API_Gateway_GET <-l(0- API_Backend_GET : GET
+        API_client_GET <-r(0- API_Gateway_GET : GET
+        API_Gateway_GET <-r(0- API_Backend_GET : GET
     }
 
     flow_vs_dependency_A -- flow_vs_dependency_B <<hide>>
@@ -853,11 +857,13 @@ frame $label(flow_vs_dependency) $example {
 !endprocedure
 
 rectangle {
+' $option_test()
     $flow_vs_dependency()
-    $model_notation_example()
-    $Transaction_example()
+'    $model_notation_example()
+'    $Transaction_example()
 }
-$example_style()
+'$example_style()
+$legend()
 @enduml
 
 
