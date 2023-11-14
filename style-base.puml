@@ -1,7 +1,5 @@
 @startuml style-base
 
-left to right direction
-
 ' !$commonincludepath ?= "\code\puml\assets"
 !global $icon_Size = 50
 

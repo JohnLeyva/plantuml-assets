@@ -1,4 +1,6 @@
 @startuml style
+left to right direction
+
 'https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html
 'allow_mixing
 'skinparam monochrome true
