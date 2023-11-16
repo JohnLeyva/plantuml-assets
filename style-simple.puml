@@ -135,16 +135,26 @@ left to right direction
 !endfunction
 'node strReplace_Test as "$strReplace('<(a)>-<(b)>-<(c)>','<(','<')"
 
-!function $strReverse($text)
-    !$pos = %strlen($text)
+!function $strReverse($text,$map1='<{[',$map2='>}]')
+    !$pos = %strlen($text) -1
     !$result = ''
     !while $pos >= 0
-        !$result = $result + %substr($text, $pos, 1)
+        !$char = %substr($text, $pos, 1)
+        !$mapPos = %strpos($map1,$char)
+        !if $mapPos >= 0
+            !$char = %substr($map2, $mapPos, 1)
+        !else
+            !$mapPos = %strpos($map2,$char)
+            !if $mapPos >= 0
+                !$char = %substr($map1, $mapPos, 1)
+            !endif
+        !endif
+        !$result = $result + $char 
         !$pos = $pos - 1  
     !endwhile
     !return $result
 !endfunction 
-'node strReverse_Test as "$strReverse('123456789')"
+node strReverse_Test as "$strReverse('abc<123456789>def')"
 
 !procedure $ShowJson($json,$text='=json')
     label l [
