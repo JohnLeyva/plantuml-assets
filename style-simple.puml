@@ -135,6 +135,17 @@ left to right direction
 !endfunction
 'node strReplace_Test as "$strReplace('<(a)>-<(b)>-<(c)>','<(','<')"
 
+!function $strReverse($text)
+    !$pos = %strlen($text)
+    !$result = ''
+    !while $pos >= 0
+        !$result = $result + %substr($text, $pos, 1)
+        !$pos = $pos - 1  
+    !endwhile
+    !return $result
+!endfunction 
+'node strReverse_Test as "$strReverse('123456789')"
+
 !procedure $ShowJson($json,$text='=json')
     label l [
         $text
