@@ -118,6 +118,10 @@ left to right direction
     !endif
 !endfunction
 
+!function $strContains($text,$find) 
+    !return %strpos($tail,$find) >= 0
+!endfunction
+
 !function $strReplace($str,$find,$replace)
     !$tail = $str
     !$len = %strlen($find)
@@ -390,9 +394,13 @@ left to right direction
     !global $global_last_name = $str
     !global $global_last_entityLevel = $entityLevel
 
-    !$labelAs =  $sizeStart + $name + $sizeEnd + $links
-    !if (%strlen($labelAs) > 0 )
-        !$res = $res + ' as "' + $labelAs + '" '
+    !if ($strContains($str,'_notitle'))
+        !$res = $res + ' as ""'
+    !else
+        !$labelAs =  $sizeStart + $name + $sizeEnd + $links
+        !if (%strlen($labelAs) > 0 )
+            !$res = $res + ' as "' + $labelAs + '" '
+        !endif
     !endif
 
 '    !if (%strlen($actionColor) > 0)
@@ -893,7 +901,7 @@ $example_style()
 $legend()
 !endprocedure
 
-'$style_test_all()
+$style_test_all()
 
 @enduml
 
