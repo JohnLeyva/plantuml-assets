@@ -395,7 +395,7 @@ left to right direction
     !global $global_last_entityLevel = $entityLevel
 
     !if ($strContains($str,'_notitle'))
-        !$res = $res + ' as ""'
+        !$res = $res + ' as " "'
     !else
         !$labelAs =  $sizeStart + $name + $sizeEnd + $links
         !if (%strlen($labelAs) > 0 )
