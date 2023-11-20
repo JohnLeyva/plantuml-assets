@@ -55,6 +55,7 @@ left to right direction
 !global $environment_textSize = 30
 !global $external_textSize = 30
 
+!global $defaultNoTitle = '_notitle'
 !$defaultPartSeparator = '__'
 !$defaultWordSeparator = '_'
 !$scaleTextUp = 8
@@ -348,7 +349,11 @@ left to right direction
     !return $name 
 !endfunction
 
-!function $label($str,$data=0,$sizeArg=0)
+!function $label($str='',$data=0,$sizeArg=0)
+    !if $str == ''
+        !$str = $global_last_name + "_" + $defaultNoTitle
+    !endif
+
     !$dataname = "$" + $str + "_data"
     !$links = ''
     !if (%get_json_type($data) != "object")
@@ -394,10 +399,10 @@ left to right direction
     !global $global_last_name = $str
     !global $global_last_entityLevel = $entityLevel
 
-    !if ($strContains($str,'_notitle'))
+    !if ($strContains($str,$defaultNoTitle))
         !$res = $res + ' as " "'
     !else
-        !$labelAs =  $sizeStart + $name + $sizeEnd + $links
+        !$labelAs = $sizeStart + $name + $sizeEnd + $links
         !if (%strlen($labelAs) > 0 )
             !$res = $res + ' as "' + $labelAs + '" '
         !endif
@@ -433,7 +438,7 @@ left to right direction
             $label(Any_Service_4,'F!http://aaa.com|G!http://bbb.com|H!http://ccc.com',15)
     ]
 !endprocedure
-'$label_Test()
+$label_Test()
 
 !unquoted procedure $scale($type, $name, $action = '', $factor = 4)
     !$scale2 = $factor * $scaleText
@@ -450,52 +455,52 @@ left to right direction
 ' $scale_Test()
 
 
-!function $service($name = 'anyService', $action = '')
+!function $service($name = '', $action = '')
     !return "frame " + $label($name,$action,$service_textSize) + " <<service>> " 
 !endfunction
 
-!function $environment($name = 'anyEnvironment', $action = '')
+!function $environment($name = '', $action = '')
     !return "rectangle " + $label($name, $action,$environment_textSize) + " <<environment>> "
 !endfunction
 
-!function $external($name = 'anyEnvironment', $action = '')
+!function $external($name = '', $action = '')
     !return "cloud " + $label($name,$action,$external_textSize) + " <<environment>> "
 !endfunction
 
-!function $transaction($name, $action = '') {
+!function $transaction($name = '', $action = '') {
     !return "hexagon " + $label($name,$action) + " <<transaction>> "
 !endfunction
 
 'entity functions
 
-!function actor        ($name,$data='') !return 'actor '       + $label($name,$data)
-!function actor2       ($name,$data='') !return 'actor/ '      + $label($name,$data)
-!function agent        ($name,$data='') !return 'agent '       + $label($name,$data)
-!function artifact     ($name,$data='') !return 'artifact '    + $label($name,$data)
-!function boundary     ($name,$data='') !return 'boundary '    + $label($name,$data)
-!function card         ($name,$data='') !return 'card '        + $label($name,$data)
-!function circle       ($name,$data='') !return 'circle '      + $label($name,$data)
-!function cloud        ($name,$data='') !return 'cloud '       + $label($name,$data)
-!function collections  ($name,$data='') !return 'collections ' + $label($name,$data)
-!function component    ($name,$data='') !return 'component '   + $label($name,$data)
-!function control      ($name,$data='') !return 'control '     + $label($name,$data)
-!function database     ($name,$data='') !return 'database '    + $label($name,$data)
-!function entity       ($name,$data='') !return 'entity '      + $label($name,$data)
-!function file         ($name,$data='') !return 'file '        + $label($name,$data)
-!function folder       ($name,$data='') !return 'folder '      + $label($name,$data)
-!function frame        ($name,$data='') !return 'frame '       + $label($name,$data)
-!function hexagon      ($name,$data='') !return 'hexagon '     + $label($name,$data)
-!function interface    ($name,$data='') !return 'interface '   + $label($name,$data)
-!function label        ($name,$data='') !return 'label '       + $label($name,$data)
-!function node         ($name,$data='') !return 'node '        + $label($name,$data)
-!function package      ($name,$data='') !return 'package '     + $label($name,$data)
-!function person       ($name,$data='') !return 'person '      + $label($name,$data)
-!function queue        ($name,$data='') !return 'queue '       + $label($name,$data)
-!function rectangle    ($name,$data='') !return 'rectangle '   + $label($name,$data)
-!function stack        ($name,$data='') !return 'stack '       + $label($name,$data)
-!function storage      ($name,$data='') !return 'storage '     + $label($name,$data)
-!function usecase      ($name,$data='') !return 'usecase '     + $label($name,$data)
-!function usecase2     ($name,$data='') !return 'usecase/  '   + $label($name,$data)
+!function actor        ($name='',$data='') !return 'actor '       + $label($name,$data)
+!function actor2       ($name='',$data='') !return 'actor/ '      + $label($name,$data)
+!function agent        ($name='',$data='') !return 'agent '       + $label($name,$data)
+!function artifact     ($name='',$data='') !return 'artifact '    + $label($name,$data)
+!function boundary     ($name='',$data='') !return 'boundary '    + $label($name,$data)
+!function card         ($name='',$data='') !return 'card '        + $label($name,$data)
+!function circle       ($name='',$data='') !return 'circle '      + $label($name,$data)
+!function cloud        ($name='',$data='') !return 'cloud '       + $label($name,$data)
+!function collections  ($name='',$data='') !return 'collections ' + $label($name,$data)
+!function component    ($name='',$data='') !return 'component '   + $label($name,$data)
+!function control      ($name='',$data='') !return 'control '     + $label($name,$data)
+!function database     ($name='',$data='') !return 'database '    + $label($name,$data)
+!function entity       ($name='',$data='') !return 'entity '      + $label($name,$data)
+!function file         ($name='',$data='') !return 'file '        + $label($name,$data)
+!function folder       ($name='',$data='') !return 'folder '      + $label($name,$data)
+!function frame        ($name='',$data='') !return 'frame '       + $label($name,$data)
+!function hexagon      ($name='',$data='') !return 'hexagon '     + $label($name,$data)
+!function interface    ($name='',$data='') !return 'interface '   + $label($name,$data)
+!function label        ($name='',$data='') !return 'label '       + $label($name,$data)
+!function node         ($name='',$data='') !return 'node '        + $label($name,$data)
+!function package      ($name='',$data='') !return 'package '     + $label($name,$data)
+!function person       ($name='',$data='') !return 'person '      + $label($name,$data)
+!function queue        ($name='',$data='') !return 'queue '       + $label($name,$data)
+!function rectangle    ($name='',$data='') !return 'rectangle '   + $label($name,$data)
+!function stack        ($name='',$data='') !return 'stack '       + $label($name,$data)
+!function storage      ($name='',$data='') !return 'storage '     + $label($name,$data)
+!function usecase      ($name='',$data='') !return 'usecase '     + $label($name,$data)
+!function usecase2     ($name='',$data='') !return 'usecase/  '   + $label($name,$data)
 
 
 !procedure $entity($name,$type,$size=0,$color=0)
@@ -756,6 +761,7 @@ rectangle option_test $example {
   
     $service(Any_Service_Group) <<existing>> {
         $service(Any_Service) <<new>> {
+            rectangle() {
             $environment(Any_Service__Any_Environment) <<new>> {
 
                 database anyDatabase as "Queryable\nstorage"
@@ -783,6 +789,7 @@ rectangle option_test $example {
 
                 interface ApiGateway as "ApiGateway Proxy"
                 ApiGateway -d- anyBoundary
+            }
             }
         }
     } 
@@ -901,8 +908,6 @@ $example_style()
 $legend()
 !endprocedure
 
-'$style_test_all()
+$style_test_all()
 
 @enduml
-
-
