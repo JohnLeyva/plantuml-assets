@@ -194,7 +194,7 @@ card strHasSuffix_test [
 !endprocedure
 
 !function $strSegmentCount($str,$separator=$defaultPartSeparator)
-    !if(%strlen($str) <= 0 )
+    !if (%strlen($str) <= 0 )
         !return 0
     !endif
     !$res = $str
@@ -211,12 +211,12 @@ card strHasSuffix_test [
 !endfunction
 !procedure $strSegmentCount_Test()
     !$count = $strSegmentCount(Part1__Part2__Part3,$defaultPartSeparator)
-    !$count = $strSegmentCount(0,$defaultPartSeparator)
+    !$count = $strSegmentCount('',$defaultPartSeparator)
     json strSegmentCount_json {
         "strSegmentCount" : "$count"
     }
 !endprocedure
-'$strSegmentCount_Test()
+$strSegmentCount_Test()
 
 !function $strSegmentGet($str,$separator=$defaultPartSeparator,$count=(0-1))
     !$res = $str
@@ -942,7 +942,7 @@ frame(flow_vs_dependency) $example {
     }
 !endprocedure
 
-'$style_test_all()
+$style_test_all()
 
 !function $label_filter($suffix,$template)
     !$count = $strSegmentCount($label_Inventory_store,$label_Inventory_separator)
@@ -972,7 +972,7 @@ frame(flow_vs_dependency) $example {
         $value
     ]
 !endprocedure
-'$label_filter_test()
+$label_filter_test()
 
 !procedure $label_hide($suffix)
     $label_filter($suffix,"hide %" + %newline())
@@ -984,8 +984,7 @@ frame(flow_vs_dependency) $example {
 
 $label_hide('')
 '$label_hide(Any_Environment)
-$label_show(Any_Environment)
-show Any_Service_Group__Any_Service__Any_Environment
+'$label_show(Any_Environment)
 'show model_notation
 'show Any_Service_Group
 
