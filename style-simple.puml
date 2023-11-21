@@ -82,8 +82,6 @@ left to right direction
     
     %set_variable_value($name + '_hidden', 1)
 
-    'card ['$name_hidden_var' = $ishidden($name_hidden_var)]
-
     hide $name
     hide $handle
     hide $stereotype
@@ -104,24 +102,48 @@ left to right direction
 !endfunction
 
 !function $strAppend($source,$append,$separator='')
-    !if ( %strlen($append) > 0 )
+    !if ( %strlen($source) > 0 && %strlen($append) > 0  )
         !return $source + $separator + $append
     !else
-        !return $source
+        !return $source + $append 
     !endif
 !endfunction
 
-!function $strPrepend($source,$append,$separator='')
-    !if ( %strlen($append) > 0 )
-        !return $append + $separator + $source
+!function $strPrepend($source,$prepend,$separator='')
+    !if ( %strlen($source) > 0 && %strlen($prepend) > 0 )
+        !return $prepend + $separator + $source
     !else
-        !return $source
+        !return $prepend + $source
     !endif
 !endfunction
 
 !function $strContains($text,$find) 
     !return %strpos($text,$find) >= 0
 !endfunction
+
+!function $strHasSuffix($text,$find) 
+    !$len = %strlen($find)
+    !if ($len == 0)
+        !return %true()
+    !endif
+    !$pos = %strpos($text,$find)
+    !if ($pos < 0) 
+        !return %false()
+    !endif
+    !return ( %strlen($text) - $pos ) == $len
+!endfunction
+!procedure $strHasSuffix_test() {
+card strHasSuffix_test [
+    strHasSuffix_test
+    IsSuffix    $strHasSuffix('aaabbb','bbb')
+    Empty Suffix    $strHasSuffix('aaabbb','')
+    Empty Suffix    $strHasSuffix('','')
+    Empty Value    $strHasSuffix('','bbb')
+    No Suffix    $strHasSuffix('aaa','cbb')
+    No Suffix    $strHasSuffix('aaa','cccc')
+]
+!endprocedure
+'$strHasSuffix_test()
 
 !function $strReplace($str,$find,$replace)
     !$tail = $str
@@ -171,7 +193,10 @@ left to right direction
     ]
 !endprocedure
 
-!function $CountPart($str,$separator=$defaultPartSeparator)
+!function $strSegmentCount($str,$separator=$defaultPartSeparator)
+    !if(%strlen($str) <= 0 )
+        !return 0
+    !endif
     !$res = $str
     !$pos = 1
     !$count = 1
@@ -184,16 +209,16 @@ left to right direction
     !endwhile
     !return $count
 !endfunction
-!procedure $CountPart_Test()
-    !$count = $CountPart(Part1__Part2__Part3,$defaultPartSeparator) 
-    node CountPart_Test $example
-    note right
-        $count
-    endnote
+!procedure $strSegmentCount_Test()
+    !$count = $strSegmentCount(Part1__Part2__Part3,$defaultPartSeparator)
+    !$count = $strSegmentCount(0,$defaultPartSeparator)
+    json strSegmentCount_json {
+        "strSegmentCount" : "$count"
+    }
 !endprocedure
-'$CountPart_Test()
+'$strSegmentCount_Test()
 
-!function $GetPart($str,$separator=$defaultPartSeparator,$count=(0-1))
+!function $strSegmentGet($str,$separator=$defaultPartSeparator,$count=(0-1))
     !$res = $str
     !$pos = 1
     !while ($pos >= 0)&&($count!=0)
@@ -213,19 +238,16 @@ left to right direction
 '    !endfor 
     !return $res
 !endfunction
-!procedure $GetPart_Test() 
-    node GetPart_Test $example
+!procedure $strSegmentGet_Test() 
+    node strSegmentGet_Test $example
     note right
-        $GetPart('Opsys_Postcode_Update ---> postcode_dat',' ',0)
-        $GetPart('Opsys_Postcode_Update ---> postcode_dat',' ',1)
-        $GetPart('Opsys_Postcode_Update ---> postcode_dat',' ',2)
-        $GetPart(Part1__Part2__Part3__Part4,'__',0)
-        $GetPart(Part1__Part2__Part3__Part4,'__')
-        $GetPart('Part1++Part2+Part3+Part4','+')
-        $GetPart('https://ukmail.atlassian.net/wiki/spaces/AR/pages/3691970663/Aure+Replacement+-+ConsignmentV1+-+Opsys+request+Batching','/')
+        $strSegmentGet(Part1__Part2__Part3__Part4,'__',0)
+        $strSegmentGet(Part1__Part2__Part3__Part4,'__')
+        $strSegmentGet('Part1++Part2+Part3+Part4','+')
+        $strSegmentGet('https://ukmail.atlassian.net/wiki/spaces/AR/pages/3691970663/Aure+Replacement+-+ConsignmentV1+-+Opsys+request+Batching','/')
     endnote
 !endprocedure
-'$GetPart_Test()
+'$strSegmentGet_Test()
 
 !function $counter_get($name='counter') return %get_variable_value('autonumber_' + $name)
 
@@ -287,7 +309,7 @@ left to right direction
 
 !function $link($text, $url)
     !if (%substr($text,0,1) == '/')
-        !$text = $GetPart($url,$text)
+        !$text = $strSegmentGet($url,$text)
     !endif
     !$text = $strReplace($text,'+',' ')
     !return "[[" + $url + " " + $text + "]]"
@@ -302,12 +324,12 @@ left to right direction
 
 !function $linkRes($str)
     !$separator="|"
-    !$count = $CountPart($str,$separator) -  1
+    !$count = $strSegmentCount($str,$separator) -  1
     !$res = ''
     !while ($count >= 0)
-        !$part = $GetPart($str,$separator,$count)
-        !$key = $GetPart($part,'!',0)
-        !$url = $GetPart($part,'!',1)
+        !$part = $strSegmentGet($str,$separator,$count)
+        !$key = $strSegmentGet($part,'!',0)
+        !$url = $strSegmentGet($part,'!',1)
         !$keytag = "<" + $key + ">"
         !$res = $link($keytag, $url) + " " + $res
         !$count = $count - 1
@@ -344,14 +366,26 @@ left to right direction
 '$linkObj_Test()
 
 !function $GetName($str)
-    !$name = $GetPart($str)
+    !$name = $strSegmentGet($str)
     !$name = $strReplace($name,$defaultWordSeparator,' ')
     !return $name 
 !endfunction
 
+!global $label_Inventory_store = ''
+!procedure $label_Inventory_add($value)
+    !if (%strlen($value)>0)
+        !global $label_Inventory_separator = '|'
+        !global $label_Inventory_store = $strAppend($label_Inventory_store,$value,$label_Inventory_separator)
+    !endif
+!endprocedure
+
+!global $label_NoTitle_counter = 0
 !function $label($str='',$data=0,$sizeArg=0)
+    $label_Inventory_add($str)
+
     !if $str == ''
-        !$str = $global_last_name + "_" + $defaultNoTitle
+        !$label_NoTitle_counter = $label_NoTitle_counter + 1
+        !$str = $global_last_name + "_" + $defaultNoTitle + "_" + $label_NoTitle_counter
     !endif
 
     !$dataname = "$" + $str + "_data"
@@ -370,12 +404,12 @@ left to right direction
     !endif
 
     !if (%get_json_type($data) == "string")
-    !if (%strpos($data,"://") > 0)
-        !$links = $linkRes($data.url)
-        !if ($data.text_size > 0)
-            !$sizeArg = $data.text_size
+        !if (%strpos($data,"://") > 0)
+            !$links = $linkRes($data.url)
+            !if ($data.text_size > 0)
+                !$sizeArg = $data.text_size
+            !endif
         !endif
-    !endif
     !endif
 
     !$sizeArg = %intval($sizeArg)
@@ -394,7 +428,7 @@ left to right direction
     !endif
 
     !$name = $GetName($str)
-    !$entityLevel = $CountPart($str)
+    !$entityLevel = $strSegmentCount($str)
 
     !global $global_last_name = $str
     !global $global_last_entityLevel = $entityLevel
@@ -438,7 +472,8 @@ left to right direction
             $label(Any_Service_4,'F!http://aaa.com|G!http://bbb.com|H!http://ccc.com',15)
     ]
 !endprocedure
-$label_Test()
+'$label_Test()
+
 
 !unquoted procedure $scale($type, $name, $action = '', $factor = 4)
     !$scale2 = $factor * $scaleText
@@ -760,9 +795,9 @@ rectangle option_test $example {
         }
   
     $service(Any_Service_Group) <<existing>> {
-        $service(Any_Service) <<new>> {
+        $service(Any_Service_Group__Any_Service) <<new>> {
             rectangle() {
-            $environment(Any_Service__Any_Environment) <<new>> {
+            $environment(Any_Service_Group__Any_Service__Any_Environment) <<new>> {
 
                 database anyDatabase as "Queryable\nstorage"
                 file anyFile as "File\nstorage"
@@ -825,9 +860,8 @@ frame Transaction_Diagram_convention $example {
 }
 !endprocedure
 
-
 !procedure $model_notation_example()
-frame $label(model_notation) $example {
+frame(model_notation) $example {
      label model_notation_label [
          {{
              'left to right direction
@@ -854,9 +888,9 @@ frame $label(model_notation) $example {
 !endprocedure
 
 !procedure $flow_vs_dependency()
-frame $label(flow_vs_dependency) $example {
+frame(flow_vs_dependency) $example {
     
-    rectangle flow_vs_dependency_A as " "  {
+    rectangle flow_vs_dependency_A as " " {
         control publisher_topic
         queue topic
         control consumer_topic
@@ -898,16 +932,61 @@ frame $label(flow_vs_dependency) $example {
 !endprocedure
 
 !procedure $style_test_all()
-rectangle {
- $option_test()
+    rectangle {
+    $example_style()
+    $option_test()
+    $Transaction_example()
     $flow_vs_dependency()
     $model_notation_example()
-    $Transaction_example()
-}
-$example_style()
-$legend()
+    $legend()
+    }
 !endprocedure
 
-$style_test_all()
+'$style_test_all()
+
+!function $label_filter($suffix,$template)
+    !$count = $strSegmentCount($label_Inventory_store,$label_Inventory_separator)
+    !$result = ""
+    !while ($count > 0)
+        !$count = $count - 1
+        !$labelValue = $strSegmentGet($label_Inventory_store,$label_Inventory_separator,$count)
+        !if ($strHasSuffix($labelValue,$suffix))
+            !$countLabelSegmentCount = $strSegmentCount($labelValue)
+            !$resultItem = ""
+            !$countLabelSegmentPos = 0
+            !while ($countLabelSegmentPos < $countLabelSegmentCount)
+                !$labelValueSegment = $strSegmentGet($labelValue, $defaultPartSeparator, $countLabelSegmentPos)
+                !$resultItem = $strAppend($resultItem, $labelValueSegment, $defaultPartSeparator)
+                !$result = $result + $strReplace($template,"%",$resultItem)
+                !$countLabelSegmentPos = $countLabelSegmentPos + 1
+            !endwhile
+            '!$result = $result + $strReplace($template,"%",$resultItem)
+        !endif
+    !endwhile
+    !return $result
+!endfunction
+
+!procedure $label_filter_test()
+    !$value = $label_filter(Any_Environment,"%" + %newline())
+    card label_filter_test_jsonc [
+        $value
+    ]
+!endprocedure
+'$label_filter_test()
+
+!procedure $label_hide($suffix)
+    $label_filter($suffix,"hide %" + %newline())
+!endprocedure
+
+!procedure $label_show($suffix)
+    $label_filter($suffix,"show %" + %newline())
+!endprocedure
+
+$label_hide('')
+'$label_hide(Any_Environment)
+$label_show(Any_Environment)
+show Any_Service_Group__Any_Service__Any_Environment
+'show model_notation
+'show Any_Service_Group
 
 @enduml
