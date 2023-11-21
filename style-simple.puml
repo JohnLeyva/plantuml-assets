@@ -216,7 +216,7 @@ card strHasSuffix_test [
         "strSegmentCount" : "$count"
     }
 !endprocedure
-$strSegmentCount_Test()
+'$strSegmentCount_Test()
 
 !function $strSegmentGet($str,$separator=$defaultPartSeparator,$count=(0-1))
     !$res = $str
@@ -942,7 +942,7 @@ frame(flow_vs_dependency) $example {
     }
 !endprocedure
 
-$style_test_all()
+'$style_test_all()
 
 !function $label_filter($suffix,$template)
     !$count = $strSegmentCount($label_Inventory_store,$label_Inventory_separator)
@@ -972,7 +972,7 @@ $style_test_all()
         $value
     ]
 !endprocedure
-$label_filter_test()
+'$label_filter_test()
 
 !procedure $label_hide($suffix)
     $label_filter($suffix,"hide %" + %newline())
