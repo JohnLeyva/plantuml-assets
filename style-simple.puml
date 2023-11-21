@@ -983,10 +983,8 @@ frame(flow_vs_dependency) $example {
     $label_filter($suffix,"show %" + %newline())
 !endprocedure
 
-$label_hide('')
-'$label_hide(Any_Environment)
-'$label_show(Any_Environment)
-'show model_notation
-'show Any_Service_Group
+!procedure $label_remove($suffix)
+    $label_filter($suffix,"remove %" + %newline())
+!endprocedure
 
 @enduml
