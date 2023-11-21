@@ -368,7 +368,7 @@ card strHasSuffix_test [
 !function $GetName($str)
     !$name = $strSegmentGet($str)
     !$name = $strReplace($name,$defaultWordSeparator,' ')
-    !return $name 
+    !return $name
 !endfunction
 
 !global $label_Inventory_store = ''
@@ -581,7 +581,8 @@ card strHasSuffix_test [
     !$alias = $topicLink
     !$alias = $strPrepend($alias,$icon,' ')
     !$alias = $strAppend($alias,$highlight($format),'\n')
-    queue $name as "$alias" 
+    queue $name as "$alias"
+    $label_Inventory_add($name)
 !endprocedure
 
 !procedure $kafka($name,$format='')
