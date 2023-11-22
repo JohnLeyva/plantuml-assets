@@ -391,11 +391,20 @@ card strHasSuffix_test [
 !procedure $label_Inventory_add($value)
     !if (%strlen($value)>0)
         !global $label_Inventory_separator = '|'
-        !if (%not($strContainsSegment($label_Inventory_store,$value,$label_Inventory_separator)))
+'        !if (%not($strContainsSegment($label_Inventory_store,$value,$label_Inventory_separator)))
             !global $label_Inventory_store = $strAppend($label_Inventory_store,$value,$label_Inventory_separator)
-        !endif
+'        !endif
     !endif
 !endprocedure
+!procedure $label_Inventory_add_test()
+    $label_Inventory_add(BBBb)
+    $label_Inventory_add(AAAAA)
+    card label_Inventory_add_test [
+        $label_Inventory_store
+    ]
+!endprocedure
+'$label_Inventory_add_test()
+
 
 !global $label_NoTitle_counter = 0
 !function $label($str='',$data=0,$sizeArg=0)
@@ -974,7 +983,9 @@ frame(flow_vs_dependency) $example {
             !while ($countLabelSegmentPos < $countLabelSegmentCount)
                 !$labelValueSegment = $strSegmentGet($labelValue, $defaultPartSeparator, $countLabelSegmentPos)
                 !$resultItem = $strAppend($resultItem, $labelValueSegment, $defaultPartSeparator)
-                !$result = $result + $strReplace($template,"%",$resultItem)
+                !if ( %not($strContainsSegment($result, $resultItem, $label_Inventory_separator)) )
+                    !$result = $result + $strReplace($template,"%",$resultItem)
+                !endif
                 !$countLabelSegmentPos = $countLabelSegmentPos + 1
             !endwhile
             '!$result = $result + $strReplace($template,"%",$resultItem)
