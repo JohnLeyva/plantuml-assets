@@ -990,8 +990,8 @@ frame(flow_vs_dependency) $example {
     ]
 !endprocedure
 
-$style_test_all()
-$label_filter_test()
+'$style_test_all()
+'$label_filter_test()
 
 !procedure $label_hide($suffix)
     $label_filter($suffix,"hide %" + %newline())
