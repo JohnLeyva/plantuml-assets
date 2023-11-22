@@ -371,11 +371,29 @@ card strHasSuffix_test [
     !return $name
 !endfunction
 
+!function $strContainsSegment($list,$find,$separator)
+    !if ($list == $find)
+        !return %true()
+    !endif 
+    !if ($strContains($list,$separator + $find + $separator))
+        !return %true()
+    !endif 
+    !if (%strpos($text,$find + $separator) == 0)
+        !return %true()
+    !endif 
+    !if (%strpos($text,$separator + $find) == %strlen($list) - %strlen($find) )
+        !return %true()
+    !endif 
+    !return %false()
+!endfunction
+
 !global $label_Inventory_store = ''
 !procedure $label_Inventory_add($value)
     !if (%strlen($value)>0)
         !global $label_Inventory_separator = '|'
-        !global $label_Inventory_store = $strAppend($label_Inventory_store,$value,$label_Inventory_separator)
+        !if (%not($strContainsSegment($label_Inventory_store,$value,$label_Inventory_separator)))
+            !global $label_Inventory_store = $strAppend($label_Inventory_store,$value,$label_Inventory_separator)
+        !endif
     !endif
 !endprocedure
 
@@ -943,8 +961,6 @@ frame(flow_vs_dependency) $example {
     }
 !endprocedure
 
-'$style_test_all()
-
 !function $label_filter($suffix,$template)
     !$count = $strSegmentCount($label_Inventory_store,$label_Inventory_separator)
     !$result = ""
@@ -973,7 +989,9 @@ frame(flow_vs_dependency) $example {
         $value
     ]
 !endprocedure
-'$label_filter_test()
+
+$style_test_all()
+$label_filter_test()
 
 !procedure $label_hide($suffix)
     $label_filter($suffix,"hide %" + %newline())
