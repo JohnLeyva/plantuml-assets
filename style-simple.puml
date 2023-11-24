@@ -372,18 +372,18 @@ card strHasSuffix_test [
 !endfunction
 
 !function $strContainsSegment($list,$find,$separator)
-    !if ($list == $find)
+    !if ( $list == $find )
         !return %true()
-    !endif 
-    !if ($strContains($list,$separator + $find + $separator))
+    !endif
+    !if ( $strContains($list,$separator + $find + $separator) )
         !return %true()
-    !endif 
-    !if (%strpos($text,$find + $separator) == 0)
+    !endif
+    !if ( %strpos($text,$find + $separator) == 0 )
         !return %true()
-    !endif 
-    !if (%strpos($text,$separator + $find) == %strlen($list) - %strlen($find) )
+    !endif
+    !if ( %strpos($text,$separator + $find) == %strlen($list) - %strlen($find) )
         !return %true()
-    !endif 
+    !endif
     !return %false()
 !endfunction
 
@@ -391,9 +391,7 @@ card strHasSuffix_test [
 !procedure $label_Inventory_add($value)
     !if (%strlen($value)>0)
         !global $label_Inventory_separator = '|'
-'        !if (%not($strContainsSegment($label_Inventory_store,$value,$label_Inventory_separator)))
-            !global $label_Inventory_store = $strAppend($label_Inventory_store,$value,$label_Inventory_separator)
-'        !endif
+        !global $label_Inventory_store = $strAppend($label_Inventory_store,$value,$label_Inventory_separator)
     !endif
 !endprocedure
 !procedure $label_Inventory_add_test()
@@ -825,7 +823,7 @@ rectangle option_test $example {
     $service(Any_Service_Group) <<existing>> {
         $service(Any_Service_Group__Any_Service) <<new>> {
             rectangle() {
-            $environment(Any_Service_Group__Any_Service__Any_Environment) <<new>> {
+            $environment(Any_Service_Group__Any_Service__AAA__Any_Environment) <<new>> {
 
                 database anyDatabase as "Queryable\nstorage"
                 file anyFile as "File\nstorage"
@@ -983,7 +981,8 @@ frame(flow_vs_dependency) $example {
             !while ($countLabelSegmentPos < $countLabelSegmentCount)
                 !$labelValueSegment = $strSegmentGet($labelValue, $defaultPartSeparator, $countLabelSegmentPos)
                 !$resultItem = $strAppend($resultItem, $labelValueSegment, $defaultPartSeparator)
-                !if ( %not($strContainsSegment($result, $resultItem, $label_Inventory_separator)) )
+'                !if ( %not($strContainsSegment($result, $resultItem, $label_Inventory_separator))&& $strContainsSegment($label_Inventory_store, $resultItem, $label_Inventory_separator) )
+                !if ( %not($strContainsSegment($result, $resultItem, $label_Inventory_separator)))
                     !$result = $result + $strReplace($template,"%",$resultItem)
                 !endif
                 !$countLabelSegmentPos = $countLabelSegmentPos + 1
@@ -995,7 +994,7 @@ frame(flow_vs_dependency) $example {
 !endfunction
 
 !procedure $label_filter_test()
-    !$value = $label_filter(Any_Environment,"%" + %newline())
+    !$value = $label_filter('Environment',"%" + %newline())
     card label_filter_test_jsonc [
         $value
     ]
@@ -1015,5 +1014,13 @@ frame(flow_vs_dependency) $example {
 !procedure $label_remove($suffix)
     $label_filter($suffix,"remove %" + %newline())
 !endprocedure
+
+!unquoted function $rel_inv($relation)
+    !$left = $GetPart($relation,' ',0)
+    !$rel = $GetPart($relation,' ',1)
+    !$right = $GetPart($relation,' ',2)
+    !$rel = $strReverse($rel)
+    !return $right + ' ' + $rel + ' ' + $left
+!endfunction
 
 @enduml

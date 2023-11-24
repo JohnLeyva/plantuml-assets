@@ -141,6 +141,11 @@ skinparam Ranksep 50
         LineStyle 70
         DiagonalCorner 20 
     }
+    .hide {
+        LineThickness 0
+        LineColor #transparent
+        FontColor #transparent
+    }
 arrow {
     LineColor #gray
 
