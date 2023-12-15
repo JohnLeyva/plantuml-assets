@@ -564,6 +564,17 @@ card strHasSuffix_test [
 
 !function class        ($name='',$data='') !return 'class '       + $label($name,$data)
 !function enum         ($name='',$data='') !return 'enum '        + $label($name,$data)
+!function abstract     ($name='',$data='') !return 'abstract '    + $label($name,$data)
+!function abstract_class ($name='',$data='') !return 'abstract class '    + $label($name,$data)
+!function annotation   ($name='',$data='') !return 'annotation '  + $label($name,$data)
+!function circle       ($name='',$data='') !return 'circle '      + $label($name,$data)
+!function diamond      ($name='',$data='') !return 'diamond '     + $label($name,$data)
+!function entity       ($name='',$data='') !return 'entity '      + $label($name,$data)
+!function exception    ($name='',$data='') !return 'exception '   + $label($name,$data)
+!function metaclass    ($name='',$data='') !return 'metaclass '   + $label($name,$data)
+!function protocol     ($name='',$data='') !return 'protocol '    + $label($name,$data)
+!function stereotype   ($name='',$data='') !return 'stereotype '  + $label($name,$data)
+!function struct       ($name='',$data='') !return 'struct '      + $label($name,$data)
 
 
 !procedure $entity($name,$type,$size=0,$color=0)
