@@ -562,6 +562,9 @@ card strHasSuffix_test [
 !function usecase      ($name='',$data='') !return 'usecase '     + $label($name,$data)
 !function usecase2     ($name='',$data='') !return 'usecase/  '   + $label($name,$data)
 
+!function class        ($name='',$data='') !return 'class '       + $label($name,$data)
+!function enum         ($name='',$data='') !return 'enum '        + $label($name,$data)
+
 
 !procedure $entity($name,$type,$size=0,$color=0)
     !$name_inner=$name + "_inner"
