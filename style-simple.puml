@@ -1,5 +1,9 @@
 @startuml style
+
+!$diagram ?= 'none'
+!if ($diagram != 'sequence')
 left to right direction
+!endif
 
 'https://crashedmind.github.io/PlantUMLHitchhikersGuide/layout/layout.html
 'allow_mixing
