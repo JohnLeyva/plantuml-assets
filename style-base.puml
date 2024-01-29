@@ -338,21 +338,30 @@ boundary {
 !endprocedure
 
 !procedure $legend_Arrows_Content()
+    rectangle A
+    rectangle B
+    rectangle C
+    rectangle D
+    rectangle E
+    rectangle F
+    rectangle G
+    rectangle H
+    rectangle I
+    
     A -> B : Information Flow 
     B =\\ C : Push Message 
     C =r(0=> D : API POST
     D <=r(0= E : API GET
     E -> F <<eventually>> : Eventually
     F -|> G : Is A
-    G *- H : Composed by
+    G *- H : G Composed by H
+    H 0- I : I Used by H
 !endprocedure
 
 !procedure $legend_Content()
 $legend_States_Content()
 $legend_Arrows_Content()
 !endprocedure
-
-'$legend_Content()
 
 !procedure $legend($open=0)
 !if ($open==0)
@@ -382,6 +391,7 @@ end legend
 
 ' General Functions
 
+' $legend_Content()
 '$legend()
 
 ' Legend end
