@@ -354,8 +354,8 @@ boundary {
     D <=r(0= E : API GET
     E -> F <<eventually>> : Eventually
     F -|> G : Is A
-    G *- H : G Composed by H
-    H 0- I : I Used by H
+    G *- H : Composed by
+    H -0 I : Used by
 !endprocedure
 
 !procedure $legend_Content()
@@ -391,7 +391,7 @@ end legend
 
 ' General Functions
 
-' $legend_Content()
+ $legend_Content()
 '$legend()
 
 ' Legend end
