@@ -391,7 +391,7 @@ end legend
 
 ' General Functions
 
- $legend_Content()
+'$legend_Content()
 '$legend()
 
 ' Legend end
