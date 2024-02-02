@@ -580,6 +580,10 @@ card strHasSuffix_test [
 !function stereotype   ($name='',$data='') !return 'stereotype '  + $label($name,$data)
 !function struct       ($name='',$data='') !return 'struct '      + $label($name,$data)
 
+!function port         ($name='',$data='') !return 'port '        + $label($name,$data)
+!function portIn       ($name='',$data='') !return 'portIn '      + $label($name,$data)
+!function portOut      ($name='',$data='') !return 'portOut '     + $label($name,$data)
+
 
 !procedure $entity($name,$type,$size=0,$color=0)
     !$name_inner=$name + "_inner"
