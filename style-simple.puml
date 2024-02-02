@@ -136,6 +136,7 @@ left to right direction
     !endif
     !return ( %strlen($text) - $pos ) == $len
 !endfunction
+
 !procedure $strHasSuffix_test() {
 card strHasSuffix_test [
     strHasSuffix_test
@@ -213,6 +214,7 @@ card strHasSuffix_test [
     !endwhile
     !return $count
 !endfunction
+
 !procedure $strSegmentCount_Test()
     !$count = $strSegmentCount(Part1__Part2__Part3,$defaultPartSeparator)
     !$count = $strSegmentCount('',$defaultPartSeparator)

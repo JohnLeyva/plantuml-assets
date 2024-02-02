@@ -240,6 +240,24 @@ boundary {
 
 </style>
 
+' aliases start
+
+!procedure Set_Alias($alias)
+    !$alias_var = "alias_map__" + $alias
+    %set_variable_value($alias_var, $global_last_name)
+!endprocedure
+
+!function alias($alias)
+    !$alias_var = "alias_map__" + $alias
+    !if (%variable_exists($alias_var))
+        !$result = %get_variable_value($alias_var)
+        !return $result
+    !endif
+    !return $alias
+!endfunction
+
+' aliases end
+
 ' Icons Start
 
 !function $switch_map($original,$input,$output,$ifValue1,$ifValue2='',$ifValue3='') 
