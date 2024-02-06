@@ -1,7 +1,7 @@
 @startuml style-base
 
 ' !$commonincludepath ?= "\code\puml\assets"
-!global $icon_Size = 50
+!global $icon_Size ?= 50
 
 !$defaultColor = '#white'
 
