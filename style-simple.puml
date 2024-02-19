@@ -586,6 +586,7 @@ card strHasSuffix_test [
 !function portIn       ($name='',$data='') !return 'portIn '      + $label($name,$data)
 !function portOut      ($name='',$data='') !return 'portOut '     + $label($name,$data)
 
+!function box          ($name='',$data='') !return 'box '         + $label($name,$data)
 
 !procedure $entity($name,$type,$size=0,$color=0)
     !$name_inner=$name + "_inner"
