@@ -520,6 +520,10 @@ card strHasSuffix_test [
 !endprocedure
 ' $scale_Test()
 
+!procedure title($text)
+    !$message = $GetName($text)
+    title <size:30>$message / %date("yyyy-MM-dd")
+!endprocedure 
 
 !function $service($name = '', $action = '')
     !return "frame " + $label($name,$action,$service_textSize) + " <<service>> " 
@@ -586,7 +590,11 @@ card strHasSuffix_test [
 !function portIn       ($name='',$data='') !return 'portIn '      + $label($name,$data)
 !function portOut      ($name='',$data='') !return 'portOut '     + $label($name,$data)
 
+'Sequence Diagram
 !function box          ($name='',$data='') !return 'box '         + $label($name,$data)
+!function participant  ($name='',$data='') !return 'box '         + $label($name,$data)
+
+
 
 !procedure $entity($name,$type,$size=0,$color=0)
     !$name_inner=$name + "_inner"
