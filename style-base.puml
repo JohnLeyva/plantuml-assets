@@ -23,6 +23,7 @@
 !function $remove_link  ($type = "any") return "#red"  
 !function $alt          ($type = "any") return "#plum"
 !function $alt_link     ($type = "any") return "#purple"
+!function $ready        ($type = "any") return "#green"
 !function $done         ($type = "any") return "#green"
 !function $temporary    ($type = "any") return "#powderBlue|pink" 
 !function $remove_future($type = "any") return "#lightgreen|pink"  
