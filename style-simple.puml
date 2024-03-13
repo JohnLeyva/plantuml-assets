@@ -807,9 +807,9 @@ rectangle option_test $example {
             $componentExample(new)
             $componentExample(existing)
             $componentExample(remove)
-            component temporary <<new>> <<temporary>> 
-            $componentExample(notouch) 
-            $componentExample(done) 
+            component temporary <<new>> <<temporary>>
+            $componentExample(notouch)
+            $componentExample(done)
             $componentExample(ready)
             $componentExample(wip)
             $componentExample(change)

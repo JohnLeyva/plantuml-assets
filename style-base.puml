@@ -22,8 +22,8 @@
 !function $remove       ($type = "any") return "#pink"  
 !function $remove_link  ($type = "any") return "#red"  
 !function $alt          ($type = "any") return "#plum"
-!function $alt_link     ($type = "any") return "#purple"  
-!function $done         ($type = "any") return "#CornflowerBlue"
+!function $alt_link     ($type = "any") return "#purple"
+!function $done         ($type = "any") return "#green"
 !function $temporary    ($type = "any") return "#powderBlue|pink" 
 !function $remove_future($type = "any") return "#lightgreen|pink"  
 !function $change_future($type = "any") return "#lightgreen|yellow"  
@@ -282,6 +282,7 @@ boundary {
     !$result = $switch_map($name, $result, 'timer', 'schedule')
     !$result = $switch_map($name, $result, 'box', 'parcel')
     !$result = $switch_map($name, $result, 'link-intact', 'link')
+    !$result = $switch_map($name, $result, 'tablet', 'mobile')
     !return $result
 !end function
 
