@@ -140,8 +140,6 @@ skinparam Ranksep 50
         !return $result
     !endfunction
 
-    style_set_remove()
-
     !function $prototype() 
         !return '<<' + $current_artifact_state + '>>'
     !endfunction
