@@ -51,7 +51,7 @@ skinparam Ranksep 50
 ' SET STYLE START {
     !global $current_artifact_state = ''
 
-    !procedure style_set($back='transparent',$line='black', $LineThickness = 1, $LineStyle = 0, $FontSize = -100)
+    !procedure style_set($back='transparent',$line='black', $LineThickness = 1, $LineStyle = 0, $FontSize = 11)
     <style>
     group {
     !if ($back!='')
