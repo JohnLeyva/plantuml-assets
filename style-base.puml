@@ -12,20 +12,20 @@
 !function $notouch      ($type = "any") return "#lightgray"
 !function $notouch_link ($type = "any") return "#gray"
 !function $exiting      ($type = "any") return $existing($type)
-!function $existing     ($type = "any") return "#lightgreen"  
-!function $existing_link($type = "any") return "#green"  
+!function $existing     ($type = "any") return "#lightgreen"
+!function $existing_link($type = "any") return "#green"
 !function $new          ($type = "any") return "#powderBlue"
-!function $new_link     ($type = "any") return "#blue"  
+!function $new_link     ($type = "any") return "#blue"
 !function $change       ($type = "any") return %lighten(Yellow,70)  
 
 !function $change_link  ($type = "any") return "#burlywood"  
-!function $remove       ($type = "any") return "#pink"  
-!function $remove_link  ($type = "any") return "#red"  
+!function $remove       ($type = "any") return "#pink"
+!function $remove_link  ($type = "any") return "#red"
 !function $alt          ($type = "any") return "#plum"
 !function $alt_link     ($type = "any") return "#purple"
 !function $ready        ($type = "any") return "#green"
 !function $done         ($type = "any") return "#green"
-!function $temporary    ($type = "any") return "#powderBlue|pink" 
+!function $temporary    ($type = "any") return "#powderBlue|pink"
 !function $remove_future($type = "any") return "#lightgreen|pink"
 !function $change_future($type = "any") return "#lightgreen|yellow"
 
@@ -51,23 +51,25 @@ skinparam Ranksep 50
 ' SET STYLE START {
     !global $current_artifact_state = ''
 
-    !procedure style_set($back='transparent',$line='black', $LineThickness = 1, $LineStyle = 0)
+    !procedure style_set($back='transparent',$line='black', $LineThickness = 1, $LineStyle = 0, $FontSize = -100)
     <style>
     group {
     !if ($back!='')
-    Backgroundcolor $back
+        Backgroundcolor $back
     !endif
     !if ($line!='')
-    LineColor $line
+        LineColor $line
     !endif
-    !if ($LineThickness!='')
-    LineThickness $LineThickness
+    !if ($LineThickness != '')
+        LineThickness $LineThickness
     !endif
-    !if ($LineStyle!='')
-    LineStyle $LineStyle
+    !if ($LineStyle != '')
+        LineStyle $LineStyle
     !endif
-    '  FontSize 11
-    '  FontStyle plain
+    !if ($FontSize != -100)
+        FontSize $FontSize
+    !endif
+        ' FontStyle plain
     }
     </style>
     !endprocedure
