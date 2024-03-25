@@ -412,8 +412,6 @@ left to right direction
 !function usecase        ($name='',$data='') !return SetEntityType('usecase'       ) + ' ' + $label($name,$data)
 !function usecase2       ($name='',$data='') !return SetEntityType('usecase/'      ) + ' ' + $label($name,$data)
 
-file(abc)
-
 !function abstract_class ($name='',$data='') !return SetEntityType('abstract class') + ' ' + $label($name,$data)
 !function class          ($name='',$data='') !return SetEntityType('class'         ) + ' ' + $label($name,$data)
 !function enum           ($name='',$data='') !return SetEntityType('enum'          ) + ' ' + $label($name,$data)
