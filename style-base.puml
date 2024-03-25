@@ -16,6 +16,33 @@
 !endprocedure
 'test_sequence()
 
+!function $strReplace($str='',$find='',$replace='')
+    !$tail = $str
+    !$len = %strlen($find)
+    !if ($len == 0)
+        !return $str
+    !endif
+    !$res = ""
+    !$pos = 0
+    !while $pos >= 0
+        !$pos = %strpos($tail,$find)
+        !if $pos >= 0
+            !$head = %substr($tail, $0, $pos)
+            !$tail = %substr($tail, $pos + $len)
+            !$res = $res + $head + $replace
+        !endif
+    !endwhile
+    !return $res + $tail
+!endfunction
+
+!function $text_literal($text)
+    !$special = %splitstr("~ " + %chr(34) + " < _ / *"," ")
+    !foreach $item in $special
+        !$text = $strReplace($text, $item ,'~' + $item)
+    !endfor
+    !return $text
+!endfunction
+
 !procedure $assert($expected='',$actual='',$description='')
     !global $assert_count ?= 0
     !$assert_count = $assert_count + 1
@@ -23,12 +50,16 @@
     !if ($expected != $actual)
         !if ($diagram != 'sequence')
         rectangle #red {
+            !$actual_literal = $text_literal($actual)
+            !$expected_literal = $text_literal($expected)
+
             card $assert_name##_card [
-                ASSERT FAILED 
+                = ASSERT FAILED <:fire:> 
                 $description
 
-                | actual | $actual |
-                | expected | $expected |
+                |=  |= value |= len | literal |
+                | actual | $actual | %strlen($actual) | $actual_literal |
+                | expected | $expected | %strlen($expected) | $expected_literal |
             ]
 
         }
@@ -40,6 +71,7 @@
 !endprocedure
 $assert('aaa','aaa','description')
 '$assert('aaa',%chr(34) + 'aaa' + %chr(34) ,'description')
+'$assert('<color:blue>aaa bbb','<color:red>aaa __bbb__' ,'description')
 
 !procedure $set_direction()
     !$diagram ?= 'none'
@@ -458,24 +490,15 @@ $assert(0,$strHasSuffix('','bbb'),'Empty Value')
 $assert(0,$strHasSuffix('aaa','cbb'),'Empty Value')
 $assert(0,$strHasSuffix('aaa','cccc'),'Empty Value')
 
-!function $strReplace($str,$find,$replace)
-    !$tail = $str
-    !$len = %strlen($find)
-    !$res = ""
-    !$pos = 0
-    !while $pos >= 0
-        !$pos = %strpos($tail,$find)
-        !if $pos >= 0
-            !$head = %substr($tail, $0, $pos)
-            !$tail = %substr($tail, $pos + $len)
-            !$res = $res + $head + $replace
-        !endif
-    !endwhile
-    !return $res + $tail
-!endfunction
+'moved to the top as assert depends on it
 $assert('<a)>-<b)>-<c)>' , $strReplace('<(a)>-<(b)>-<(c)>','<(','<'))
 $assert('abc' , $strReplace('  abc  ',' ',''))
+$assert('abc' , $strReplace('abc','',''))
 
+
+'moved to the top as assert depends on it
+$assert('~<color:blue>abc',$text_literal('<color:blue>abc'), text_literal)
+ 
 !function $strReverse($text,$map1='<{[(',$map2='>}])')
     !$pos = %strlen($text) -1
     !$result = ''
@@ -496,6 +519,7 @@ $assert('abc' , $strReplace('  abc  ',' ',''))
     !return $result
 !endfunction
 $assert('fed<987654321>cba',$strReverse('abc<123456789>def'))
+$assert('a-->b',$strReverse('b<--a'))
 
 !function $strSegmentCount($str,$separator=$defaultPartSeparator)
     !if (%strlen($str) <= 0 )
