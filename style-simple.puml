@@ -288,17 +288,16 @@ left to right direction
 
     !return $res
 !endfunction
-$assert('Any_Service_1 as "Any Service 1" ' ,$label('Any_Service_1'))
-$assert('Any_notitle as " " ' ,$label('Any_notitle'))
-$assert('Any_notitle as " " ' ,$strReplace($label(Any_Service_2,0,20),'<','~<') )
+$assert('assert_Service_1 as "assert Service 1" ' ,$label('assert_Service_1'))
+$assert('assert_notitle as " " ' ,$label('assert_notitle'))
 
 !procedure $label_Test() 
-    !global $Any_Service_3_data1 = { "url" : { 
+    !$Any_Service_3_data1 = { "url" : { 
         "A" : "http://aaa.com",
         "B" : "http://bbb.com",
         "C" : "http://ccc.com"
       },
-      "text_size" : 40 }
+      "text_size" : 20 }
 
     rectangle label_Test [
         == label_Test
@@ -306,7 +305,7 @@ $assert('Any_notitle as " " ' ,$strReplace($label(Any_Service_2,0,20),'<','~<') 
             Size = 30
             $label(Any_Service_2,0,20)
         ---
-            $label(Any_Service_3_notitle,$Any_Service_3_data1,15)
+            $label(Any_Service_3,$Any_Service_3_data1,15)
         ---
             $label(Any_Service_4,'F!http://aaa.com|G!http://bbb.com|H!http://ccc.com',15)
     ]

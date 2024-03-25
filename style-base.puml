@@ -52,6 +52,12 @@
         rectangle #red {
             !$actual_literal = $text_literal($actual)
             !$expected_literal = $text_literal($expected)
+            !if ($actual_literal == $actual)
+                !$actual_literal = ''
+            !endif
+            !if ($expected_literal == $expected)
+                !$expected_literal = ''
+            !endif
 
             card $assert_name##_card [
                 = ASSERT FAILED <:fire:> 
@@ -70,7 +76,7 @@
     !endif
 !endprocedure
 $assert('aaa','aaa','description')
-'$assert('aaa',%chr(34) + 'aaa' + %chr(34) ,'description')
+$assert('aaa',%chr(34) + 'aaa' + %chr(34) ,'description')
 '$assert('<color:blue>aaa bbb','<color:red>aaa __bbb__' ,'description')
 
 !procedure $set_direction()
