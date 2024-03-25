@@ -60,8 +60,6 @@ left to right direction
 !global $external_textSize = 30
 
 !global $defaultNoTitle = '_notitle'
-!$defaultPartSeparator = '__'
-!$defaultWordSeparator = '_'
 !$scaleTextUp = 8
 !$scaleTextDown = 4
 
@@ -105,89 +103,6 @@ left to right direction
     !return '<<' + $name + '>> : ' + "<" + $name + '>' 
 !endfunction
 
-!function $strAppend($source,$append,$separator='')
-    !if ( %strlen($source) > 0 && %strlen($append) > 0  )
-        !return $source + $separator + $append
-    !else
-        !return $source + $append 
-    !endif
-!endfunction
-
-!function $strPrepend($source,$prepend,$separator='')
-    !if ( %strlen($source) > 0 && %strlen($prepend) > 0 )
-        !return $prepend + $separator + $source
-    !else
-        !return $prepend + $source
-    !endif
-!endfunction
-
-!function $strContains($text,$find) 
-    !return %strpos($text,$find) >= 0
-!endfunction
-
-!function $strHasSuffix($text,$find) 
-    !$len = %strlen($find)
-    !if ($len == 0)
-        !return %true()
-    !endif
-    !$pos = %strpos($text,$find)
-    !if ($pos < 0) 
-        !return %false()
-    !endif
-    !return ( %strlen($text) - $pos ) == $len
-!endfunction
-
-!procedure $strHasSuffix_test() {
-card strHasSuffix_test [
-    strHasSuffix_test
-    IsSuffix    $strHasSuffix('aaabbb','bbb')
-    Empty Suffix    $strHasSuffix('aaabbb','')
-    Empty Suffix    $strHasSuffix('','')
-    Empty Value    $strHasSuffix('','bbb')
-    No Suffix    $strHasSuffix('aaa','cbb')
-    No Suffix    $strHasSuffix('aaa','cccc')
-]
-!endprocedure
-'$strHasSuffix_test()
-
-!function $strReplace($str,$find,$replace)
-    !$tail = $str
-    !$len = %strlen($find)
-    !$res = ""
-    !$pos = 0
-    !while $pos >= 0
-        !$pos = %strpos($tail,$find)
-        !if $pos >= 0
-            !$head = %substr($tail, $0, $pos)
-            !$tail = %substr($tail, $pos + $len)
-            !$res = $res + $head + $replace
-        !endif
-    !endwhile
-    !return $res + $tail
-!endfunction
-'node strReplace_Test as "$strReplace('<(a)>-<(b)>-<(c)>','<(','<')"
-
-!function $strReverse($text,$map1='<{[(',$map2='>}])')
-    !$pos = %strlen($text) -1
-    !$result = ''
-    !while $pos >= 0
-        !$char = %substr($text, $pos, 1)
-        !$mapPos = %strpos($map1,$char)
-        !if $mapPos >= 0
-            !$char = %substr($map2, $mapPos, 1)
-        !else
-            !$mapPos = %strpos($map2,$char)
-            !if $mapPos >= 0
-                !$char = %substr($map1, $mapPos, 1)
-            !endif
-        !endif
-        !$result = $result + $char 
-        !$pos = $pos - 1  
-    !endwhile
-    !return $result
-!endfunction
-'node strReverse_Test as "$strReverse('abc<123456789>def')"
-
 !procedure $ShowJson($json,$text='=json')
     label l [
         $text
@@ -197,63 +112,6 @@ card strHasSuffix_test [
         }}
     ]
 !endprocedure
-
-!function $strSegmentCount($str,$separator=$defaultPartSeparator)
-    !if (%strlen($str) <= 0 )
-        !return 0
-    !endif
-    !$res = $str
-    !$pos = 1
-    !$count = 1
-    !while ($pos > 0)
-        !$pos = %strpos($res,$separator)
-        !if ($pos > 0)
-            !$count = $count + 1
-            !$res = %substr($res,$pos + %strlen($separator) )
-        !endif
-    !endwhile
-    !return $count
-!endfunction
-
-!procedure $strSegmentCount_Test()
-    !$count = $strSegmentCount(Part1__Part2__Part3,$defaultPartSeparator)
-    !$count = $strSegmentCount('',$defaultPartSeparator)
-    json strSegmentCount_json {
-        "strSegmentCount" : "$count"
-    }
-!endprocedure
-'$strSegmentCount_Test()
-
-!function $strSegmentGet($str,$separator=$defaultPartSeparator,$count=(0-1))
-    !$res = $str
-    !$pos = 1
-    !while ($pos >= 0)&&($count!=0)
-        !$count = $count - 1
-        !$pos = %strpos($res,$separator)
-        !if ($pos >= 0)
-            !$res = %substr($res,$pos + %strlen($separator) )
-        !endif
-    !endwhile
-    !$pos = %strpos($res,$separator)
-    !if ($pos >= 0)
-        !$res = %substr($res,0,$pos)
-    !endif
-'    !$parts = %splitstr($str,$separator) ' Splits by char not by string so is not whats required
-'    !foreach $item in $parts
-'        !$res = $item
-'    !endfor 
-    !return $res
-!endfunction
-!procedure $strSegmentGet_Test() 
-    node strSegmentGet_Test $example
-    note right
-        $strSegmentGet(Part1__Part2__Part3__Part4,'__',0)
-        $strSegmentGet(Part1__Part2__Part3__Part4,'__')
-        $strSegmentGet('Part1++Part2+Part3+Part4','+')
-        $strSegmentGet('https://ukmail.atlassian.net/wiki/spaces/AR/pages/3691970663/Aure+Replacement+-+ConsignmentV1+-+Opsys+request+Batching','/')
-    endnote
-!endprocedure
-'$strSegmentGet_Test()
 
 !function $counter_get($name='counter') return %get_variable_value('autonumber_' + $name)
 
@@ -285,16 +143,6 @@ card strHasSuffix_test [
     !return %chr(34) + $name + %chr(34)
 !end function
 
-!global $highlight_start = '<('
-!global $highlight_end = ')>'
-
-!function $highlight($str,$start=$highlight_start,$end=$highlight_end,$color='red')
-    !$res = $strReplace($str,$start,"<color:" + $color + ">")
-    !$res = $strReplace($res,$end,"</color>")
-    !return $res
-!endfunction
-'node highlight_test as "$highlight('<(a)>-<(b)>-<(c)>')"
-
 !unquoted function $stereotype($str)
     !if ($str=='')
         return $str
@@ -310,21 +158,6 @@ card strHasSuffix_test [
     !return $result
 !endfunction
 '[ <<aa>> $stereotype(one;two) <<cc>>]
-
-!function $link($text, $url)
-    !if (%substr($text,0,1) == '/')
-        !$text = $strSegmentGet($url,$text)
-    !endif
-    !$text = $strReplace($text,'+',' ')
-    !return "[[" + $url + " " + $text + "]]"
-!endfunction
-!procedure $link_Test()
-    card link_Test [
-        $link(aa+-+bb,http://google.com)
-        $link('/Aure+Replacement+',https://ukmail.atlassian.net/wiki/spaces/AR/pages/3691970663/Aure+Replacement+-+ConsignmentV1+-+Opsys+request+Batching)
-    ]
-!endprocedure
-'$link_Test()
 
 !function $linkRes($str)
     !$separator="|"
@@ -465,8 +298,13 @@ card strHasSuffix_test [
         !$res = $res + ' as " "'
     !else
         !$labelAs = $sizeStart + $name + $sizeEnd + $links
+        !$icon = $entity_icon_map($EntityType)
+        !if ($icon != '')
+            !$icon = $icon($icon)
+        !endif
+
         !if (%strlen($labelAs) > 0 )
-            !$res = $res + ' as "' + $labelAs + '" '
+            !$res = $res + ' as "' + $EntityType + $icon + $labelAs + '" '
         !endif
     !endif
 
@@ -563,7 +401,7 @@ card strHasSuffix_test [
 ' entities end
 
 !function SetEntityType($type='')
-    $global $EntityType = $type
+    !global $EntityType = $type
     !return $type
 !endfunction 
 
@@ -596,7 +434,7 @@ card strHasSuffix_test [
 !function usecase        ($name='',$data='') !return SetEntityType('usecase'       ) + ' ' + $label($name,$data)
 !function usecase2       ($name='',$data='') !return SetEntityType('usecase/'      ) + ' ' + $label($name,$data)
 
-'file(abc)
+file(abc)
 
 !function abstract_class ($name='',$data='') !return SetEntityType('abstract class') + ' ' + $label($name,$data)
 !function class          ($name='',$data='') !return SetEntityType('class'         ) + ' ' + $label($name,$data)

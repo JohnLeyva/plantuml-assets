@@ -4,6 +4,8 @@
 !global $icon_Size ?= 50
 
 !$defaultColor = '#white'
+!$defaultPartSeparator = '__'
+!$defaultWordSeparator = '_'
 
 !procedure test_sequence()
     !global $diagram = 'sequence'
@@ -14,20 +16,22 @@
 !endprocedure
 'test_sequence()
 
-!procedure $assert($expected,$actual,$description='')
+!procedure $assert($expected='',$actual='',$description='')
     !global $assert_count ?= 0
     !$assert_count = $assert_count + 1
     !$assert_name = 'assert_' + $assert_count
     !if ($expected != $actual)
         !if ($diagram != 'sequence')
         rectangle #red {
-            label $assert_name [
+            card $assert_name##_card [
                 ASSERT FAILED 
                 $description
-
-                expected $expected
-                actual $actual
             ]
+
+            json $assert_name##_json  {
+                "actual"   : "$actual",
+                "expected" : "$expected"
+            }
         }
         !else if ($diagram == 'sequence')
             assert --> assert  
@@ -401,21 +405,143 @@ boundary {
 
 ' Icons Start
 
-'!function $switch_map($original,$input,$output,$ifValue1,$ifValue2='',$ifValue3='') 
-'    !if ($original != $input)
-'        !return $input
-'    !endif    
-'    !if ($input == $ifValue1)
-'        !return $output
-'    !endif
-'    !if ($input == $ifValue2)
-'        !return $output
-'    !endif
-'    !if ($input == $ifValue3)
-'        !return $output
-'    !endif
-'    !return $input
-'!end function
+!function $strContains($text,$find) 
+    !return %strpos($text,$find) >= 0
+!endfunction
+$assert(0,$strContains('abcd','z'))
+$assert(1,$strContains('abcd','c'))
+
+!function $strAppend($source,$append,$separator='')
+    !if ( %strlen($source) > 0 && %strlen($append) > 0  )
+        !return $source + $separator + $append
+    !else
+        !return $source + $append 
+    !endif
+!endfunction
+$assert('sourceappend',$strAppend(source,append))
+$assert('source append',$strAppend(source,append,' '))
+
+!function $strPrepend($source,$prepend,$separator='')
+    !if ( %strlen($source) > 0 && %strlen($prepend) > 0 )
+        !return $prepend + $separator + $source
+    !else
+        !return $prepend + $source
+    !endif
+!endfunction
+$assert('prependsource',$strPrepend(source,prepend))
+$assert('prepend source',$strPrepend(source,prepend,' '))
+
+!function $strHasSuffix($text,$find) 
+    !$len = %strlen($find)
+    !if ($len == 0)
+        !return %true()
+    !endif
+    !$pos = %strpos($text,$find)
+    !if ($pos < 0) 
+        !return %false()
+    !endif
+    !return ( %strlen($text) - $pos ) == $len
+!endfunction
+$assert(1,$strHasSuffix('aaabbb','bbb'),'IsSuffix')
+$assert(1,$strHasSuffix('aaabbb',''),'Empty Suffix')
+$assert(1,$strHasSuffix('',''),'Empty Suffix')
+$assert(0,$strHasSuffix('','bbb'),'Empty Value')
+$assert(0,$strHasSuffix('aaa','cbb'),'Empty Value')
+$assert(0,$strHasSuffix('aaa','cccc'),'Empty Value')
+
+!function $strReplace($str,$find,$replace)
+    !$tail = $str
+    !$len = %strlen($find)
+    !$res = ""
+    !$pos = 0
+    !while $pos >= 0
+        !$pos = %strpos($tail,$find)
+        !if $pos >= 0
+            !$head = %substr($tail, $0, $pos)
+            !$tail = %substr($tail, $pos + $len)
+            !$res = $res + $head + $replace
+        !endif
+    !endwhile
+    !return $res + $tail
+!endfunction
+$assert('<a)>-<b)>-<c)>' , $strReplace('<(a)>-<(b)>-<(c)>','<(','<'))
+$assert('abc' , $strReplace('  abc  ',' ',''))
+
+!function $strReverse($text,$map1='<{[(',$map2='>}])')
+    !$pos = %strlen($text) -1
+    !$result = ''
+    !while $pos >= 0
+        !$char = %substr($text, $pos, 1)
+        !$mapPos = %strpos($map1,$char)
+        !if $mapPos >= 0
+            !$char = %substr($map2, $mapPos, 1)
+        !else
+            !$mapPos = %strpos($map2,$char)
+            !if $mapPos >= 0
+                !$char = %substr($map1, $mapPos, 1)
+            !endif
+        !endif
+        !$result = $result + $char 
+        !$pos = $pos - 1  
+    !endwhile
+    !return $result
+!endfunction
+$assert('fed<987654321>cba',$strReverse('abc<123456789>def'))
+
+!function $strSegmentCount($str,$separator=$defaultPartSeparator)
+    !if (%strlen($str) <= 0 )
+        !return 0
+    !endif
+    !$res = $str
+    !$pos = 1
+    !$count = 1
+    !while ($pos > 0)
+        !$pos = %strpos($res,$separator)
+        !if ($pos > 0)
+            !$count = $count + 1
+            !$res = %substr($res,$pos + %strlen($separator) )
+        !endif
+    !endwhile
+    !return $count
+!endfunction
+$assert(3,$strSegmentCount(Part1__Part2__Part3,$defaultPartSeparator))
+$assert(0,$strSegmentCount('',$defaultPartSeparator))
+
+!function $strSegmentGet($str,$separator=$defaultPartSeparator,$count=(0-1))
+    !$res = $str
+    !$pos = 1
+    !while ($pos >= 0)&&($count!=0)
+        !$count = $count - 1
+        !$pos = %strpos($res,$separator)
+        !if ($pos >= 0)
+            !$res = %substr($res,$pos + %strlen($separator) )
+        !endif
+    !endwhile
+    !$pos = %strpos($res,$separator)
+    !if ($pos >= 0)
+        !$res = %substr($res,0,$pos)
+    !endif
+'    !$parts = %splitstr($str,$separator) ' Splits by char not by string so is not whats required
+'    !foreach $item in $parts
+'        !$res = $item
+'    !endfor 
+    !return $res
+!endfunction
+$assert(Part1,$strSegmentGet(Part1__Part2__Part3__Part4,'__',0))
+$assert(Part4,$strSegmentGet(Part1__Part2__Part3__Part4,'__'))
+$assert(Part4,$strSegmentGet('Part1++Part2+Part3+Part4','+'))
+$assert('abc+def+-+hij',$strSegmentGet('https://test.net/wiki/spaces//abc+def+-+hij','/'))
+
+!function $trim($str)
+    !$str_parts = %splitstr($str,' ')
+    !foreach $item in $str_parts
+        !if ($item != '')
+            !return $item
+        !endif
+    !endfor
+    !return ''
+!endfunction
+$assert('abc',$trim(' abc '))
 
 !function $switch_map($input,$output,$ifValue1,$ifValue2='',$ifValue3='',,$ifValue4='',,$ifValue5='',,$ifValue6='') 
     !if ($input == $ifValue1)
@@ -441,6 +567,26 @@ boundary {
 $assert($switch_map('a','z','a'),'z')
 $assert($switch_map('c','z','a'),'c')
 $assert($switch_map('b','z','a','b'),'z')
+
+!global $highlight_start = '<('
+!global $highlight_end = ')>'
+
+!function $highlight($str,$start=$highlight_start,$end=$highlight_end,$color='red')
+    !$res = $strReplace($str,$start,"<color:" + $color + ">")
+    !$res = $strReplace($res,$end,"</color>")
+    !return $res
+!endfunction
+$assert('<color:red>a</color>',$highlight('<(a)>'))
+$assert('<color:red>a</color>-<color:red>b</color>-<color:red>c</color>',$highlight('<(a)>-<(b)>-<(c)>'))
+
+!function $link($text, $url)
+    !if (%substr($text,0,1) == '/')
+        !$text = $strSegmentGet($url,$text)
+    !endif
+    !$text = $strReplace($text,'+',' ')
+    !return "[[" + $url + " " + $text + "]]"
+!endfunction
+$assert('[[http://google.com aa - bb]]',$link('aa+-+bb','http://google.com'))
 
 !function $entity_icon_map($name)
     !$result = ''
@@ -474,12 +620,13 @@ $assert('envelope-closed', $icon_map('email'))
 
 !function $entity_icon_map($type)
     !$result = $type
-    !$result = $switch_map( $result, 'file'          , 'file')
+    !$result = $switch_map( $result, 'file '          , 'file')
     !if ($result == $type)
         !return ''
     !endif
-    !return $result
+    !return $trim($result)
 !end function
+$assert('file',$entity_icon_map('file'))
 
 ' Icons End
 
