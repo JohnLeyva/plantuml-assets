@@ -329,20 +329,30 @@ $assert('assert_notitle as " " ' ,$label('assert_notitle'))
     title <size:30>$message / %date("yyyy-MM-dd")
 !endprocedure 
 
-!function $service($name = '', $action = '')
-    !return "frame " + $label($name,$action,$service_textSize) + " <<service>> " 
+!function SetEntityType($type='')
+    !global $EntityType = $type
+    !return $type
+!endfunction 
+
+
+!function $service($name = '', $data = '')
+    SetEntityType(service)
+    !return "frame " + $label($name,$data,$service_textSize) + " <<service>> " 
 !endfunction
 
-!function $environment($name = '', $action = '')
-    !return "rectangle " + $label($name, $action,$environment_textSize) + " <<environment>> "
+!function $environment($name = '', $data = '')
+    SetEntityType(environment)
+    !return "rectangle " + $label($name,$data,$environment_textSize) + " <<environment>> "
 !endfunction
 
-!function $external($name = '', $action = '')
-    !return "cloud " + $label($name,$action,$external_textSize) + " <<environment>> "
+!function $external($name = '', $data = '')
+    SetEntityType(external)
+    !return "cloud " + $label($name,$data,$external_textSize) + " <<environment>> "
 !endfunction
 
-!function $transaction($name = '', $action = '') {
-    !return "hexagon " + $label($name,$action) + " <<transaction>> "
+!function $transaction($name = '', $data = '') {
+    SetEntityType(transaction)
+    !return "hexagon " + $label($name,$data) + " <<transaction>> "
 !endfunction
 
 'entity icons
@@ -373,11 +383,6 @@ $assert('assert_notitle as " " ' ,$label('assert_notitle'))
 !end procedure
 
 ' entities end
-
-!function SetEntityType($type='')
-    !global $EntityType = $type
-    !return $type
-!endfunction 
 
 !function actor          ($name='',$data='') !return SetEntityType('actor'         ) + ' ' + $label($name,$data)
 !function actor2         ($name='',$data='') !return SetEntityType('actor/'        ) + ' ' + $label($name,$data)
