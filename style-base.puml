@@ -5,6 +5,46 @@
 
 !$defaultColor = '#white'
 
+!procedure test_sequence()
+    !global $diagram = 'sequence'
+    box
+    participant aa
+    end box 
+    aa --> aa
+!endprocedure
+'test_sequence()
+
+!procedure $assert($expected,$actual,$description='')
+    !global $assert_count ?= 0
+    !$assert_count = $assert_count + 1
+    !$assert_name = 'assert_' + $assert_count
+    !if ($expected != $actual)
+        !if ($diagram != 'sequence')
+        rectangle #red {
+            label $assert_name [
+                ASSERT FAILED 
+                $description
+
+                expected $expected
+                actual $actual
+            ]
+        }
+        !else if ($diagram == 'sequence')
+            assert --> assert  
+            note over assert #red : ASSERT FAILED \n $expected != $actual \n $description
+        !endif 
+    !endif
+!endprocedure
+$assert('aaa','aaa','description')
+
+!procedure $set_direction()
+    !$diagram ?= 'none'
+    !if ($diagram != 'sequence')
+        left to right direction
+    !endif
+!endprocedure
+$set_direction()
+
 ' Review https://github.com/tupadr3/plantuml-icon-font-sprites
 
 !function $remark($text,$color=red) return "<color:" + $color+ ">" + $text + "</color>"  
@@ -361,31 +401,64 @@ boundary {
 
 ' Icons Start
 
-!function $switch_map($original,$input,$output,$ifValue1,$ifValue2='',$ifValue3='') 
-    !if ($original != $input)
-        !return $input
-    !endif    
+'!function $switch_map($original,$input,$output,$ifValue1,$ifValue2='',$ifValue3='') 
+'    !if ($original != $input)
+'        !return $input
+'    !endif    
+'    !if ($input == $ifValue1)
+'        !return $output
+'    !endif
+'    !if ($input == $ifValue2)
+'        !return $output
+'    !endif
+'    !if ($input == $ifValue3)
+'        !return $output
+'    !endif
+'    !return $input
+'!end function
+
+!function $switch_map($input,$output,$ifValue1,$ifValue2='',$ifValue3='',,$ifValue4='',,$ifValue5='',,$ifValue6='') 
     !if ($input == $ifValue1)
         !return $output
     !endif
-    !if ($input == $ifValue2)
+    !if ($input == $ifValue2 && $ifValue2!='')
         !return $output
     !endif
-    !if ($input == $ifValue3)
+    !if ($input == $ifValue3 && $ifValue3!='')
+        !return $output
+    !endif
+    !if ($input == $ifValue4 && $ifValue4!='')
+        !return $output
+    !endif
+    !if ($input == $ifValue5 && $ifValue5!='')
+        !return $output
+    !endif
+    !if ($input == $ifValue6 && $ifValue6!='')
         !return $output
     !endif
     !return $input
 !end function
+$assert($switch_map('a','z','a'),'z')
+$assert($switch_map('c','z','a'),'c')
+$assert($switch_map('b','z','a','b'),'z')
 
-!function $icon_map($name)
-    !$result = $name
+!function $entity_icon_map($name)
+    !$result = ''
     !$result = $switch_map($name, $result, 'envelope-closed', 'email', 'mail')
-    !$result = $switch_map($name, $result, 'timer', 'schedule')
-    !$result = $switch_map($name, $result, 'box', 'parcel')
-    !$result = $switch_map($name, $result, 'link-intact', 'link')
-    !$result = $switch_map($name, $result, 'tablet', 'mobile')
     !return $result
 !end function
+
+
+!function $icon_map($value)
+    !$result = $value
+    !$result = $switch_map( $result, 'timer'          , 'schedule')
+    !$result = $switch_map( $result, 'box'            , 'parcel')
+    !$result = $switch_map( $result, 'link-intact'    , 'link')
+    !$result = $switch_map( $result, 'tablet'         , 'mobile')
+    !$result = $switch_map( $result, 'envelope-closed', 'email', 'mail')
+    !return $result
+!end function
+$assert('envelope-closed', $icon_map('email'))
 
 !function $icon($name,$size=$icon_Size,$color=0)
     !$name = $icon_map($name)
@@ -395,6 +468,15 @@ boundary {
     !endif
     !if ($color)
         !$result = '<color:' + $color + '>' + $result + '</color>'
+    !endif
+    !return $result
+!end function
+
+!function $entity_icon_map($type)
+    !$result = $type
+    !$result = $switch_map( $result, 'file'          , 'file')
+    !if ($result == $type)
+        !return ''
     !endif
     !return $result
 !end function
