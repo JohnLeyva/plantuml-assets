@@ -85,7 +85,6 @@ $assert('aaa','aaa','description')
         left to right direction
     !endif
 !endprocedure
-$set_direction()
 
 ' Review https://github.com/tupadr3/plantuml-icon-font-sprites
 
