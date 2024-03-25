@@ -431,6 +431,15 @@ $assert('source append',$strAppend(source,append,' '))
 $assert('prependsource',$strPrepend(source,prepend))
 $assert('prepend source',$strPrepend(source,prepend,' '))
 
+!function $strHasPrefix($text,$find) 
+    !if ( %strpos($text,$find) == 0 )
+        !return %true()
+    !endif
+    !return %false()
+!endfunction
+$assert(1,$strHasPrefix('aaabbb','aaa'),'IsPrefix')
+$assert(0,$strHasPrefix('aaabbb','ax'),'No Prefix')
+
 !function $strHasSuffix($text,$find) 
     !$len = %strlen($find)
     !if ($len == 0)
@@ -532,6 +541,13 @@ $assert(Part4,$strSegmentGet(Part1__Part2__Part3__Part4,'__'))
 $assert(Part4,$strSegmentGet('Part1++Part2+Part3+Part4','+'))
 $assert('abc+def+-+hij',$strSegmentGet('https://test.net/wiki/spaces//abc+def+-+hij','/'))
 
+!function $GetName($str)
+    !$name = $strSegmentGet($str)
+    !$name = $strReplace($name,$defaultWordSeparator,' ')
+    !return $name
+!endfunction
+$assert(Part4,$GetName(Part1__Part2__Part3__Part4))
+
 !function $trim($str)
     !$str_parts = %splitstr($str,' ')
     !foreach $item in $str_parts
@@ -542,6 +558,28 @@ $assert('abc+def+-+hij',$strSegmentGet('https://test.net/wiki/spaces//abc+def+-+
     !return ''
 !endfunction
 $assert('abc',$trim(' abc '))
+
+
+!function $strContainsSegment($list,$find,$separator)
+    !if ( $list == $find )
+        !return %true()
+    !endif
+    !if ( $strContains($list,$separator + $find + $separator) )
+        !return %true()
+    !endif
+    !if ( $strHasPrefix($list, $find + $separator) )
+        !return %true()
+    !endif
+    !if ( $strHasSuffix($list, $separator + $find) )
+        !return %true()
+    !endif
+    !return %false()
+!endfunction
+$assert(0,$strContainsSegment('a|b|c','d','|'))
+$assert(1,$strContainsSegment('a','a','|'))
+$assert(1,$strContainsSegment('a|b|c','a','|'),"$strContainsSegment('a|b|c','a','|')")
+$assert(1,$strContainsSegment('a|b|c','b','|'))
+$assert(1,$strContainsSegment('a|b|c','c','|'),"$strContainsSegment('a|b|c','c','|')")
 
 !function $switch_map($input,$output,$ifValue1,$ifValue2='',$ifValue3='',,$ifValue4='',,$ifValue5='',,$ifValue6='') 
     !if ($input == $ifValue1)

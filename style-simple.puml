@@ -202,28 +202,6 @@ left to right direction
 !endprocedure
 '$linkObj_Test()
 
-!function $GetName($str)
-    !$name = $strSegmentGet($str)
-    !$name = $strReplace($name,$defaultWordSeparator,' ')
-    !return $name
-!endfunction
-
-!function $strContainsSegment($list,$find,$separator)
-    !if ( $list == $find )
-        !return %true()
-    !endif
-    !if ( $strContains($list,$separator + $find + $separator) )
-        !return %true()
-    !endif
-    !if ( %strpos($text,$find + $separator) == 0 )
-        !return %true()
-    !endif
-    !if ( %strpos($text,$separator + $find) == %strlen($list) - %strlen($find) )
-        !return %true()
-    !endif
-    !return %false()
-!endfunction
-
 !global $label_Inventory_store = ''
 !procedure $label_Inventory_add($value)
     !if (%strlen($value)>0)
@@ -300,11 +278,11 @@ left to right direction
         !$labelAs = $sizeStart + $name + $sizeEnd + $links
         !$icon = $entity_icon_map($EntityType)
         !if ($icon != '')
-            !$icon = $icon($icon)
+            !$icon = $icon($icon,25)
         !endif
 
         !if (%strlen($labelAs) > 0 )
-            !$res = $res + ' as "' + $EntityType + $icon + $labelAs + '" '
+            !$res = $res + ' as "' + $icon + $labelAs + '" '
         !endif
     !endif
 
