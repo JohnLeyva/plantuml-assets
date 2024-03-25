@@ -855,12 +855,4 @@ frame(flow_vs_dependency) $example {
     $label_filter($suffix,"remove %" + %newline())
 !endprocedure
 
-!unquoted function $rel_inv($relation)
-    !$left = $GetPart($relation,' ',0)
-    !$rel = $GetPart($relation,' ',1)
-    !$right = $GetPart($relation,' ',2)
-    !$rel = $strReverse($rel)
-    !return $right + ' ' + $rel + ' ' + $left
-!endfunction
-
 @enduml

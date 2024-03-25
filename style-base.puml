@@ -699,6 +699,15 @@ $assert('file',$entity_icon_map('file'))
 
 ' relations start
 
+!unquoted function $rel_inv($relation)
+    !$left = $strSegmentGet($relation,' ',0)
+    !$rel = $strSegmentGet($relation,' ',1)
+    !$right = $strSegmentGet($relation,' ',2)
+    !$rel = $strReverse($rel)
+    !return $right + ' ' + $rel + ' ' + $left
+!endfunction
+$assert('b <-- a', $rel_inv('a --> b'))
+
 !unquoted procedure relation($string)
     !$comment_rel = "' " + $string
     ' comments seems to be managed by the preprocessor so it cannot be output 
