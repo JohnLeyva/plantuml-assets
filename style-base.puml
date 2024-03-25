@@ -26,12 +26,11 @@
             card $assert_name##_card [
                 ASSERT FAILED 
                 $description
+
+                | actual | $actual |
+                | expected | $expected |
             ]
 
-            json $assert_name##_json  {
-                "actual"   : "$actual",
-                "expected" : "$expected"
-            }
         }
         !else if ($diagram == 'sequence')
             assert --> assert  
@@ -40,6 +39,7 @@
     !endif
 !endprocedure
 $assert('aaa','aaa','description')
+'$assert('aaa',%chr(34) + 'aaa' + %chr(34) ,'description')
 
 !procedure $set_direction()
     !$diagram ?= 'none'

@@ -288,6 +288,7 @@ left to right direction
 
     !return $res
 !endfunction
+$assert('',$label('Any_Service_1'))
 
 !procedure $label_Test() 
     !global $Any_Service_3_data1 = { "url" : { 
@@ -311,7 +312,7 @@ left to right direction
             $label(Any_Service_4,'F!http://aaa.com|G!http://bbb.com|H!http://ccc.com',15)
     ]
 !endprocedure
-'$label_Test()
+$label_Test()
 
 
 !unquoted procedure $scale($type, $name, $action = '', $factor = 4)
