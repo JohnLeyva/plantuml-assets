@@ -76,7 +76,7 @@
     !endif
 !endprocedure
 $assert('aaa','aaa','description')
-$assert('aaa',%chr(34) + 'aaa' + %chr(34) ,'description')
+'$assert('aaa',%chr(34) + 'aaa' + %chr(34) ,'description')
 '$assert('<color:blue>aaa bbb','<color:red>aaa __bbb__' ,'description')
 
 !procedure $set_direction()
