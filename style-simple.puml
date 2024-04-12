@@ -2,6 +2,7 @@
 
 !$commonincludepath ?= "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
 !include $commonincludepath/style-base.puml
+!include $commonincludepath/legend.puml
 
 $set_direction()
 
@@ -17,17 +18,6 @@ $set_direction()
 !procedure $C4_Person($name,$description='')
     Person($name, $GetName($name), $description)
 !endprocedure
-
-
-'!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons/master
-'!include osaPuml/Common.puml
-'!include osaPuml/User/all.puml
-'
-'!include <office/Servers/database_server>
-'!include <office/Servers/file_server>
-'!include <office/Servers/application_server>
-'!include <office/Concepts/service_application>
-'!include <office/Concepts/firewall>
 
 !$kafkaControlCenterUrl = 'https://kafka/{topic}'
 

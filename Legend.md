@@ -58,6 +58,18 @@ scale .5
 !include <osa/users/blue/green/green>
 !include <osa/user/white/hat/hat>
 
+
+'!define osaPuml https://raw.githubusercontent.com/Crashedmind/PlantUML-opensecurityarchitecture2-icons/master
+'!include osaPuml/Common.puml
+'!include osaPuml/User/all.puml
+
+!include <office/Servers/database_server>
+!include <office/Servers/file_server>
+!include <office/Servers/application_server>
+!include <office/Concepts/service_application>
+!include <office/Concepts/firewall>
+
+
 listsprites
 
 @enduml
