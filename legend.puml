@@ -4,7 +4,10 @@ skinparam dummy 0
 !global $gitpath ?= "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
 !global $commonincludepath ?= $gitpath
 !global $commonincludepath ?= "\code\puml\assets"
-!global $this_filename_full = $commonincludepath + '/style-base.puml'
+!global $this_legend_puml = $commonincludepath + '/legend.puml'
+!global $this_style_puml = $commonincludepath + '/style.puml'
+
+!include $this_style_puml
 
 !unquoted procedure $componentExample($type,$description='')
     rectangle $type <<$type>> [
@@ -76,12 +79,12 @@ skinparam dummy 0
 {{
 scale $scale
 'title Conventions
-!include $this_filename_full
+!include $this_legend_puml
 $legend_States_Content()
 }}
 {{
 scale $scale
-!include $this_filename_full
+!include $this_legend_puml
 $legend_Arrows_Content()
 }}
 More about [[$gitpath/style-simple.svg Conventions]]

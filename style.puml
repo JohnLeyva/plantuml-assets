@@ -1,5 +1,14 @@
 @startuml style
 
+skinparam defaultTextAlignment left
+skinparam fileBackgroundColor #white
+skinparam LineThickness 3
+skinparam ArrowLollipopColor #blue
+skinparam NoteBorderThickness 1.5
+'skinparam WrapWidth 200
+skinparam Nodesep 40
+skinparam Ranksep 50
+
 !function $notouch      ($type = "any") return "#lightgray"
 !function $notouch_link ($type = "any") return "#gray"
 !function $exiting      ($type = "any") return $existing($type)
@@ -19,15 +28,6 @@
 !function $temporary    ($type = "any") return "#powderBlue|pink"
 !function $remove_future($type = "any") return "#lightgreen|pink"
 !function $change_future($type = "any") return "#lightgreen|yellow"
-
-skinparam defaultTextAlignment left
-skinparam fileBackgroundColor #white
-skinparam LineThickness 3
-skinparam ArrowLollipopColor #blue
-skinparam NoteBorderThickness 1.5
-'skinparam WrapWidth 200
-skinparam Nodesep 40
-skinparam Ranksep 50
 
 !global $style__out_of_scope__LineThickness = 5
 !global $style__out_of_scope__LineStyle = 50
