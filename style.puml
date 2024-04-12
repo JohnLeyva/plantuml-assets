@@ -1,0 +1,332 @@
+@startuml style
+
+!function $notouch      ($type = "any") return "#lightgray"
+!function $notouch_link ($type = "any") return "#gray"
+!function $exiting      ($type = "any") return $existing($type)
+!function $existing     ($type = "any") return "#lightgreen"
+!function $existing_link($type = "any") return "#green"
+!function $new          ($type = "any") return "#powderBlue"
+!function $new_link     ($type = "any") return "#blue"
+!function $change       ($type = "any") return %lighten(Yellow,70)  
+
+!function $change_link  ($type = "any") return "#burlywood"  
+!function $remove       ($type = "any") return "#pink"
+!function $remove_link  ($type = "any") return "#red"
+!function $alt          ($type = "any") return "#plum"
+!function $alt_link     ($type = "any") return "#purple"
+!function $ready        ($type = "any") return "#green"
+!function $done         ($type = "any") return "#green"
+!function $temporary    ($type = "any") return "#powderBlue|pink"
+!function $remove_future($type = "any") return "#lightgreen|pink"
+!function $change_future($type = "any") return "#lightgreen|yellow"
+
+skinparam defaultTextAlignment left
+skinparam fileBackgroundColor #white
+skinparam LineThickness 3
+skinparam ArrowLollipopColor #blue
+skinparam NoteBorderThickness 1.5
+'skinparam WrapWidth 200
+skinparam Nodesep 40
+skinparam Ranksep 50
+
+!global $style__out_of_scope__LineThickness = 5
+!global $style__out_of_scope__LineStyle = 50
+!global $style__out_of_scope__DiagonalCorner = 20
+
+' SET STYLE START {
+    !global $current_artifact_state = ''
+
+    !procedure style_set($back='transparent',$line='black', $LineThickness = 1, $LineStyle = 0, $FontSize = 11)
+    <style>
+    group {
+    !if ($back!='')
+        Backgroundcolor $back
+    !endif
+    !if ($line!='')
+        LineColor $line
+    !endif
+    !if ($LineThickness != '')
+        LineThickness $LineThickness
+    !endif
+    !if ($LineStyle != '')
+        LineStyle $LineStyle
+    !endif
+    !if ($FontSize != -100)
+        FontSize $FontSize
+    !endif
+        ' FontStyle plain
+    }
+    </style>
+    !endprocedure
+
+    !procedure style_reset()
+        !$current_artifact_state = ''
+        style_set()
+    !endprocedure
+
+    !procedure style_set_new()
+        !$current_artifact_state = 'new'
+        style_set($new())
+    !endprocedure
+
+    !procedure style_set_notouch()
+        !$current_artifact_state = 'notouch'
+        style_set($notouch())
+    !endprocedure
+
+    !procedure style_set_change()
+        !$current_artifact_state = 'change'
+        style_set($change())
+    !endprocedure
+
+    !procedure style_set_existing()
+        !$current_artifact_state = 'existing'
+        style_set($existing())
+    !endprocedure
+
+    !procedure style_set_ready()
+        !$current_artifact_state = 'ready'
+        style_set('transparent',$ready(),4,10)
+    !endprocedure
+
+    !procedure style_set_done()
+        !$current_artifact_state = 'done'
+        style_set('transparent',$done(),4,10)
+    !endprocedure
+
+    !procedure style_set_new()
+        !$current_artifact_state = 'new'
+        style_set('transparent',$new(),4,10)
+    !endprocedure
+
+    !procedure style_set_alt()
+        !$current_artifact_state = 'alt'
+        style_set($alt())
+    !endprocedure
+
+    !procedure style_set_remove()
+        !$current_artifact_state = 'remove'
+        style_set($remove())
+    !endprocedure
+
+    !procedure style_set_temporary()
+        !$current_artifact_state = 'temporary'
+        style_set($temporary(),'','','')
+    !endprocedure
+
+    !procedure style_set_remove_future()
+        !$current_artifact_state = 'remove_future'
+        style_set($remove_future(),'','','')
+    !endprocedure
+
+    !function $state()
+        !if ($current_artifact_state != '')
+            !$color = %call_user_func('$' + $current_artifact_state)
+            !$result = '<back:' + $color + '>' + $current_artifact_state + '</back>'
+        !endif
+        !return $result
+    !endfunction
+
+    !function $prototype() 
+        !return '<<' + $current_artifact_state + '>>'
+    !endfunction
+'} END STYLE
+
+
+<style>
+    Component { BackgroundColor #white }
+    Boundary  { BackgroundColor #white }
+    Interface { BackgroundColor #white }
+    Control   { BackgroundColor #white }
+    Entity    { BackgroundColor #white }
+    database  { BackgroundColor #white }
+    Queue     { BackgroundColor #white }
+
+    legend {
+        BackgroundColor #white
+        LineColor #black
+        FontColor #black
+    }
+    .environment {
+        RoundCorner 150
+        Shadowing 3
+    }
+    .service {
+        RoundCorner 50
+        Shadowing 3
+        :depth(3) {
+            LineThickness 10
+        }
+    }
+    .transaction {
+        LineColor #orange
+        'LineStyle 7
+        '#line.dashed 
+    }
+    .done {
+        LineColor $existing_link()
+        LineThickness 6
+        'LineStyle 6
+    }
+    .ready {
+        LineColor $existing_link()
+        LineThickness 3
+        LineStyle 3
+    }
+    .wip {
+        LineColor $change_link()
+        LineThickness 3
+        LineStyle 3
+        BackGroundColor $change_link()
+    }
+    .temporary {
+        LineColor $remove()
+        LineThickness 3
+        'LineStyle 6
+    }
+    .review {
+        LineColor $change_link()
+        LineThickness 3
+        LineStyle 5
+        BackGroundColor white-%lighten($alt(),20)
+    }
+    .new {
+        BackGroundColor $new()
+    }
+    .change {
+        BackGroundColor $change()
+    }
+    .existing {
+        BackGroundColor $existing()
+    }
+    .live {
+        BackGroundColor $existing()
+    }
+    .remove {
+        BackGroundColor $remove()
+    }
+    .alt {
+        BackGroundColor $alt()
+    }
+    .alternative {
+        BackGroundColor $alt()
+    }
+    .notouch {
+        BackGroundColor $notouch()
+    }
+    .out-of-scope {
+        LineColor $alt()
+        LineThickness $style__out_of_scope__LineThickness
+        BackGroundColor $notouch()|#white
+        LineStyle $style__out_of_scope__LineStyle
+        DiagonalCorner $style__out_of_scope__DiagonalCorner
+    }
+    .next-phase{
+        LineThickness 3
+        BorderThickness 10
+        BackGroundColor #white|$new()
+        LineStyle 70
+        DiagonalCorner 20 
+    }
+    .hide {
+        LineThickness 0
+        LineColor #transparent
+        FontColor #transparent
+    }
+arrow {
+    LineColor #gray
+
+    .out-of-scope {
+        LineColor $alt()
+        LineThickness 1
+        BackGroundColor $notouch()|$new()
+        LineStyle 20
+        DiagonalCorner 20
+    }
+    .wip {
+        LineColor $change_link()
+        LineThickness 3
+        LineStyle 3
+    }
+    .done {
+        LineColor $existing_link()
+        LineThickness 3
+        LineStyle 20
+    }
+    .new {
+        LineColor $new_link()
+    }
+    .change {
+        LineColor $change_link()
+    }
+    .existing {
+        LineColor $existing_link()
+    }
+    .live {
+        LineColor $existing_link()
+    }
+    .remove {
+        LineColor $remove_link()
+    }
+    .alt {
+        LineColor $alt_link()
+    }
+    .notouch {
+        LineColor $notouch_link()
+    }
+    .transaction {
+        LineColor #orange
+        LineStyle 1
+        LineThickness 3
+    }
+
+    .link {
+        ' LineColor $change_link()
+        LineThickness 6
+    }
+    .link_inbound {
+        LineColor #green
+        LineThickness 6
+    }
+    .link_outbound {
+        LineColor #orange
+        LineThickness 6
+    }
+    .temporary {
+        LineColor #HotPink
+        LineStyle 10
+    }
+    .eventually {
+        LineStyle 15
+    }
+    .thick {
+        LineThickness 5
+    }
+    .hide {
+        LineThickness 0
+        LineColor #transparent
+        FontColor #transparent
+    }
+}
+usecase  {
+    FontSize 30
+    BackgroundColor AliceBlue
+    'MaximumWidth 150
+    'HorizontalAlignment center
+}
+
+component {
+    MaximumWidth 50
+    HorizontalAlignment center
+}
+
+boundary {
+    MaximumWidth 50
+    HorizontalAlignment left
+}
+
+</style>
+
+' Review https://github.com/tupadr3/plantuml-icon-font-sprites
+
+@enduml
