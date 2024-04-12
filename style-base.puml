@@ -817,7 +817,6 @@ More about [[$gitpath/style-simple.svg Conventions]]
 ' General Functions
 
 '$legend_Content()
-' $legend(0)
-' Legend end
+'$legend(0)
 
 @enduml
