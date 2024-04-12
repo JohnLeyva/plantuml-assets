@@ -70,6 +70,9 @@ scale .5
 !include <office/Concepts/firewall>
 
 
+' !include https://github.com/tupadr3/plantuml-icon-font-sprites
+
+
 listsprites
 
 @enduml

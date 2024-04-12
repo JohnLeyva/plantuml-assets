@@ -9,26 +9,26 @@ skinparam dummy 0
 
 !include $this_style_puml
 
-!unquoted procedure $componentExample($type,$description='')
+!unquoted procedure $legend_componentExample($type,$description='')
     rectangle $type <<$type>> [
         $description
     ]
 !endprocedure
 
 !procedure $legend_States_Content()
-    $componentExample(any)
-    $componentExample(review)
-    $componentExample(new)
-    $componentExample(alt)
-    $componentExample(wip)
-    $componentExample(done)
-    $componentExample(ready)
-    $componentExample(live)
-    $componentExample(notouch)
-    $componentExample(change)
-    $componentExample(temporary)
-    $componentExample(remove)
-    '$componentExample('out-of-scope')
+    $legend_componentExample(any)
+    $legend_componentExample(review)
+    $legend_componentExample(new)
+    $legend_componentExample(alt)
+    $legend_componentExample(wip)
+    $legend_componentExample(done)
+    $legend_componentExample(ready)
+    $legend_componentExample(live)
+    $legend_componentExample(notouch)
+    $legend_componentExample(change)
+    $legend_componentExample(temporary)
+    $legend_componentExample(remove)
+    '$legend_componentExample('out-of-scope')
         rectangle out_of_scope <<out-of-scope>> [
         ]
 

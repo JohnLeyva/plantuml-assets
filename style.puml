@@ -1,5 +1,7 @@
 @startuml style
 
+!$defaultColor ?= '#white'
+
 skinparam defaultTextAlignment left
 skinparam fileBackgroundColor #white
 skinparam LineThickness 3
@@ -36,12 +38,12 @@ skinparam Ranksep 50
 !function $remove_future($type = "any") return "#lightgreen|pink"
 !function $change_future($type = "any") return "#lightgreen|yellow"
 
-!global $style__out_of_scope__LineThickness = 5
-!global $style__out_of_scope__LineStyle = 50
-!global $style__out_of_scope__DiagonalCorner = 20
+!global $style__out_of_scope__LineThickness ?= 5
+!global $style__out_of_scope__LineStyle ?= 50
+!global $style__out_of_scope__DiagonalCorner ?= 20
 
 ' SET STYLE START {
-    !global $current_artifact_state = ''
+    !global $current_artifact_state ?= ''
 
     !procedure style_set($back='transparent',$line='black', $LineThickness = 1, $LineStyle = 0, $FontSize = 11)
     <style>
@@ -333,7 +335,5 @@ boundary {
 }
 
 </style>
-
-' Review https://github.com/tupadr3/plantuml-icon-font-sprites
 
 @enduml

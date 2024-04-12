@@ -7,9 +7,8 @@
 
 !global $icon_Size ?= 50
 
-!$defaultColor = '#white'
-!$defaultPartSeparator = '__'
-!$defaultWordSeparator = '_'
+!global $defaultPartSeparator = '__'
+!global $defaultWordSeparator = '_'
 
 !procedure test_sequence()
     !global $diagram = 'sequence'
