@@ -1,0 +1,3 @@
+@startuml empty
+skinparam dummy 0
+@enduml

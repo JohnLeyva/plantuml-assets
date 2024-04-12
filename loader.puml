@@ -1,0 +1,18 @@
+@startuml loader
+skinparam dummy 0
+
+!global $commonincludepath ?= "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
+
+!function $inc($file)
+    !$incLabel = "include_" + $file
+    !$value = %get_variable_value($incLabel)
+    !if (%not($value))
+        !$result = $commonincludepath/$file.puml
+        %set_variable_value($incLabel, $result)
+        !return $result
+    !else
+        !return $commonincludepath + '/empty.puml'
+    !endif
+!endfunction
+
+@enduml

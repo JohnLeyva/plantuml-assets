@@ -6,19 +6,6 @@
 
 $set_direction()
 
-!if ($C4_Include)
-  !include <C4/C4_Deployment>
-  !include <C4/C4_Container>
-!endif
-
-!procedure $C4_System($name,$description='')
-    System($name, $GetName($name), $description)
-!endprocedure
-
-!procedure $C4_Person($name,$description='')
-    Person($name, $GetName($name), $description)
-!endprocedure
-
 !$kafkaControlCenterUrl = 'https://kafka/{topic}'
 
 !global $service_textSize = 50
@@ -278,7 +265,6 @@ $assert('assert_notitle as " " ' ,$label('assert_notitle'))
 !endprocedure
 '$label_Test()
 
-
 !unquoted procedure $scale($type, $name, $action = '', $factor = 4)
     !$scale2 = $factor * $scaleText
     label $name [
@@ -296,119 +282,9 @@ $assert('assert_notitle as " " ' ,$label('assert_notitle'))
 !procedure title($text)
     !$message = $GetName($text)
     title <size:30>$message / %date("yyyy-MM-dd")
-!endprocedure 
+!endprocedure
 
-!function SetEntityType($type='')
-    !global $EntityType = $type
-    !return $type
-!endfunction 
-
-
-!function $service($name = '', $data = '')
-    SetEntityType(service)
-    !return "frame " + $label($name,$data,$service_textSize) + " <<service>> " 
-!endfunction
-
-!function $environment($name = '', $data = '')
-    SetEntityType(environment)
-    !return "rectangle " + $label($name,$data,$environment_textSize) + " <<environment>> "
-!endfunction
-
-!function $external($name = '', $data = '')
-    SetEntityType(external)
-    !return "cloud " + $label($name,$data,$external_textSize) + " <<environment>> "
-!endfunction
-
-!function $transaction($name = '', $data = '') {
-    SetEntityType(transaction)
-    !return "hexagon " + $label($name,$data) + " <<transaction>> "
-!endfunction
-
-'entity icons
-
-!procedure $entity($name,$type,$size=0,$color=0)
-    !$name_inner=$name + "_inner"
-    rectangle $label($name) {
-        label $name_inner [
-            $icon($type,$size,$color)
-        ]
-    }
-!end procedure
-
-!procedure email($name, $size=0,$color=0)
-    $entity($name, 'email', $size, $color)
-!end procedure
-
-!procedure timer($name,$size=0,$color=0)
-    $entity($name, 'timer', $size, $color)
-!end procedure
-
-!procedure parcel($name,$size=100,$color="RosyBrown")
-    $entity($name,parcel,$size,$color)
-!end procedure
-
-!procedure computer($name,$size=100,$color="RosyBrown")
-    $entity($name,monitor,$size,$color)
-!end procedure
-
-' entities end
-
-!function actor          ($name='',$data='') !return SetEntityType('actor'         ) + ' ' + $label($name,$data)
-!function actor2         ($name='',$data='') !return SetEntityType('actor/'        ) + ' ' + $label($name,$data)
-!function agent          ($name='',$data='') !return SetEntityType('agent'         ) + ' ' + $label($name,$data)
-!function artifact       ($name='',$data='') !return SetEntityType('artifact'      ) + ' ' + $label($name,$data)
-!function boundary       ($name='',$data='') !return SetEntityType('boundary'      ) + ' ' + $label($name,$data)
-!function card           ($name='',$data='') !return SetEntityType('card'          ) + ' ' + $label($name,$data)
-!function circle         ($name='',$data='') !return SetEntityType('circle'        ) + ' ' + $label($name,$data)
-!function cloud          ($name='',$data='') !return SetEntityType('cloud'         ) + ' ' + $label($name,$data)
-!function collections    ($name='',$data='') !return SetEntityType('collections'   ) + ' ' + $label($name,$data)
-!function component      ($name='',$data='') !return SetEntityType('component'     ) + ' ' + $label($name,$data)
-!function control        ($name='',$data='') !return SetEntityType('control'       ) + ' ' + $label($name,$data)
-!function database       ($name='',$data='') !return SetEntityType('database'      ) + ' ' + $label($name,$data)
-!function entity         ($name='',$data='') !return SetEntityType('entity'        ) + ' ' + $label($name,$data)
-!function file           ($name='',$data='') !return SetEntityType('file'          ) + ' ' + $label($name,$data)
-!function folder         ($name='',$data='') !return SetEntityType('folder'        ) + ' ' + $label($name,$data)
-!function frame          ($name='',$data='') !return SetEntityType('frame'         ) + ' ' + $label($name,$data)
-!function hexagon        ($name='',$data='') !return SetEntityType('hexagon'       ) + ' ' + $label($name,$data)
-!function interface      ($name='',$data='') !return SetEntityType('interface'     ) + ' ' + $label($name,$data)
-!function label          ($name='',$data='') !return SetEntityType('label'         ) + ' ' + $label($name,$data)
-!function node           ($name='',$data='') !return SetEntityType('node'          ) + ' ' + $label($name,$data)
-!function package        ($name='',$data='') !return SetEntityType('package'       ) + ' ' + $label($name,$data)
-!function person         ($name='',$data='') !return SetEntityType('person'        ) + ' ' + $label($name,$data)
-!function queue          ($name='',$data='') !return SetEntityType('queue'         ) + ' ' + $label($name,$data)
-!function rectangle      ($name='',$data='') !return SetEntityType('rectangle'     ) + ' ' + $label($name,$data)
-!function stack          ($name='',$data='') !return SetEntityType('stack'         ) + ' ' + $label($name,$data)
-!function storage        ($name='',$data='') !return SetEntityType('storage'       ) + ' ' + $label($name,$data)
-!function usecase        ($name='',$data='') !return SetEntityType('usecase'       ) + ' ' + $label($name,$data)
-!function usecase2       ($name='',$data='') !return SetEntityType('usecase/'      ) + ' ' + $label($name,$data)
-
-!function abstract_class ($name='',$data='') !return SetEntityType('abstract class') + ' ' + $label($name,$data)
-!function class          ($name='',$data='') !return SetEntityType('class'         ) + ' ' + $label($name,$data)
-!function enum           ($name='',$data='') !return SetEntityType('enum'          ) + ' ' + $label($name,$data)
-!function abstract       ($name='',$data='') !return SetEntityType('abstract'      ) + ' ' + $label($name,$data)
-!function annotation     ($name='',$data='') !return SetEntityType('annotation'    ) + ' ' + $label($name,$data)
-!function circle         ($name='',$data='') !return SetEntityType('circle'        ) + ' ' + $label($name,$data)
-!function diamond        ($name='',$data='') !return SetEntityType('diamond'       ) + ' ' + $label($name,$data)
-!function entity         ($name='',$data='') !return SetEntityType('entity'        ) + ' ' + $label($name,$data)
-!function exception      ($name='',$data='') !return SetEntityType('exception'     ) + ' ' + $label($name,$data)
-!function metaclass      ($name='',$data='') !return SetEntityType('metaclass'     ) + ' ' + $label($name,$data)
-!function protocol       ($name='',$data='') !return SetEntityType('protocol'      ) + ' ' + $label($name,$data)
-!function stereotype     ($name='',$data='') !return SetEntityType('stereotype'    ) + ' ' + $label($name,$data)
-!function struct         ($name='',$data='') !return SetEntityType('struct'        ) + ' ' + $label($name,$data)
-!function port           ($name='',$data='') !return SetEntityType('port'          ) + ' ' + $label($name,$data)
-!function portIn         ($name='',$data='') !return SetEntityType('portIn'        ) + ' ' + $label($name,$data)
-!function portOut        ($name='',$data='') !return SetEntityType('portOut'       ) + ' ' + $label($name,$data)
-
-'Sequence Diagram
-!function box          ($name='',$data='') !return 'box '         + $label($name,$data)
-!function participant  ($name='',$data='') !return 'box '         + $label($name,$data)
-
-
-!function $push() return "-->"
-
-!function $transactionLink()
-    !return ' *--> "<<transaction>>"'
-!endfunction
+!include $commonincludepath/entities.puml
 
 !procedure $topic($name,$format='',$icon='')
     !$topicName = $strReplace($name,'_queue','')
@@ -458,104 +334,7 @@ $assert('assert_notitle as " " ' ,$label('assert_notitle'))
     <s:red>$field</s>
 !endprocedure
 
-!function $option_label($text='',$desc='')
-    !$linklabel = $GetName($text)
-    !return '<color:purple><size:20><&tag>' + $linklabel + '</size></color>'
-!endfunction
-
-!function $option_pro()
-    !return '<color:green><size:25><&thumb-up></size></color>'
-!endfunction
-
-!function $option_con()
-    !return '<color:red><size:25><&thumb-down></size></color>'
-!endfunction
-
-!function $option_link($name)
-    !if ($ishidden($name) == 1)
-        !return '<<alt>> <<' + $name + '>> : . '
-    !endif 
-    !return '<<alt>> <<' + $name + '>> : ' + $option_label($name)
-!endfunction
-
-!procedure $note_start($name='', $target='')
-    !if ($target=='')
-        !global $global_last_note_target = $global_last_name
-    !else
-        !global $global_last_note_target = $target
-    !endif
-
-    !if ($name=='')
-        !$name = $global_last_name + "_note"
-    !endif
-    !global $global_last_note_name = $name
-
-    !if ($name == '')
-    note on link
-    !else
-        !$handle = '$' + $name
-        !$stereotype = '<<' + $name + '>>'
-    note as $name $handle $stereotype
-    !endif
-!endprocedure
-
-!procedure $note_end()
-    end note
-    !if ($global_last_note_target != '')
-        !$handle = '$' + $global_last_note_name
-        !$stereotype = '<<' + $global_last_note_name + '>>'
-        !if (%not($ishidden($global_last_note_name)))
-            !if (%not($ishidden($global_last_note_target)))
-                $global_last_note_name -- $global_last_note_target $stereotype
-            !endif
-        !endif
-    !endif
-    !global $global_last_note_name = ''
-    !global $global_last_note_target = ''
-!endprocedure
-
-!procedure note($text, $name='', $target='')
-    $note_start($name, $target)
-    $text
-    $note_end()
-!endprocedure
-
-!procedure $note_test()
-    component(note_test_component)
-    note(abc)
-!endprocedure
-'$note_test()
-
-!procedure $option_note_start($name='', $target='')
-    $note_start($name, $target)
-    !$str = $strReplace($name,$defaultWordSeparator,' ')
-    $option_label($str)
-!endprocedure
-
-!procedure $option_note_end()
-    $note_end()
-!endprocedure
-
-!procedure $option_test()
-rectangle option_test $example {
-    card option_test_card [
-        $option_label("Opt ABC")
-        $option_pro() : option_pro
-        $option_con() : option_con
-    ]
-
-    component option_test_component
-
-    option_test_card -- option_test_component $option_link(note_opt_test)
-    $option_note_start(note_opt_test, option_test_card)
-        description
-        ---
-        $option_pro() : option_pro
-        $option_con() : option_con
-    $option_note_end()
-}
-!endprocedure
-'$option_test()
+!!include $commonincludepath/option-notes.puml
 
 !function $label_filter($suffix,$template)
     !$count = $strSegmentCount($label_Inventory_store,$label_Inventory_separator)
