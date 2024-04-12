@@ -1,4 +1,5 @@
 @startuml legend
+skinparam dummy 0
 
 !unquoted procedure $componentExample($type,$description='')
     rectangle $type <<$type>> [
