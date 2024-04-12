@@ -1,9 +1,9 @@
 @startuml style-base
 
-!$gitpath ?= "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
-!$commonincludepath ?= $gitpath
-'!$commonincludepath ?= "\code\puml\assets"
-!$this_filename_full = $commonincludepath + '/style-base.puml'
+!global $gitpath ?= "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
+!global $commonincludepath ?= $gitpath
+!global $commonincludepath ?= "\code\puml\assets"
+!global $this_filename_full = $commonincludepath + '/style-base.puml'
 
 !global $icon_Size ?= 50
 
@@ -722,8 +722,9 @@ $assert('b <-- a', $rel_inv('a --> b'))
 
 ' relations end
 
-!include https://https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master/legend.puml
+!include https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master/legend.puml
 
 $legend(0)
+$legend_Content()
 
 @enduml

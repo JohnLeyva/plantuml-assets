@@ -60,14 +60,15 @@ skinparam dummy 0
 !endprocedure
 
 !procedure $legend_Content()
-$legend_States_Content()
-$legend_Arrows_Content()
+    $legend_States_Content()
+    $legend_Arrows_Content()
 !endprocedure
 
 !procedure $legend($open=0,$scale="0.5")
     !if ($open==0)
         legend
     !endif
+    !if ($open>=0)
 {{
 scale $scale
 'title Conventions
@@ -81,6 +82,7 @@ $legend_Arrows_Content()
 }}
 More about [[$gitpath/style-simple.svg Conventions]]
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
+    !endif
     !if ($open==0)
         end legend
     !endif
