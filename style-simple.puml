@@ -334,7 +334,7 @@ $assert('assert_notitle as " " ' ,$label('assert_notitle'))
     <s:red>$field</s>
 !endprocedure
 
-!!include $commonincludepath/option-notes.puml
+!include $commonincludepath/option-notes.puml
 
 !function $label_filter($suffix,$template)
     !$count = $strSegmentCount($label_Inventory_store,$label_Inventory_separator)
