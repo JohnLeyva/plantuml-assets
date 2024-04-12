@@ -1,10 +1,15 @@
 @startuml legend
 skinparam dummy 0
 
+!global $gitpath ?= "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
+!global $commonincludepath ?= $gitpath
+!global $commonincludepath ?= "\code\puml\assets"
+!global $this_filename_full = $commonincludepath + '/style-base.puml'
+
 !unquoted procedure $componentExample($type,$description='')
     rectangle $type <<$type>> [
         $description
-        ]   
+    ]
 !endprocedure
 
 !procedure $legend_States_Content()
@@ -87,6 +92,6 @@ More about [[$gitpath/style-simple.svg Conventions]]
 !endprocedure
 
 '$legend_Content()
-'$legend(0)
+$legend(0)
 
 @enduml
