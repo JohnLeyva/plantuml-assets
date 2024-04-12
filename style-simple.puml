@@ -1,7 +1,7 @@
 @startuml style
 
 !$commonincludepath ?= "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
-!include $commonincludepath/style-base.puml
+!include $commonincludepath/func-base.puml
 !include $commonincludepath/legend.puml
 
 $set_direction()

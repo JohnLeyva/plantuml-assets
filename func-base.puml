@@ -82,13 +82,6 @@ $assert('aaa','aaa','description')
 '$assert('aaa',%chr(34) + 'aaa' + %chr(34) ,'description')
 '$assert('<color:blue>aaa bbb','<color:red>aaa __bbb__' ,'description')
 
-!procedure $set_direction()
-    !$diagram ?= 'none'
-    !if ($diagram != 'sequence')
-        left to right direction
-    !endif
-!endprocedure
-
 !function $remark($text,$color=red) return "<color:" + $color+ ">" + $text + "</color>"
 
 !global $stylepath = $gitpath + '/style.puml'

@@ -9,6 +9,13 @@ skinparam NoteBorderThickness 1.5
 skinparam Nodesep 40
 skinparam Ranksep 50
 
+!procedure $set_direction()
+    !$diagram ?= 'none'
+    !if ($diagram != 'sequence')
+        left to right direction
+    !endif
+!endprocedure
+
 !function $notouch      ($type = "any") return "#lightgray"
 !function $notouch_link ($type = "any") return "#gray"
 !function $exiting      ($type = "any") return $existing($type)
