@@ -1,0 +1,226 @@
+@startuml style-example
+skinparam dummy left
+
+!procedure messageTypeExample ()
+    {{
+        json jsonschema {
+            "Key" : "Header.CorrelationID",
+            "Value" : {
+                "EntityId" : "string",
+                "status" : ["Success", "Warning", "Failed"],
+                "Errors[]" : "record"
+            }
+        }
+    }}
+!end procedure
+
+'big example
+
+!unquoted procedure $componentExample($type,$description='')
+        rectangle $type <<$type>> [
+            $description
+            ]   
+!endprocedure
+
+!procedure $example_style()
+    rectangle example_style $example {
+        together {
+            component anyComponent
+            $componentExample(new)
+            $componentExample(existing)
+            $componentExample(remove)
+            component temporary <<new>> <<temporary>>
+            $componentExample(notouch)
+            $componentExample(done)
+            $componentExample(ready)
+            $componentExample(wip)
+            $componentExample(change)
+            component alternative <<alt>>
+
+            new ..|> anyComponent : Realization 
+            usecase anyUseCase as "use case"
+            actor anyActor as "user/system" 
+            actor stakeholder  
+            stakeholder --|> anyActor : is as
+            stakeholder -- anyUseCase
+
+            existing --> remove $link_type(remove)
+            existing --> notouch $link_type(notouch)
+            existing --> change $link_type(change) 
+            change --> done $link_type(change)
+            new --> done $link_type(new)
+                $black_tag(new_link)
+            wip --> done
+            ready --> done
+            done --> existing $link_type(existing)
+
+            new --|> anyUseCase : Implements
+
+            rectangle "No in the project scope" <<out-of-scope>> {
+                component remove_future <<remove>>
+            }
+            
+            rectangle "In the scope of another workstream" <<next-phase>> {
+                component change_future <<change>>
+
+                existing --> remove_future <<existing>>
+                    $black_tag(existing_link)
+                
+                existing --> change_future $link_type(eventually)
+
+                new --> temporary $link_type(temporary)
+                temporary --> remove_future $link_type(out-of-scope)
+                new --> alternative $link_type(alt)
+                    $tag(alt_link)
+            }
+        }
+  
+    $service(Any_Service_Group) <<existing>> {
+        $service(Any_Service_Group__Any_Service) <<new>> {
+            rectangle() {
+            $environment(Any_Service_Group__Any_Service__AAA__Any_Environment) <<new>> {
+
+                database anyDatabase as "Queryable\nstorage"
+                file anyFile as "File\nstorage"
+                node process {
+                    entity anyEntity as "Aggregate / Entity"
+                    control anyControl as "Control / Controller"
+                    boundary anyBoundary as "Boundary"
+                    anyControl -l-> anyEntity
+                    anyBoundary -l-> anyControl
+                    anyActor --> anyBoundary
+                }
+
+                anyControl --> anyDatabase : POST/PUT/PATCH
+                anyDatabase --> anyControl : GET
+                anyControl --> anyFile : Save
+                anyFile --> anyControl : Retrieve
+
+                $kafka(Topic_outbound,'<(MessageType)>-from_<(source)>-processed') <<outbound>>
+                $topic(Topic_inbound,'<(MessageType)>-from_<(source)>-accepted') <<inbound>>
+                $topic_message(Topic_outbound,messageTypeExample)
+
+                anyControl --\\ Topic_outbound : PUSH
+                Topic_inbound --\\ anyControl : PULL
+
+                interface ApiGateway as "ApiGateway Proxy"
+                ApiGateway -d- anyBoundary
+            }
+            }
+        }
+    } 
+}
+!endprocedure
+
+!procedure $Transaction_example()
+frame Transaction_Diagram_convention $example {
+
+    database Transaction_resource_A 
+
+    $transaction(Any_TransactionScope) {
+        control $label(Control_With_TransactionScope)
+    }
+
+    database Transaction_resource_B
+    File No_Transaction_resource_C
+
+    Transaction_resource_A *--> Control_With_TransactionScope <<transaction>> : read
+        note on link
+            **In transaction** 
+            Use Composition Arrow 
+            <color:red>*--></color>
+        endnote
+    Control_With_TransactionScope *--> Transaction_resource_B <<transaction>> : write
+        note on link
+            In transaction 
+        endnote
+    Control_With_TransactionScope --> No_Transaction_resource_C : write
+        note on link
+            **NOT in transaction** 
+        endnote
+}
+!endprocedure
+
+!procedure $model_notation_example()
+frame(model_notation) $example {
+     label model_notation_label [
+         {{
+             'left to right direction
+             'skinparam Nodesep 100
+             skinparam Ranksep 35
+
+             Entity "Car" as Car {}
+             Class "Vehicle" as Vehicle {
+                 PK(Primary Key)
+                 Normal Property
+             }
+             enum SetOfValues {
+                 PK(default)
+                 Active
+                 NotUsed(Not Used)
+             }
+
+             Car -|> Vehicle : Is a
+             Vehicle "Composed by" *---{ "many" Part  
+             Part - SetOfValues
+         }} 
+     ]
+}
+!endprocedure
+
+!procedure $flow_vs_dependency()
+frame(flow_vs_dependency) $example {
+    
+    rectangle flow_vs_dependency_A as " " {
+        control publisher_topic
+        queue topic
+        control consumer_topic
+        publisher_topic -r-\\ topic : Publish
+        topic -r-\\ consumer_topic : Consume
+    }
+
+    rectangle flow_vs_dependency_B as " " {
+        control persister_storage
+        database storage
+        control querier_storage
+
+        persister_storage -r-> storage : Store
+        storage -r-> querier_storage : Query
+    }
+
+    rectangle flow_vs_dependency_C as " " {
+        control API_client_POST
+        interface API_Gateway_POST
+        boundary API_Backend_POST
+
+        API_client_POST -r(0-> API_Gateway_POST : POST
+        API_Gateway_POST -r(0-> API_Backend_POST : POST
+    }
+
+    rectangle flow_vs_dependency_D as " " {
+        control API_client_GET
+        interface API_Gateway_GET
+        boundary API_Backend_GET
+
+        API_client_GET <-r(0- API_Gateway_GET : GET
+        API_Gateway_GET <-r(0- API_Backend_GET : GET
+    }
+
+    flow_vs_dependency_A -- flow_vs_dependency_B <<hide>>
+    flow_vs_dependency_B -- flow_vs_dependency_C <<hide>>
+    flow_vs_dependency_C -- flow_vs_dependency_D <<hide>>
+}
+!endprocedure
+
+!procedure $style_test_all()
+    rectangle {
+    $example_style()
+    $option_test()
+    $Transaction_example()
+    $flow_vs_dependency()
+    $model_notation_example()
+    $legend()
+    }
+!endprocedure
+
+@enduml

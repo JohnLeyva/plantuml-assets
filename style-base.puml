@@ -1,6 +1,10 @@
 @startuml style-base
 
-' !$commonincludepath ?= "\code\puml\assets"
+!$gitpath ?= "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
+!$commonincludepath ?= $gitpath
+'!$commonincludepath ?= "\code\puml\assets"
+!$this_filename_full = $commonincludepath + '/style-base.puml'
+
 !global $icon_Size ?= 50
 
 !$defaultColor = '#white'
@@ -49,7 +53,6 @@
     !$assert_name = 'assert_' + $assert_count
     !if ($expected != $actual)
         !if ($diagram != 'sequence')
-        rectangle #red {
             !$actual_literal = $text_literal($actual)
             !$expected_literal = $text_literal($expected)
             !if ($actual_literal == $actual)
@@ -59,6 +62,7 @@
                 !$expected_literal = ''
             !endif
 
+        rectangle #red {
             card $assert_name##_card [
                 = ASSERT FAILED <:fire:> 
                 $description
@@ -67,7 +71,6 @@
                 | actual | $actual | %strlen($actual) | $actual_literal |
                 | expected | $expected | %strlen($expected) | $expected_literal |
             ]
-
         }
         !else if ($diagram == 'sequence')
             assert --> assert  
@@ -126,7 +129,6 @@ skinparam Ranksep 50
 
 'C4
 '!include <C4/C4_Deployment>
-'!include <C4/C4_Container>
 '!include <C4/C4_Container>
 
 ' SET STYLE START {
@@ -273,6 +275,7 @@ skinparam Ranksep 50
         LineColor $change_link()
         LineThickness 3
         LineStyle 3
+        BackGroundColor $change_link()
     }
     .temporary {
         LineColor $remove()
@@ -545,6 +548,7 @@ $assert('a-->b',$strReverse('b<--a'))
 $assert(3,$strSegmentCount(Part1__Part2__Part3,$defaultPartSeparator))
 $assert(0,$strSegmentCount('',$defaultPartSeparator))
 
+
 !function $strSegmentGet($str,$separator=$defaultPartSeparator,$count=(0-1))
     !$res = $str
     !$pos = 1
@@ -780,7 +784,7 @@ $assert('b <-- a', $rel_inv('a --> b'))
     E -> F <<eventually>> : Eventually
     F -|> G : Is A
     G *- H : Composed by
-    H -0 I : Used by
+    H -0 I : Used In-process by
 !endprocedure
 
 !procedure $legend_Content()
@@ -788,38 +792,32 @@ $legend_States_Content()
 $legend_Arrows_Content()
 !endprocedure
 
-!procedure $legend($open=0)
-!if ($open==0)
-legend
-!endif
+!procedure $legend($open=0,$scale="0.5")
+    !if ($open==0)
+        legend
+    !endif
 {{
-scale 0.5
-!$commonincludepath ?= "\code\puml\assets"
-!$commonincludepath ?= "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
-!include $commonincludepath/style-base.puml
+scale $scale
+'title Conventions
+!include $this_filename_full
 $legend_States_Content()
 }}
-
 {{
-scale 0.5
-!$commonincludepath ?= "\code\puml\assets"
-!$commonincludepath ?= "https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master"
-!include $commonincludepath/style-base.puml
+scale $scale
+!include $this_filename_full
 $legend_Arrows_Content()
 }}
-More about [[https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master/style-simple.svg Conventions]]
+More about [[$gitpath/style-simple.svg Conventions]]
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
-!if ($open==0)
-end legend
-!endif
+    !if ($open==0)
+        end legend
+    !endif
 !endprocedure
 
 ' General Functions
 
 '$legend_Content()
-'$legend()
-
+$legend(0)
 ' Legend end
 
 @enduml
-
