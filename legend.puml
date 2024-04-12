@@ -68,7 +68,6 @@ skinparam dummy 0
     !if ($open==0)
         legend
     !endif
-    !if ($open>=0)
 {{
 scale $scale
 'title Conventions
@@ -82,13 +81,10 @@ $legend_Arrows_Content()
 }}
 More about [[$gitpath/style-simple.svg Conventions]]
 <size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
-    !endif
     !if ($open==0)
         end legend
     !endif
 !endprocedure
-
-' General Functions
 
 '$legend_Content()
 '$legend(0)
