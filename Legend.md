@@ -1,8 +1,6 @@
 ```plantuml
 @startuml
 title Legend
-'skinparam linetype ortho
-'!theme spacelab
 !include https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master/style-base.puml
 $legend()
 @enduml
@@ -27,6 +25,43 @@ colors
 
 ```plantuml
 @startuml
-help skinparams
+listopeniconic
+@enduml
+@startuml
+card c [     
+    [[https://plantuml.com/openiconic]] 
+     ]
 @enduml
 ```
+
+
+```plantuml
+@startuml
+scale .5
+!include <osa/user/audit/audit>
+'beware of 'hat-sprite'
+!include <osa/user/black/hat/hat-sprite>
+!include <osa/user/blue/blue>
+!include <osa/user/blue/security/specialist/specialist>
+!include <osa/user/blue/sysadmin/sysadmin>
+!include <osa/user/blue/tester/tester>
+!include <osa/user/blue/tie/tie>
+!include <osa/user/green/architect/architect>
+!include <osa/user/green/business/manager/manager>
+!include <osa/user/green/developer/developer>
+!include <osa/user/green/green>
+!include <osa/user/green/operations/operations>
+!include <osa/user/green/project/manager/manager>
+!include <osa/user/green/service/manager/manager>
+!include <osa/user/green/warning/warning>
+!include <osa/user/large/group/group>
+!include <osa/users/blue/green/green>
+!include <osa/user/white/hat/hat>
+
+listsprites
+
+@enduml
+```
+
+
+

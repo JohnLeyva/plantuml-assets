@@ -126,11 +126,6 @@ skinparam Ranksep 50
 !global $style__out_of_scope__LineStyle = 50
 !global $style__out_of_scope__DiagonalCorner = 20
 
-
-'C4
-'!include <C4/C4_Deployment>
-'!include <C4/C4_Container>
-
 ' SET STYLE START {
     !global $current_artifact_state = ''
 
@@ -727,96 +722,6 @@ $assert('b <-- a', $rel_inv('a --> b'))
 
 ' relations end
 
-' legend Start
-
-!unquoted procedure $componentExample($type,$description='')
-        rectangle $type <<$type>> [
-            $description
-            ]   
-!endprocedure
-
-!procedure $legend_States_Content()
-    $componentExample(any)
-    $componentExample(review)
-    $componentExample(new)
-    $componentExample(alt)
-    $componentExample(wip)
-    $componentExample(done)
-    $componentExample(ready)
-    $componentExample(live)
-    $componentExample(notouch)
-    $componentExample(change)
-    $componentExample(temporary)
-    $componentExample(remove)
-    '$componentExample('out-of-scope')
-        rectangle out_of_scope <<out-of-scope>> [
-        ]
-
-    any -> review <<review>>
-    review -> new <<new>>
-    new -> alt <<alt>>
-    alt -> wip <<wip>>
-    wip -> ready <<ready>>
-    ready -> done <<done>>
-    done -> live <<live>> 
-    live -> notouch <<notouch>>
-    notouch -> change <<change>>
-    change -> temporary <<temporary>> 
-    temporary -> remove <<remove>>
-    remove -> out_of_scope <<out-of-scope>>
-!endprocedure
-
-!procedure $legend_Arrows_Content()
-    rectangle A
-    rectangle B
-    rectangle C
-    rectangle D
-    rectangle E
-    rectangle F
-    rectangle G
-    rectangle H
-    rectangle I
-    
-    A -> B : Information Flow 
-    B =\\ C : Push Message 
-    C =r(0=> D : API POST
-    D <=r(0= E : API GET
-    E -> F <<eventually>> : Eventually
-    F -|> G : Is A
-    G *- H : Composed by
-    H -0 I : Used In-process by
-!endprocedure
-
-!procedure $legend_Content()
-$legend_States_Content()
-$legend_Arrows_Content()
-!endprocedure
-
-!procedure $legend($open=0,$scale="0.5")
-    !if ($open==0)
-        legend
-    !endif
-{{
-scale $scale
-'title Conventions
-!include $this_filename_full
-$legend_States_Content()
-}}
-{{
-scale $scale
-!include $this_filename_full
-$legend_Arrows_Content()
-}}
-More about [[$gitpath/style-simple.svg Conventions]]
-<size:8> Plantuml %version() | %date("yyyy-MMM-dd") %filename()</size>
-    !if ($open==0)
-        end legend
-    !endif
-!endprocedure
-
-' General Functions
-
-'$legend_Content()
-'$legend(0)
+!include legend.puml
 
 @enduml
