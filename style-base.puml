@@ -724,7 +724,7 @@ $assert('b <-- a', $rel_inv('a --> b'))
 
 !include https://raw.githubusercontent.com/JohnLeyva/plantuml-assets/master/legend.puml
 
-$legend(0)
-$legend_Content()
+'$legend(0)
+'$legend_Content()
 
 @enduml
