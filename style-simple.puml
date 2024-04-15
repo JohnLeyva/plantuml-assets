@@ -281,7 +281,7 @@ $assert('assert_notitle as " " ' ,$label('assert_notitle'))
 
 !procedure title($text)
     !$message = $GetName($text)
-    title <size:30>$message / %date("yyyy-MM-dd")
+    title <size:$entity_Size>$message / %date("yyyy-MM-dd")
 !endprocedure
 
 !include $commonincludepath/entities.puml
