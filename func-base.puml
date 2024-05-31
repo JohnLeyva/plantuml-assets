@@ -311,14 +311,22 @@ $assert($switch_map('b','z','a','b'),'z')
 $assert('<color:red>a</color>',$highlight('<(a)>'))
 $assert('<color:red>a</color>-<color:red>b</color>-<color:red>c</color>',$highlight('<(a)>-<(b)>-<(c)>'))
 
-!function $link($text, $url)
+!function $link($text, $url='')
+    !if ($url == '')
+        !$url = $text
+        !$text = '/'
+    !endif
+
     !if (%substr($text,0,1) == '/')
         !$text = $strSegmentGet($url,$text)
     !endif
+
     !$text = $strReplace($text,'+',' ')
     !return "[[" + $url + " " + $text + "]]"
 !endfunction
 $assert('[[http://google.com aa - bb]]',$link('aa+-+bb','http://google.com'))
+$assert('[[http://google.com/abc abc]]',$link('/','http://google.com/abc'))
+$assert('[[http://google.com/abc abc]]',$link('http://google.com/abc'))
 
 !function $entity_icon_map($name)
     !$result = ''
