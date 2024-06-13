@@ -101,6 +101,7 @@ skinparam dummy 0
 !function abstract_class ($name='',$data='') !return SetEntityType('abstract class') + ' ' + $label($name,$data)
 !function class          ($name='',$data='') !return SetEntityType('class'         ) + ' ' + $label($name,$data)
 !function enum           ($name='',$data='') !return SetEntityType('enum'          ) + ' ' + $label($name,$data)
+!function map            ($name='',$data='') !return SetEntityType('map'           ) + ' ' + $label($name,$data)
 !function abstract       ($name='',$data='') !return SetEntityType('abstract'      ) + ' ' + $label($name,$data)
 !function annotation     ($name='',$data='') !return SetEntityType('annotation'    ) + ' ' + $label($name,$data)
 !function circle         ($name='',$data='') !return SetEntityType('circle'        ) + ' ' + $label($name,$data)
