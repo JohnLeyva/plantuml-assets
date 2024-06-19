@@ -235,7 +235,13 @@ $set_direction()
         !endif
 
         !if (%strlen($labelAs) > 0 )
-            !$res = $res + ' as "' + $icon + $labelAs + '" '
+            !$labelAs = '"' + $icon + $labelAs + '" '
+
+            !if ($EntityType == 'map')
+                !$res = $labelAs + ' as ' + $res
+            !else 
+                !$res = $res + ' as ' + $labelAs
+            !endif
         !endif
     !endif
 
