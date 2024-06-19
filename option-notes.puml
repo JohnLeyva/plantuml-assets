@@ -50,7 +50,7 @@ skinparam dummy 0
         !if (%not($ishidden($global_last_note_name)))
             !if (%not($ishidden($global_last_note_target)))
 '                $global_last_note_name -- $global_last_note_target $stereotype
-                $global_last_note_name -- $global_last_note_target $stereotype
+                $global_last_note_name -- $global_last_note_target
             !endif
         !endif
     !endif
